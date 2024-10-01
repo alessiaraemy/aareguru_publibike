@@ -1,0 +1,39 @@
+body{
+display: grid;
+grid-template-columns: 40px repeat(12, 1fr) 40px;
+grid-auto-rows: 50px;
+background-color: #29b274;
+}
+
+#BildAare{
+    grid-column: span 14 ;
+    grid-row: 12;
+    width: 100%;
+    height: auto;
+}
+
+h1{
+    font-family: "anton", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 250px;
+    color: #324d2d;
+    margin: 0;
+    grid-column: span 14;
+    grid-row-start: 1;
+    line-height: 1.2;
+}
+
+h2{
+        font-family: "Annie Use Your Telescope", cursive;
+        font-weight: 400;
+        font-style: normal;
+        font-size: 200px;
+        color: #43663d;
+        margin: 0;
+        grid-column-start: 15;
+        grid-column: span 8;
+        grid-row-start: 10;
+        
+      }
+      
