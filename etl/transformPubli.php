@@ -26,10 +26,25 @@ if (isset($data['stations']) && is_array($data['stations'])) {
         } else {
             $stationRow['Fahrzeugdetails'] = 'Keine Fahrzeuge verfügbar';
         }
-
-        // Füge die transformierten Daten der Tabelle hinzu
-        $transformedData[] = $stationRow;
     }
 }
+
+// Speichere diese Daten in der transformierten Liste
+$transformedData[] = $currentData;
+
+// Bereite eine Tabelle vor, um die Daten anzuzeigen
+echo "<table border='1'>";
+echo "<tr><th>Location</th><th>Coordinates</th><th>Temperature</th><th>Temperature Text</th><th>Flow</th><th>Flow Text</th><th>Height</th></tr>";
+
+// Füge die transformierten Daten in die Tabelle ein
+foreach ($transformedData as $row) {
+    echo "<tr>";
+    foreach ($row as $cell) {
+        echo "<td>{$cell}</td>";
+    }
+    echo "</tr>";
+}
+
+echo "</table>";
 
 ?>
