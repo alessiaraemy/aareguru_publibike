@@ -10,10 +10,11 @@ if (isset($data['stations']) && is_array($data['stations'])) {
     // Durchlaufe jede Station und sammle die relevanten Informationen
     foreach ($data['stations'] as $station) {
         $currentData = [
-            'Location' => $station['name'] . ', ' . $station['city'],  // Kombiniere Name und Stadt der Station
-            'Latitude' => $station['latitude'],  // Latitude der Station
-            'Longitude' => $station['longitude'], // Longitude der Station
-            'Capacity' => $station['capacity'],   // Kapazität der Station
+            'Name' => $station['name'] ,  // Name der Station
+            'Adresse' => $station['adress'], // Name der Station
+            'Postleitzahl' => $station['zip'], // Postleitzahl der Station
+            'Stadt' => $station['city'], // Stadt der Station
+            'Status' => $station['state']['name'], // Status der Station
             'Vehicles' => count($station['vehicles']) // Anzahl verfügbarer Fahrzeuge
         ];
 
@@ -24,7 +25,7 @@ if (isset($data['stations']) && is_array($data['stations'])) {
 
 // Bereite eine Tabelle vor, um die Daten anzuzeigen
 echo "<table border='1'>";
-echo "<tr><th>Location</th><th>Latitude</th><th>Longitude</th><th>Capacity</th><th>Vehicles</th></tr>";
+echo "<tr><th>Name</th><th>Adresse</th><th>Postleitzahl</th><th>Stadt</th><th>Status</th><th>Vehicles</th></tr>";
 
 // Füge die transformierten Daten in die Tabelle ein
 foreach ($transformedData as $row) {
