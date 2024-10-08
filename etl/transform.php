@@ -9,9 +9,7 @@ $currentData = [
     'Location' => $data['aare']['location'],
     'Coordinates' => 'Lat: ' . $data['aare']['coordinates']['lat'] . ', Lon: ' . $data['aare']['coordinates']['lon'],
     'Temperature' => $data['aare']['temperature'] . ' °C',
-    'Temperature Text' => $data['aare']['temperature_text'],
     'Flow' => $data['aare']['flow'] . ' m³/s',
-    'Flow Text' => $data['aare']['flow_text'],
     'Height' => $data['aare']['height'] . ' m'
 ];
 
@@ -20,7 +18,7 @@ $transformedData[] = $currentData;
 
 // Bereite eine Tabelle vor, um die Daten anzuzeigen
 echo "<table border='1'>";
-echo "<tr><th>Location</th><th>Coordinates</th><th>Temperature</th><th>Temperature Text</th><th>Flow</th><th>Flow Text</th><th>Height</th></tr>";
+echo "<tr><th>Location</th><th>Coordinates</th><th>Temperature</th><th>Flow</th><th>Height</th></tr>";
 
 // Füge die transformierten Daten in die Tabelle ein
 foreach ($transformedData as $row) {

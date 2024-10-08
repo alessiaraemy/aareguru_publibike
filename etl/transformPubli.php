@@ -34,7 +34,7 @@ $transformedData[] = $currentData;
 
 // Bereite eine Tabelle vor, um die Daten anzuzeigen
 echo "<table border='1'>";
-echo "<tr><th>Location</th><th>Coordinates</th><th>Temperature</th><th>Temperature Text</th><th>Flow</th><th>Flow Text</th><th>Height</th></tr>";
+echo "<tr><th>Station ID</th><th>Name</th><th>Adresse</th><th>Fahrzeuge</th><th>Kapazität</th></tr>";
 
 // Füge die transformierten Daten in die Tabelle ein
 foreach ($transformedData as $row) {
