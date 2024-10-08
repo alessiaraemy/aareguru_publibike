@@ -11,7 +11,7 @@ if (isset($data['stations']) && is_array($data['stations'])) {
     foreach ($data['stations'] as $station) {
         $currentData = [
             'Name' => $station['name'] ,  // Name der Station
-            'Adresse' => $station['adress'], // Name der Station
+            'Adresse' => $station['address'], // Name der Station
             'Postleitzahl' => $station['zip'], // Postleitzahl der Station
             'Stadt' => $station['city'], // Stadt der Station
             'Status' => $station['state']['name'], // Status der Station
