@@ -7,7 +7,7 @@ $transformedData = [];
 // Füge die aktuellen Daten hinzu (Ort, Temperatur, Fluss, etc.)
 $currentData = [
     'Location' => $data['aare']['location'],
-    'weatherTemperature' => $data['weather']['tt'] . ' °C',
+    'weatherTemperature' => $data['weather']['current']['tt'] . ' °C',
     'Temperature' => $data['aare']['temperature'] . ' °C',
     'Flow' => $data['aare']['flow'] . ' m³/s',
 ];
