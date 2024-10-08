@@ -13,17 +13,20 @@ $transformedData = [];
 if (isset($data['stations']) && is_array($data['stations'])) {
     // Durchlaufe jede Station und sammle die relevanten Informationen
     foreach ($data['stations'] as $station) {
-        $currentData = [
-            'Name' => $station['name'] ,  // Name der Station
-            'Adresse' => $station['address'], // Name der Station
-            'Postleitzahl' => $station['zip'], // Postleitzahl der Station
-            'Stadt' => $station['city'], // Stadt der Station
-            'Status' => $station['state']['name'], // Status der Station
-            'Vehicles' => count($station['vehicles']) // Anzahl verfügbarer Fahrzeuge
+        // Prüfe, ob die Station-ID im richtigen Schlüssel 'id' liegt
+        if (isset($station['id']) && in_array($station['id'], $selectedIDs)) {
+            $currentData = [
+                'Name' => $station['name'] ,  // Name der Station
+                'Adresse' => $station['address'], // Name der Station
+                'Postleitzahl' => $station['zip'], // Postleitzahl der Station
+                'Stadt' => $station['city'], // Stadt der Station
+                'Status' => $station['state']['name'], // Status der Station
+                'Vehicles' => count($station['vehicles']) // Anzahl verfügbarer Fahrzeuge
         ];
 
         // Speichere diese Daten in der transformierten Liste
         $transformedData[] = $currentData;
+        }
     }
 }
 
