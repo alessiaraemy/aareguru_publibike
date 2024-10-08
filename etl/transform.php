@@ -9,9 +9,7 @@ $currentData = [
     'Location' => $data['aare']['location'],
     'Coordinates' => 'Lat: ' . $data['aare']['coordinates']['lat'] . ', Lon: ' . $data['aare']['coordinates']['lon'],
     'Temperature' => $data['aare']['temperature'] . ' °C',
-    'Temperature Text' => $data['aare']['temperature_text'],
     'Flow' => $data['aare']['flow'] . ' m³/s',
-    'Flow Text' => $data['aare']['flow_text'],
     'Height' => $data['aare']['height'] . ' m'
 ];
 
