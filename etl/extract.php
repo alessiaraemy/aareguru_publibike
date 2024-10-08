@@ -20,5 +20,5 @@ function fetchAareData() {
 }
 
 // Gibt die Daten zurück, wenn dieses Skript eingebunden ist
-return fetchWeatherData();
+return fetchAareData();
 ?>
