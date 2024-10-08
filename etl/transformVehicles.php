@@ -17,8 +17,8 @@ if (isset($data['stations']) && is_array($data['stations'])) {
         if (isset($station['id']) && in_array($station['id'], $selectedIDs)) {
             $currentData = [
                 'Name' => $station['name'] ,  // Name der Station
-                'Batterie E-Bike' => $station['vehicles']['ebike_battery_level'], // Name der Station
-                'Typ' => $station['vehicles']['type']['name'], 
+                'Batterie E-Bike' => $station['vehicles']['{}']['ebike_battery_level'], // Name der Station
+                'Typ' => $station['vehicles']['{']['type']['name'], 
         ];
 
         // Speichere diese Daten in der transformierten Liste
