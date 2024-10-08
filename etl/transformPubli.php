@@ -2,6 +2,10 @@
 // Daten von der API abrufen
 $data = include('extractPubli.php');
 
+// Liste der IDs, die wir anzeigen wollen
+$selectedIDs = [423, 323, 312, 321, 478, 315, 316, 326, 254, 898, 251, 663, 195, 114, 119]; // Ersetzt diese IDs durch die IDs, die ihr anzeigen wollt
+
+
 // Initialisiere eine leere Liste, um die transformierten Daten zu speichern
 $transformedData = [];
 
