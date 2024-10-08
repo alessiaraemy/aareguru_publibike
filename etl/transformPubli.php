@@ -21,7 +21,6 @@ if (isset($data['stations']) && is_array($data['stations'])) {
                 'Postleitzahl' => $station['zip'], // Postleitzahl der Station
                 'Stadt' => $station['city'], // Stadt der Station
                 'Status' => $station['state']['name'], // Status der Station
-                'Vehicles' => count($station['vehicles']) // Anzahl verfügbarer Fahrzeuge
         ];
 
         // Speichere diese Daten in der transformierten Liste
