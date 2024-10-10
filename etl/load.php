@@ -12,7 +12,7 @@ try {
     $pdo = new PDO($dsn, $username, $password, $options);
 
     // SQL-Query mit Platzhaltern für das Einfügen von Daten
-    $sql = "INSERT INTO aare_data (id, location, timestamp, temperature, flow, weather_temperature) VALUES (?, ?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO aare_data (id, location, temperature, flow, weather_temperature) VALUES (?, ?, ?, ?, ?)";
 
     // Bereitet die SQL-Anweisung vor
     $stmt = $pdo->prepare($sql);
@@ -26,7 +26,7 @@ try {
         $result = $stmt->execute([
             $item['id'], // Make sure 'id' exists in your data
             $item['Location'], // Changed to 'Location'
-            $item['Timestamp'], // Changed to 'Timestamp'
+            //$item['Timestamp'], // Changed to 'Timestamp'
             $item['Temperature'], // Changed to 'Temperature'
             $item['Flow'], // Changed to 'Flow'
             $item['weatherTemperature'], // Changed to 'weatherTemperature'
