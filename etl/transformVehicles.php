@@ -32,7 +32,7 @@ if (isset($data['stations']) && is_array($data['stations'])) {
 // hier in tabelle m
 // Bereite eine Tabelle vor, um die Daten anzuzeigen
 echo "<table border='1'>";
-echo "<tr><th>ID</th><th>Station</th><th>Batterie E-Bike</th><th>Typ</th></tr>";
+echo "<tr><th>ID</th><th>Station</th><th>E-Bikes</th><th>Gesamtzahl E-Bikes</th></tr>";
 
 // Füge die transformierten Daten in die Tabelle ein
 foreach ($transformedData as $row) {
