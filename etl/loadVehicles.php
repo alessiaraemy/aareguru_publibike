@@ -22,11 +22,11 @@ try {
 
     // Fügt jedes Element im Array in die Datenbank ein
     foreach ($dataArray as $item) {
-        // Ensure the 'ID' field exists and is not null
-        if (isset($item['ID']) && !empty($item['ID'])) {
+        // Ensure the 'Id' field exists and is not null
+        if (isset($item['Id']) && !empty($item['Id'])) {
             // Execute the prepared statement with the correct keys from your data array
             $result = $stmt->execute([
-                $item['ID'], // Changed 'id' to 'ID'
+                $item['Id'], // Changed 'ID' to 'Id' to match your array key
                 $item['Station'], // Assuming 'Station' corresponds to 'name'
                 $item['Gesamtzahl E-Bikes'], // Ensure it matches the key 'Gesamtzahl_EBikes'
                 $item['Gesamtzahl Velos'], // Ensure it matches the key 'Gesamtzahl_Velos'
@@ -36,11 +36,11 @@ try {
             // Check if the insertion failed
             if (!$result) {
                 $allInserted = false;
-                echo "Fehler beim Einfügen der Daten für ID: " . $item['ID'] . "<br>";
+                echo "Fehler beim Einfügen der Daten für ID: " . $item['Id'] . "<br>";
             }
         } else {
-            // Skip records where 'ID' is missing or null
-            echo "Fehler: ID fehlt oder ist null für diesen Eintrag: ";
+            // Skip records where 'Id' is missing or null
+            echo "Fehler: Id fehlt oder ist null für diesen Eintrag: ";
             print_r($item);
             $allInserted = false;
         }
