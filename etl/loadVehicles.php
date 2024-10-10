@@ -38,12 +38,12 @@ try {
                 $allInserted = false;
                 echo "Fehler beim Einfügen der Daten für ID: " . $item['id'] . "<br>";
             }
-        } else {
+        } /*else {
             // Skip records where 'Id' is missing or null
             echo "Fehler: Id fehlt oder ist null für diesen Eintrag: ";
             print_r($item);
             $allInserted = false;
-        }
+        }*/
     }
 
     // Zeigt eine Erfolgsnachricht nur an, wenn alle Daten eingefügt wurden
