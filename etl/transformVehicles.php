@@ -15,6 +15,22 @@ if (isset($data['stations']) && is_array($data['stations'])) {
     foreach ($data['stations'] as $station) {
         // Prüfe, ob die Station-ID im richtigen Schlüssel 'id' liegt
         if (isset($station['id']) && in_array($station['id'], $selectedIDs)) {
+            $ebikeCount = 0;
+            $ebikeBatteries = [];
+
+            if (isset($station['vehicles']) && is_array($station['vehicles'])) {
+                foreach ($station['vehicles'] as $vehicle) {
+                    // Prüfen, ob das Fahrzeug ein E-Bike ist
+                    if (isset($vehicle['type']['name']) && $vehicle['type']['name'] === 'E-Bike') {
+                        $ebikeCount++;
+                        // Batterielevel hinzufügen (wenn vorhanden)
+                        $ebikeBatteries[] = $vehicle['ebike_battery_level'] !== null 
+                            ? $vehicle['ebike_battery_level'] . '%' 
+                            : 'Kein Batterielevel';
+                    }
+                }
+            }
+
             $currentData = [
                 'ID' => $station['id'] ,  // ID der Station
                 'Station' => $station['name'] ,  // Name der Station
