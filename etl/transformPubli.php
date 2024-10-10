@@ -16,7 +16,7 @@ if (isset($data['stations']) && is_array($data['stations'])) {
         // Prüfe, ob die Station-ID im richtigen Schlüssel 'id' liegt
         if (isset($station['id']) && in_array($station['id'], $selectedIDs)) {
             $currentData = [
-                'ID' => $station['id'] ,  // ID der Station
+                'ID' => $station['station_id'] ,  // ID der Station
                 'Station' => $station['name'] ,  // Name der Station
                 'Adresse' => $station['address'], // Name der Station
                 'Postleitzahl' => $station['zip'], // Postleitzahl der Station
