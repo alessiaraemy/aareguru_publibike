@@ -10,6 +10,8 @@ $currentData = [
     'weatherTemperature' => $data['weather']['current']['tt'] . ' °C',
     'Temperature' => $data['aare']['temperature'] . ' °C',
     'Flow' => $data['aare']['flow'] . ' m³/s',
+    'Timestamp' => date('H:i:s d.m.Y')  // Aktueller Timestamp
+
 ];
 
 // Speichere diese Daten in der transformierten Liste
@@ -17,7 +19,7 @@ $transformedData[] = $currentData;
 
 // Bereite eine Tabelle vor, um die Daten anzuzeigen
 echo "<table border='1'>";
-echo "<tr><th>Location</th><th>weatherTemperature</th><th>Temperature</th><th>Flow</th>></tr>";
+echo "<tr><th>Location</th><th>weatherTemperature</th><th>Temperature</th><th>Flow</th><th>Timestamp</th></tr>";
 
 // Füge die transformierten Daten in die Tabelle ein
 foreach ($transformedData as $row) {
