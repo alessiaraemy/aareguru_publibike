@@ -19,6 +19,7 @@ try {
 
     // Variable to track success
     $allInserted = true;
+    $errors = []; // To track specific insert errors
 
     // Fügt jedes Element im Array in die Datenbank ein
     foreach ($dataArray as $item) {
@@ -26,7 +27,7 @@ try {
         if (isset($item['Id']) && !empty($item['Id'])) {
             // Execute the prepared statement with the correct keys from your data array
             $result = $stmt->execute([
-                $item['id'], // Changed 'ID' to 'Id' to match your array key
+                $item['Id'], // Ensure it matches the key 'Id' (corrected here)
                 $item['Station'], // Assuming 'Station' corresponds to 'name'
                 $item['Gesamtzahl E-Bikes'], // Ensure it matches the key 'Gesamtzahl_EBikes'
                 $item['Gesamtzahl Velos'], // Ensure it matches the key 'Gesamtzahl_Velos'
@@ -36,24 +37,29 @@ try {
             // Check if the insertion failed
             if (!$result) {
                 $allInserted = false;
-                echo "Fehler beim Einfügen der Daten für ID: " . $item['id'] . "<br>";
+                // Log error with specific details
+                $errors[] = "Fehler beim Einfügen der Daten für ID: " . $item['Id'] . " - " . implode(", ", $stmt->errorInfo());
             }
-        } /*else {
+        } else {
             // Skip records where 'Id' is missing or null
-            echo "Fehler: Id fehlt oder ist null für diesen Eintrag: ";
-            print_r($item);
+            $errors[] = "Fehler: Id fehlt oder ist null für diesen Eintrag: " . print_r($item, true);
             $allInserted = false;
-        }*/
+        }
     }
 
-    // Zeigt eine Erfolgsnachricht nur an, wenn alle Daten eingefügt wurden
+    // Display success or error messages based on the result
     if ($allInserted) {
         echo "Alle Daten erfolgreich eingefügt.";
     } else {
-        echo "Einige Daten konnten nicht eingefügt werden.";
+        // Show all errors encountered during the insertion
+        echo "Einige Daten konnten nicht eingefügt werden.<br>";
+        foreach ($errors as $error) {
+            echo $error . "<br>";
+        }
     }
 
 } catch (PDOException $e) {
+    // General database connection error message
     die("Verbindung zur Datenbank konnte nicht hergestellt werden: " . $e->getMessage());
 }
 
