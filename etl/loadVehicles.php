@@ -26,7 +26,7 @@ try {
         if (isset($item['Id']) && !empty($item['Id'])) {
             // Execute the prepared statement with the correct keys from your data array
             $result = $stmt->execute([
-                $item['Id'], // Changed 'ID' to 'Id' to match your array key
+                $item['id'], // Changed 'ID' to 'Id' to match your array key
                 $item['Station'], // Assuming 'Station' corresponds to 'name'
                 $item['Gesamtzahl E-Bikes'], // Ensure it matches the key 'Gesamtzahl_EBikes'
                 $item['Gesamtzahl Velos'], // Ensure it matches the key 'Gesamtzahl_Velos'
@@ -36,7 +36,7 @@ try {
             // Check if the insertion failed
             if (!$result) {
                 $allInserted = false;
-                echo "Fehler beim Einfügen der Daten für ID: " . $item['Id'] . "<br>";
+                echo "Fehler beim Einfügen der Daten für ID: " . $item['id'] . "<br>";
             }
         } else {
             // Skip records where 'Id' is missing or null
