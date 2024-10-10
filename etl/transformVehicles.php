@@ -48,6 +48,9 @@ if (isset($data['stations']) && is_array($data['stations'])) {
     }
 }
 
+echo "<pre>";
+print_r($vehicle['type']['name']);
+echo "</pre>";
 
 // hier in tabelle m
 // Bereite eine Tabelle vor, um die Daten anzuzeigen
