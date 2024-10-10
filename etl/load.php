@@ -26,7 +26,6 @@ try {
         $result = $stmt->execute([
             $item['id'], // Make sure 'id' exists in your data
             $item['Location'], // Changed to 'Location'
-            //$item['Timestamp'], // Changed to 'Timestamp'
             $item['Temperature'], // Changed to 'Temperature'
             $item['Flow'], // Changed to 'Flow'
             $item['weatherTemperature'], // Changed to 'weatherTemperature'

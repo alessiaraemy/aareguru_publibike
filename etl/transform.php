@@ -7,11 +7,9 @@ $transformedData = [];
 // Füge die aktuellen Daten hinzu (Ort, Temperatur, Fluss, etc.)
 $currentData = [
     'Location' => $data['aare']['location'],
-    'weatherTemperature' => $data['weather']['current']['tt'] . ' °C',
-    'Temperature' => $data['aare']['temperature'] . ' °C',
-    'Flow' => $data['aare']['flow'] . ' m³/s',
-    'Timestamp' => date('H:i:s d.m.Y')  // Aktueller Timestamp
-
+    'weatherTemperature' => $data['weather']['current']['tt'],
+    'Temperature' => $data['aare']['temperature'],
+    'Flow' => $data['aare']['flow'],
 ];
 
 // Speichere diese Daten in der transformierten Liste
@@ -31,7 +29,6 @@ $transformedData[] = $currentData;
 }*/
 
 //echo "</table>";
-
 
 print_r($transformedData);
 
