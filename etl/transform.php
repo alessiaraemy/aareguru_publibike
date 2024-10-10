@@ -31,4 +31,9 @@ $transformedData[] = $currentData;
 }*/
 
 //echo "</table>";
+
+
+print_r($transformedData);
+
+return $transformedData
 ?>
