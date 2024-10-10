@@ -19,14 +19,15 @@ if (isset($data['stations']) && is_array($data['stations'])) {
             $veloCount = 0;
 
 
+
             if (isset($station['vehicles']) && is_array($station['vehicles'])) {
                 foreach ($station['vehicles'] as $vehicle) {
                     // Prüfen, ob das Fahrzeug ein E-Bike ist
                     if (isset($vehicle['type']['name']) && $vehicle['type']['name'] === 'E-Bike') {
                         $ebikeCount++;                        
                     }
-                     // Prüfen, ob das Fahrzeug ein Velo ist
-                     else (isset($vehicle['type']['name']) && $vehicle['type']['name'] === 'Velo') {
+                    // Prüfen, ob das Fahrzeug ein Velo ist
+                    if (isset($vehicle['type']['name']) && $vehicle['type']['name'] === 'Velo') {
                         $veloCount++;                        
                     }
                 }
@@ -35,8 +36,8 @@ if (isset($data['stations']) && is_array($data['stations'])) {
             $currentData = [
                 'ID' => $station['id'] ,  // ID der Station
                 'Station' => $station['name'] ,  // Name der Station
-                'E-Bikes' => $ebikeCount  // Anzahl der E-Bikes 
-                'Velos' => $veloCount  // Anzahl der Velos                
+                'Gesamtzahl E-Bikes' => $ebikeCount  // Anzahl der E-Bikes 
+                'Gesamtzahl Velos' => $veloCount  // Anzahl der Velos
                
         ];
 
@@ -50,7 +51,7 @@ if (isset($data['stations']) && is_array($data['stations'])) {
 // hier in tabelle m
 // Bereite eine Tabelle vor, um die Daten anzuzeigen
 echo "<table border='1'>";
-echo "<tr><th>ID</th><th>Station</th><th>E-Bikes</th><th>Velos</th></tr>";
+echo "<tr><th>ID</th><th>Station</th><th>Gesamtzahl E-Bikes</th><th>Gesamtzahl Velos</th></tr>";
 
 // Füge die transformierten Daten in die Tabelle ein
 foreach ($transformedData as $row) {
