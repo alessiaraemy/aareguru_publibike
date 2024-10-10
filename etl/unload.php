@@ -20,13 +20,22 @@ try {
     // Set the appropriate header for JSON response
     header('Content-Type: application/json');
 
-    // Output the data as a JSON-encoded string
+
+    // Gibt die Ergebnisse im JSON-Format zurück
+    echo json_encode($results); 
+    } catch (PDOException $e) {
+    // Gibt eine Fehlermeldung zurück, wenn etwas schiefgeht
+    echo json_encode(['error' => $e->getMessage()]);
+    }
+    
+    
+    /*// Output the data as a JSON-encoded string
     echo json_encode($data);
 
 } catch (PDOException $e) {
     // Handle any PDO errors
     http_response_code(500); // Set HTTP status code to 500 (Internal Server Error)
     echo json_encode(['error' => $e->getMessage()]);
-}
+}*/
 
 ?>
