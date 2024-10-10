@@ -29,7 +29,6 @@ if (isset($data['stations']) && is_array($data['stations'])) {
     }
 }
 
-return $transformedData;
 
 
 // hier in tabelle m
