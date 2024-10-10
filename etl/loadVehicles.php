@@ -26,7 +26,7 @@ try {
         if (isset($item['ID']) && !empty($item['ID'])) {
             // Execute the prepared statement with the correct keys from your data array
             $result = $stmt->execute([
-                $item['ID'], // Changed 'id' to 'ID'
+                //$item['ID'], // Changed 'id' to 'ID'
                 $item['Station'], // Assuming 'Station' corresponds to 'name'
                 $item['Gesamtzahl E-Bikes'], // Ensure it matches the key 'Gesamtzahl_EBikes'
                 $item['Gesamtzahl Velos'], // Ensure it matches the key 'Gesamtzahl_Velos'
