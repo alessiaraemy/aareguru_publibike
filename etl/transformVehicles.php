@@ -63,3 +63,4 @@ foreach ($transformedData as $row) {
     echo "</tr>";
 }
 
+?>
