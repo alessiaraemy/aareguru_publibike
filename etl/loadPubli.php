@@ -1,9 +1,9 @@
 <?php
 
-// Transformations-Skript  als '230_transform.php' einbinden
+// Transformations-Skript einbinden
 $dataArray = include('transformPubli.php');
 
-print_r($dataArray); // For debugging purposes, ensure the structure is correct
+//print_r($dataArray); // Debugging-Zwecke, um sicherzustellen, dass die Struktur korrekt ist
 
 require_once 'config.php'; // Bindet die Datenbankkonfiguration ein
 
@@ -27,13 +27,13 @@ try {
             
             // Execute the prepared statement with the correct keys from your data array
             $result = $stmt->execute([
-                $item['ID'], // 'station_id' should be mapped to 'ID' in your array
-                $item['ID'], // Assuming 'id' is also 'ID', you may adjust if it's different
-                $item['Station'], // 'name' should map to 'Station'
-                $item['Adresse'], // 'address' should map to 'Adresse'
-                $item['Postleitzahl'], // 'zip' should map to 'Postleitzahl'
-                $item['Stadt'], // 'city' should map to 'Stadt'
-                $item['Status'], // 'state_name' should map to 'Status'
+                $item['ID'], // 'station_id' wird zu 'ID' im Array gemappt
+                $item['ID'], // 'id' wird auch zu 'ID' gemappt (hier könnte eine andere Quelle für 'id' kommen, wenn es abweicht)
+                $item['Station'], // 'name' wird zu 'Station' gemappt
+                $item['Adresse'], // 'address' wird zu 'Adresse' gemappt
+                $item['Postleitzahl'], // 'zip' wird zu 'Postleitzahl' gemappt
+                $item['Stadt'], // 'city' wird zu 'Stadt' gemappt
+                $item['Status'], // 'state_name' wird zu 'Status' gemappt
             ]);
 
             // Check if the insertion failed
@@ -60,3 +60,4 @@ try {
 } catch (PDOException $e) {
     die("Verbindung zur Datenbank konnte nicht hergestellt werden: " . $e->getMessage());
 }
+?>

@@ -48,7 +48,7 @@ if (isset($data['stations']) && is_array($data['stations'])) {
 
 //echo "</table>";
 
-print_r($transformedData);
+//print_r($transformedData);
 
 return $transformedData
 ?>
