@@ -12,8 +12,8 @@ $transformedData = [];
 if (isset($data['stations']) && is_array($data['stations'])) {
     // Durchlaufe jede Station und sammle die relevanten Informationen
     foreach ($data['stations'] as $station) {
-        // Prüfe, ob die Station-ID im richtigen Schlüssel 'location_id' liegt
-        if (isset($station['location_id']) && in_array($station['location_id'], $selectedIDs)) {
+         // Prüfe, ob die Station-ID im richtigen Schlüssel 'id' liegt
+         if (isset($station['id']) && in_array($station['id'], $selectedIDs)) {
             $ebikeCount = 0;
             $veloCount = 0;
 
@@ -32,11 +32,11 @@ if (isset($data['stations']) && is_array($data['stations'])) {
             }
 
             $currentData = [
-                'location_id' => $station['location_id'],  // ID der Station
-                'Station' => $station['name'],  // Name der Station
-                'Gesamtzahl E-Bikes' => $ebikeCount,  // Anzahl der E-Bikes
-                'Gesamtzahl Velos' => $veloCount,  // Anzahl der Velos
-            ];
+                'Id' => $station['id'] ,  // ID der Station
+                'Station' => $station['name'] ,  // Name der Station
+                'Gesamtzahl E-Bikes' => $ebikeCount,  // Anzahl der E-Bikes  
+                'Gesamtzahl Velos' => $veloCount,  // Anzahl der Velos              
+        ];
 
             // Speichere diese Daten in der transformierten Liste
             $transformedData[] = $currentData;

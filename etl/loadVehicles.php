@@ -12,7 +12,7 @@ try {
     $pdo = new PDO($dsn, $username, $password, $options);
 
     // SQL-Query mit Platzhaltern für das Einfügen von Daten
-    $sql = "INSERT INTO vehicles (location_id, name, Gesamtzahl_EBikes, Gesamtzahl_Velos) VALUES (?, ?, ?, ?)";
+    $sql = "INSERT INTO vehicles (id, name, Gesamtzahl_EBikes, Gesamtzahl_Velos, location_id) VALUES (?, ?, ?, ?, ?)";
 
     // Bereitet die SQL-Anweisung vor
     $stmt = $pdo->prepare($sql);
@@ -22,24 +22,26 @@ try {
 
     // Fügt jedes Element im Array in die Datenbank ein
     foreach ($dataArray as $item) {
-        // Ensure the 'location_id' field exists and is not null
-        if (isset($item['location_id']) && !empty($item['location_id'])) {
+        // Ensure the 'Id' field exists and is not null
+        if (isset($item['Id']) && !empty($item['Id'])) {
             // Execute the prepared statement with the correct keys from your data array
             $result = $stmt->execute([
-                $item['location_id'], // Using 'location_id' instead of 'Id'
+                $item['Id'], // Changed 'ID' to 'Id' to match your array key
                 $item['Station'], // Assuming 'Station' corresponds to 'name'
                 $item['Gesamtzahl E-Bikes'], // Ensure it matches the key 'Gesamtzahl_EBikes'
                 $item['Gesamtzahl Velos'], // Ensure it matches the key 'Gesamtzahl_Velos'
+                isset($item['location_id']) ? $item['location_id'] : null, // Handle location_id if it exists
+
             ]);
 
             // Check if the insertion failed
             if (!$result) {
                 $allInserted = false;
-                echo "Fehler beim Einfügen der Daten für location_id: " . $item['location_id'] . "<br>";
+                echo "Fehler beim Einfügen der Daten für ID: " . $item['Id'] . "<br>";
             }
         } else {
-            // Skip records where 'location_id' is missing or null
-            echo "Fehler: location_id fehlt oder ist null für diesen Eintrag: ";
+            // Skip records where 'Id' is missing or null
+            echo "Fehler: Id fehlt oder ist null für diesen Eintrag: ";
             print_r($item);
             $allInserted = false;
         }
