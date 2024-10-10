@@ -3,7 +3,7 @@
 // Transformations-Skript  als '230_transform.php' einbinden
 $dataArray = include('transformVehicles.php');
 
-print_r($dataArray);
+print_r($dataArray); // For debugging purposes, ensure the structure is correct
 
 require_once 'config.php'; // Bindet die Datenbankkonfiguration ein
 
@@ -17,31 +17,42 @@ try {
     // Bereitet die SQL-Anweisung vor
     $stmt = $pdo->prepare($sql);
 
+    // Variable to track success
+    $allInserted = true;
+
     // Fügt jedes Element im Array in die Datenbank ein
     foreach ($dataArray as $item) {
-        $stmt->execute([
-            $item['id'],
-            $item['name'],
-            $item['Gesamtzahl_EBikes'],
-            $item['Gesamtzahl_Velos'],
-            $item['location_id'],
-        ]);
+        // Ensure the 'ID' field exists and is not null
+        if (isset($item['ID']) && !empty($item['ID'])) {
+            // Execute the prepared statement with the correct keys from your data array
+            $result = $stmt->execute([
+                $item['ID'], // Changed 'id' to 'ID'
+                $item['Station'], // Assuming 'Station' corresponds to 'name'
+                $item['Gesamtzahl E-Bikes'], // Ensure it matches the key 'Gesamtzahl_EBikes'
+                $item['Gesamtzahl Velos'], // Ensure it matches the key 'Gesamtzahl_Velos'
+                isset($item['location_id']) ? $item['location_id'] : null, // Handle location_id if it exists
+            ]);
+
+            // Check if the insertion failed
+            if (!$result) {
+                $allInserted = false;
+                echo "Fehler beim Einfügen der Daten für ID: " . $item['ID'] . "<br>";
+            }
+        } else {
+            // Skip records where 'ID' is missing or null
+            echo "Fehler: ID fehlt oder ist null für diesen Eintrag: ";
+            print_r($item);
+            $allInserted = false;
+        }
     }
 
-    /*echo "Daten erfolgreich eingefügt.";
+    // Zeigt eine Erfolgsnachricht nur an, wenn alle Daten eingefügt wurden
+    if ($allInserted) {
+        echo "Alle Daten erfolgreich eingefügt.";
+    } else {
+        echo "Einige Daten konnten nicht eingefügt werden.";
+    }
+
 } catch (PDOException $e) {
     die("Verbindung zur Datenbank konnte nicht hergestellt werden: " . $e->getMessage());
-}*/
-
-
-// Zeigt eine Erfolgsnachricht nur an, wenn alle Daten eingefügt wurden
-if ($allInserted) {
-    echo "Alle Daten erfolgreich eingefügt.";
-} else {
-    echo "Einige Daten konnten nicht eingefügt werden.";
 }
-
-} catch (PDOException $e) {
-die("Verbindung zur Datenbank konnte nicht hergestellt werden: " . $e->getMessage());
-}
-?>
