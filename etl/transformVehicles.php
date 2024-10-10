@@ -17,9 +17,8 @@ if (isset($data['stations']) && is_array($data['stations'])) {
         if (isset($station['id']) && in_array($station['id'], $selectedIDs)) {
             $currentData = [
                 'Name' => $station['name'] ,  // Name der Station
-                'Vehicles' => count($station['vehicles']) // Anzahl verfügbarer Fahrzeuge
-                'Batterie E-Bike' => $station['vehicles'][0]['ebike_battery_level'], // Batterielevel des ersten Fahrzeugs
-                'Typ' => $station['vehicles'][0]['type']['name'], // Typ des ersten Fahrzeugs
+                'Batterie E-Bike' => $station['vehicles']['ebike_battery_level'], // Name der Station
+                'Typ' => $station['vehicles']['type']['name'], 
         ];
 
         // Speichere diese Daten in der transformierten Liste
@@ -32,7 +31,7 @@ if (isset($data['stations']) && is_array($data['stations'])) {
 // hier in tabelle m
 // Bereite eine Tabelle vor, um die Daten anzuzeigen
 echo "<table border='1'>";
-echo "<tr><th>Name</th><th>Vehicles</th><th>Batterie E-Bike</th><th>Typ</th></tr>";
+echo "<tr><th>Name</th><th>Batterie E-Bike</th><th>Typ</th></tr>";
 
 // Füge die transformierten Daten in die Tabelle ein
 foreach ($transformedData as $row) {
@@ -42,7 +41,4 @@ foreach ($transformedData as $row) {
     }
     echo "</tr>";
 }
-
-echo "</table>";
-?>
 
