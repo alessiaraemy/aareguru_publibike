@@ -32,10 +32,10 @@ if (isset($data['stations']) && is_array($data['stations'])) {
             }
 
             $currentData = [
-                'Id' => $station['id'] ,  // ID der Station
                 'Station' => $station['name'] ,  // Name der Station
                 'Gesamtzahl E-Bikes' => $ebikeCount,  // Anzahl der E-Bikes  
-                'Gesamtzahl Velos' => $veloCount,  // Anzahl der Velos              
+                'Gesamtzahl Velos' => $veloCount,  // Anzahl der Velos
+                'location_id' => $station['id']  // ID der Station  
         ];
 
             // Speichere diese Daten in der transformierten Liste
