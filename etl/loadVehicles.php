@@ -57,4 +57,16 @@ try {
 } catch (PDOException $e) {
     die("Verbindung zur Datenbank konnte nicht hergestellt werden: " . $e->getMessage());
 }
+
+// Überprüfen, ob es Duplikate in den 'Id'-Werten im Array gibt
+$ids = array_column($dataArray, 'Id');
+$duplicateIds = array_diff_assoc($ids, array_unique($ids));
+
+if (!empty($duplicateIds)) {
+    echo "Doppelte IDs gefunden: ";
+    print_r($duplicateIds);
+    die(); // Script stoppen, um die Duplikate zu beheben
+}
+
+
 ?>
