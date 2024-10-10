@@ -16,17 +16,18 @@ if (isset($data['stations']) && is_array($data['stations'])) {
         // Prüfe, ob die Station-ID im richtigen Schlüssel 'id' liegt
         if (isset($station['id']) && in_array($station['id'], $selectedIDs)) {
             $ebikeCount = 0;
-            $ebikeBatteries = [];
+            $veloCount = 0;
+
 
             if (isset($station['vehicles']) && is_array($station['vehicles'])) {
                 foreach ($station['vehicles'] as $vehicle) {
                     // Prüfen, ob das Fahrzeug ein E-Bike ist
                     if (isset($vehicle['type']['name']) && $vehicle['type']['name'] === 'E-Bike') {
-                        $ebikeCount++;
-                        // Batterielevel hinzufügen (wenn vorhanden)
-                        $ebikeBatteries[] = $vehicle['ebike_battery_level'] !== null 
-                            ? $vehicle['ebike_battery_level'] . '%' 
-                            : 'Kein Batterielevel';
+                        $ebikeCount++;                        
+                    }
+                     // Prüfen, ob das Fahrzeug ein Velo ist
+                     else (isset($vehicle['type']['name']) && $vehicle['type']['name'] === 'Velo') {
+                        $veloCount++;                        
                     }
                 }
             }
@@ -34,8 +35,9 @@ if (isset($data['stations']) && is_array($data['stations'])) {
             $currentData = [
                 'ID' => $station['id'] ,  // ID der Station
                 'Station' => $station['name'] ,  // Name der Station
-                'E-Bikes' => $ebikeCount > 0 ? implode(', ', $ebikeBatteries) : 'Keine E-Bikes vorhanden',  // Liste der Batterielevel oder keine E-Bikes
-                'Gesamtzahl E-Bikes' => $ebikeCount  // Anzahl der E-Bikes                
+                'E-Bikes' => $ebikeCount  // Anzahl der E-Bikes 
+                'Velos' => $veloCount  // Anzahl der Velos                
+               
         ];
 
         // Speichere diese Daten in der transformierten Liste
@@ -48,7 +50,7 @@ if (isset($data['stations']) && is_array($data['stations'])) {
 // hier in tabelle m
 // Bereite eine Tabelle vor, um die Daten anzuzeigen
 echo "<table border='1'>";
-echo "<tr><th>ID</th><th>Station</th><th>E-Bikes</th><th>Gesamtzahl E-Bikes</th></tr>";
+echo "<tr><th>ID</th><th>Station</th><th>E-Bikes</th><th>Velos</th></tr>";
 
 // Füge die transformierten Daten in die Tabelle ein
 foreach ($transformedData as $row) {
