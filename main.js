@@ -1,17 +1,21 @@
-// Dieses Skript wird ausgeführt, sobald das DOM vollständig geladen ist
-document.addEventListener('DOMContentLoaded', function() {
-    // URL der API, von der die Wetterdaten abgefragt werden
-    const apiUrl = 'https://aarevelo.gleis50.ch/unload.php?location=Bärn';
+async function fetchStationData() {
+    try {
+        // Abrufen der Daten von unload.php
+        const response = await fetch('unload.php');
 
-    // Führt einen Fetch-Request an die angegebene URL durch
-    fetch(apiUrl)
-        .then(response => response.json()) // Wandelt die Antwort in JSON um
-        .then(data => {
-            // Gibt die Wetterdaten für Bern in der Konsole aus
-            console.log('Wetterdaten für Bern:', data);
-        })
-        .catch(error => {
-            // Gibt Fehlermeldungen in der Konsole aus, falls der Fetch-Request scheitert
-            console.error('Fehler beim Abrufen:', error);
-        });
-});
+        // Überprüfen, ob die Anfrage erfolgreich war
+        if (!response.ok) {
+            throw new Error('Fehler beim Abrufen der Daten');
+        }
+
+        // Die Daten als JSON parsen
+        const data = await response.json();
+
+        // Die Daten in der Konsole anzeigen
+        console.log(data);
+        
+    } catch (error) {
+        // Fehler in der Konsole anzeigen
+        console.error('Fehler:', error);
+    }
+}
