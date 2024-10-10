@@ -35,7 +35,7 @@ if (isset($data['stations']) && is_array($data['stations'])) {
 
 
             $currentData = [
-                'Station_id' => $station['id'] ,  // ID der Station
+                'Id' => $station['id'] ,  // ID der Station
                 'Station' => $station['name'] ,  // Name der Station
                 'Gesamtzahl E-Bikes' => $ebikeCount,  // Anzahl der E-Bikes  
                 'Gesamtzahl Velos' => $veloCount,  // Anzahl der Velos              
