@@ -38,9 +38,7 @@ if (isset($data['stations']) && is_array($data['stations'])) {
                 'ID' => $station['id'] ,  // ID der Station
                 'Station' => $station['name'] ,  // Name der Station
                 'Gesamtzahl E-Bikes' => $ebikeCount,  // Anzahl der E-Bikes  
-                'Gesamtzahl Velos' => $veloCount,  // Anzahl der Velos
-                'Timestamp' => date('H:i:s d.m.Y')  // Aktueller Timestamp
-              
+                'Gesamtzahl Velos' => $veloCount,  // Anzahl der Velos              
         ];
 
         // Speichere diese Daten in der transformierten Liste
@@ -52,7 +50,7 @@ if (isset($data['stations']) && is_array($data['stations'])) {
 
 // hier in tabelle m
 // Bereite eine Tabelle vor, um die Daten anzuzeigen
-echo "<table border='1'>";
+/*echo "<table border='1'>";
 echo "<tr><th>ID</th><th>Station</th><th>Gesamtzahl E-Bikes</th><th>Gesamtzahl Velos</th><th>Timestamp</th></tr>";
 
 // Füge die transformierten Daten in die Tabelle ein
@@ -62,6 +60,10 @@ foreach ($transformedData as $row) {
         echo "<td>{$cell}</td>";
     }
     echo "</tr>";
-}
+}*/
+
+print_r($transformedData);
+
+return $transformedData
 
 ?>

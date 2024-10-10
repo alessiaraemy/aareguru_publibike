@@ -1,10 +1,9 @@
 <?php
 
 // Transformations-Skript  als '230_transform.php' einbinden
-$jsonData = include('transformVehicles.php');
+$dataArray = include('transformVehicles.php');
 
-// Dekodiert die JSON-Daten zu einem Array
-$dataArray = json_decode($jsonData, true);
+print_r($dataArray);
 
 require_once 'config.php'; // Bindet die Datenbankkonfiguration ein
 
@@ -26,11 +25,23 @@ try {
             $item['Gesamtzahl_EBikes'],
             $item['Gesamtzahl_Velos'],
             $item['location_id'],
-            $item['Timestamp'],
         ]);
     }
 
-    echo "Daten erfolgreich eingefügt.";
+    /*echo "Daten erfolgreich eingefügt.";
 } catch (PDOException $e) {
     die("Verbindung zur Datenbank konnte nicht hergestellt werden: " . $e->getMessage());
+}*/
+
+
+// Zeigt eine Erfolgsnachricht nur an, wenn alle Daten eingefügt wurden
+if ($allInserted) {
+    echo "Alle Daten erfolgreich eingefügt.";
+} else {
+    echo "Einige Daten konnten nicht eingefügt werden.";
 }
+
+} catch (PDOException $e) {
+die("Verbindung zur Datenbank konnte nicht hergestellt werden: " . $e->getMessage());
+}
+?>
