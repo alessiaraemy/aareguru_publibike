@@ -38,7 +38,7 @@ if (isset($data['stations']) && is_array($data['stations'])) {
                 'ID' => $station['id'] ,  // ID der Station
                 'Station' => $station['name'] ,  // Name der Station
                 'Gesamtzahl E-Bikes' => $ebikeCount,  // Anzahl der E-Bikes  
-                'Gesamtzahl Velos' => $veloCount  // Anzahl der Velos
+                'Gesamtzahl Velos' => $veloCount,  // Anzahl der Velos
                 'Timestamp' => date('Y-m-d H:i:s')  // Aktueller Timestamp
               
         ];
