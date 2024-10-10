@@ -3,7 +3,7 @@
 // Transformations-Skript als '230_transform.php' einbinden
 $dataArray = include('transformVehicles.php');
 
-print_r($dataArray); // For debugging purposes, ensure the structure is correct
+//print_r($dataArray); // For debugging purposes, ensure the structure is correct
 
 require_once 'config.php'; // Bindet die Datenbankkonfiguration ein
 
