@@ -13,7 +13,7 @@ try {
     $pdo = new PDO($dsn, $username, $password, $options);
 
     // SQL-Query mit Platzhaltern für das Einfügen von Daten
-    $sql = "INSERT INTO vehicles (id, name, Gesamtzahl_E-Bikes, Gesamtzahl_Velos, location_id, Timestamp) VALUES (?, ?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO vehicles (id, name, Gesamtzahl_EBikes, Gesamtzahl_Velos, location_id, Timestamp) VALUES (?, ?, ?, ?, ?, ?)";
 
     // Bereitet die SQL-Anweisung vor
     $stmt = $pdo->prepare($sql);
@@ -23,7 +23,7 @@ try {
         $stmt->execute([
             $item['id'],
             $item['name'],
-            $item['Gesamtzahl_E-Bikes'],
+            $item['Gesamtzahl_EBikes'],
             $item['Gesamtzahl_Velos'],
             $item['location_id'],
             $item['Timestamp'],
