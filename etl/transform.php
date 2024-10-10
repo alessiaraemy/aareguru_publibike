@@ -18,17 +18,17 @@ $currentData = [
 $transformedData[] = $currentData;
 
 // Bereite eine Tabelle vor, um die Daten anzuzeigen
-echo "<table border='1'>";
-echo "<tr><th>Location</th><th>weatherTemperature</th><th>Temperature</th><th>Flow</th><th>Timestamp</th></tr>";
+//echo "<table border='1'>";
+//echo "<tr><th>Location</th><th>weatherTemperature</th><th>Temperature</th><th>Flow</th><th>Timestamp</th></tr>";
 
 // Füge die transformierten Daten in die Tabelle ein
-foreach ($transformedData as $row) {
+/*foreach ($transformedData as $row) {
     echo "<tr>";
     foreach ($row as $cell) {
         echo "<td>{$cell}</td>";
     }
     echo "</tr>";
-}
+}*/
 
-echo "</table>";
+//echo "</table>";
 ?>

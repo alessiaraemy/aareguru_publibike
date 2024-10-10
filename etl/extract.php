@@ -15,7 +15,7 @@ function fetchAareData() {
     // Schließt die cURL-Sitzung
     curl_close($ch);
 
-    print_r($response);
+    //print_r($response);
 
     // Dekodiert die JSON-Antwort und gibt Daten zurück
     return json_decode($response, true);
