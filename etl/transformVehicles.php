@@ -26,12 +26,18 @@ if (isset($data['stations']) && is_array($data['stations'])) {
                     if (isset($vehicle['type']['name']) && $vehicle['type']['name'] === 'E-Bike') {
                         $ebikeCount++;                        
                     }
+                }
+            }
+            
+            if (isset($station['vehicles']) && is_array($station['vehicles'])) {
+                foreach ($station['vehicles'] as $vehicle) {
                     // Prüfen, ob das Fahrzeug ein Velo ist
                     if (isset($vehicle['type']['name']) && $vehicle['type']['name'] === 'Velo') {
                         $veloCount++;                        
                     }
                 }
             }
+
 
             $currentData = [
                 'ID' => $station['id'] ,  // ID der Station
