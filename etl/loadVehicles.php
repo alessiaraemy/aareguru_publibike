@@ -30,8 +30,7 @@ try {
                 $item['Station'], // Assuming 'Station' corresponds to 'name'
                 $item['Gesamtzahl E-Bikes'], // Ensure it matches the key 'Gesamtzahl_EBikes'
                 $item['Gesamtzahl Velos'], // Ensure it matches the key 'Gesamtzahl_Velos'
-                isset($item['location_id']) ? $item['location_id'] : null, // Handle location_id if it exists
-
+                $item['location_id'] // Assuming 'location_id' corresponds to 'location_id' in your array
             ]);
 
             // Check if the insertion failed
@@ -57,16 +56,5 @@ try {
 } catch (PDOException $e) {
     die("Verbindung zur Datenbank konnte nicht hergestellt werden: " . $e->getMessage());
 }
-
-// Überprüfen, ob es Duplikate in den 'Id'-Werten im Array gibt
-$ids = array_column($dataArray, 'Id');
-$duplicateIds = array_diff_assoc($ids, array_unique($ids));
-
-if (!empty($duplicateIds)) {
-    echo "Doppelte IDs gefunden: ";
-    print_r($duplicateIds);
-    die(); // Script stoppen, um die Duplikate zu beheben
-}
-
 
 ?>
