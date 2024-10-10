@@ -28,7 +28,7 @@ if (isset($data['stations']) && is_array($data['stations'])) {
                     }
 
                      // Prüfen, ob das Fahrzeug ein Velo ist
-                     if (isset($vehicle['type']['name']) && $vehicle['type']['name'] === 'Velo') {
+                     if (isset($vehicle['type']['name']) && $vehicle['type']['name'] === 'Bike') {
                         $veloCount++;}
                 }
             }
