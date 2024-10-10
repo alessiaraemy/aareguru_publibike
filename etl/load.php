@@ -22,14 +22,14 @@ try {
 
     // Fügt jedes Element im Array in die Datenbank ein
     foreach ($dataArray as $item) {
-        // Verifiziert den Erfolgsstatus des Einfügens
+        // Make sure to use the correct case for the array keys
         $result = $stmt->execute([
-            $item['id'],
-            $item['location'],
-            $item['timestamp'],
-            $item['temperature'], // Fixed typo from 'temerature' to 'temperature'
-            $item['flow'],
-            $item['weather_temperature'],
+            $item['id'], // Make sure 'id' exists in your data
+            $item['Location'], // Changed to 'Location'
+            $item['Timestamp'], // Changed to 'Timestamp'
+            $item['Temperature'], // Changed to 'Temperature'
+            $item['Flow'], // Changed to 'Flow'
+            $item['weatherTemperature'], // Changed to 'weatherTemperature'
         ]);
 
         // Überprüft, ob ein Fehler aufgetreten ist
@@ -49,4 +49,4 @@ try {
 } catch (PDOException $e) {
     die("Verbindung zur Datenbank konnte nicht hergestellt werden: " . $e->getMessage());
 }
-
+?>
