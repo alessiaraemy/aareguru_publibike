@@ -4,6 +4,33 @@ body, html {
     padding: 0;
     height: 100%;
     overflow: auto; /* Allow page scrolling */
+    background-color:#29b274 ;
+}
+
+
+h1{
+    font-family: "anton", sans-serif;
+    font-weight: 200px;
+    font-style: normal;
+    font-size: 250px;
+    color: #324d2d;
+    margin: 0;
+    grid-column: span 14;
+    grid-row-start: 1;
+    line-height: 1.2;
+}
+
+h2{
+    font-family: "Annie Use Your Telescope", cursive;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 200px;
+    color: #43663d;
+    margin: 0;
+    grid-column-start: 15;
+    grid-column: span 8;
+    grid-row-start: 10;
+        
 }
 
 .container {
@@ -11,10 +38,12 @@ body, html {
     display: block; /* Ensure the container is block level */
 }
 
+/* Adjust the map container to have some space above it */
 .map-container {
     position: relative; /* This ensures that the bike stations will be positioned relative to the map */
     width: 100%;
     height: auto; /* Adjusts to the image size */
+    margin-top: 20px; /* Push the image down further if needed */
 }
 
 .map-image {

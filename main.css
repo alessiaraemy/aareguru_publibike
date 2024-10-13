@@ -25,15 +25,15 @@ h1{
 }
 
 h2{
-        font-family: "Annie Use Your Telescope", cursive;
-        font-weight: 400;
-        font-style: normal;
-        font-size: 200px;
-        color: #43663d;
-        margin: 0;
-        grid-column-start: 15;
-        grid-column: span 8;
-        grid-row-start: 10;
+    font-family: "Annie Use Your Telescope", cursive;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 200px;
+    color: #43663d;
+    margin: 0;
+    grid-column-start: 15;
+    grid-column: span 8;
+    grid-row-start: 10;
         
-      }
+}
       
