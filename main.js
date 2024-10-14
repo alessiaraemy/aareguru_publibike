@@ -21,7 +21,7 @@
 }*/
 
  // AJAX Anfrage mit Fetch API
- fetch('unload.php')
+ fetch('etl/unload.php')
  .then(response => {
      if (!response.ok) {
          throw new Error('Netzwerk-Antwort war nicht ok');
