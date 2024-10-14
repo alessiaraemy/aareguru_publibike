@@ -1,4 +1,4 @@
- // Daten für mehrere Velostationen
+ /*// Daten für mehrere Velostationen
  const stationsData = [
     {
         id: 1,
@@ -122,12 +122,78 @@
     },
 
 
-];
+];*/
 
 document.addEventListener('DOMContentLoaded', function () {
-    // Fetch data when the page loads
+    // First, create station elements from the static data
+    createStations(stationsData);
+
+    // After creating stations, fetch dynamic data from the backend
     fetchStationData();
     fetchVehicleData();
+});
+
+// Function to dynamically create and insert the station elements on the map
+function createStations(stationsData) {
+    const mapContainer = document.querySelector('.map-container');
+
+    stationsData.forEach(station => {
+        // Create station element
+        const stationElement = document.createElement('div');
+        stationElement.classList.add('station');
+        stationElement.setAttribute('data-id', station.id);  // Assign unique ID to match dynamic data
+        stationElement.style.position = 'absolute';  // Ensure positioning is absolute
+        stationElement.style.top = station.position.top;
+        stationElement.style.left = station.position.left;
+
+        // Create a bubble with bike symbol
+        const bubble = document.createElement('div');
+        bubble.classList.add('bubble');
+        bubble.textContent = '🚴';  // Bike symbol
+        stationElement.appendChild(bubble);
+
+        // Create an info box for station details
+        const infoBox = document.createElement('div');
+        infoBox.classList.add('info-box');
+        infoBox.innerHTML = `
+            <div class="info-header">
+                <span class="close-btn">&times;</span>
+            </div>
+            <div class="info-content">
+                <p class="address">Adresse: </p>
+                <p class="ebikes">E-Bikes: </p>
+                <p class="bikes">Velos: </p>
+                <p class="quote">"${station.quote}"</p>
+            </div>
+        `;
+        stationElement.appendChild(infoBox);
+
+        mapContainer.appendChild(stationElement);
+
+        // Add event listeners to open and close the info box
+        stationElement.addEventListener('click', function () {
+            closeAllInfoBoxes();
+            infoBox.style.display = 'block';
+        });
+
+        infoBox.querySelector('.close-btn').addEventListener('click', function () {
+            infoBox.style.display = 'none';
+        });
+    });
+}
+
+// Function to close all info boxes
+function closeAllInfoBoxes() {
+    document.querySelectorAll('.info-box').forEach(infoBox => {
+        infoBox.style.display = 'none';
+    });
+}
+
+// Close info boxes when clicking outside
+document.addEventListener('click', function (event) {
+    if (!event.target.closest('.station')) {
+        closeAllInfoBoxes();
+    }
 });
 
 // Function to fetch station addresses and locations
@@ -176,68 +242,6 @@ function updateStationsWithVehicleData(vehicles) {
         }
     });
 }
-
-// Function to dynamically create and insert the station elements on the map
-function createStations(stationsData) {
-    const mapContainer = document.querySelector('.map-container');
-
-    stationsData.forEach(station => {
-        // Create station element
-        const stationElement = document.createElement('div');
-        stationElement.classList.add('station');
-        stationElement.setAttribute('data-id', station.id);
-        stationElement.style.top = station.position.top;
-        stationElement.style.left = station.position.left;
-
-        // Create a bubble with bike symbol
-        const bubble = document.createElement('div');
-        bubble.classList.add('bubble');
-        bubble.textContent = '🚴';
-        stationElement.appendChild(bubble);
-
-        // Create an info box for station details
-        const infoBox = document.createElement('div');
-        infoBox.classList.add('info-box');
-        infoBox.innerHTML = `
-            <div class="info-header">
-                <span class="close-btn">&times;</span>
-            </div>
-            <div class="info-content">
-                <p class="address">Adresse: </p>
-                <p class="ebikes">E-Bikes: </p>
-                <p class="bikes">Velos: </p>
-                <p class="quote">"${station.quote}"</p>
-            </div>
-        `;
-        stationElement.appendChild(infoBox);
-
-        mapContainer.appendChild(stationElement);
-
-        // Add event listeners to open and close the info box
-        stationElement.addEventListener('click', function () {
-            closeAllInfoBoxes();
-            infoBox.style.display = 'block';
-        });
-
-        infoBox.querySelector('.close-btn').addEventListener('click', function () {
-            infoBox.style.display = 'none';
-        });
-    });
-}
-
-// Function to close all info boxes
-function closeAllInfoBoxes() {
-    document.querySelectorAll('.info-box').forEach(infoBox => {
-        infoBox.style.display = 'none';
-    });
-}
-
-// Close info boxes when clicking outside
-document.addEventListener('click', function (event) {
-    if (!event.target.closest('.station')) {
-        closeAllInfoBoxes();
-    }
-});
 
  
  
