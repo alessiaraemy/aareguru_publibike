@@ -8,7 +8,7 @@ try {
     $pdo = new PDO($dsn, $username, $password, $options);
 
     // Prepare and execute the SQL query
-    $stmt = $pdo->prepare("SELECT name, Gesamtzahl_EBikes, Gesamtzahl_Velos FROM vehicles");
+    $stmt = $pdo->prepare("SELECT name, Gesamtzahl_EBikes, Gesamtzahl_Velos, location_id FROM vehicles");
     $stmt->execute();
 
     // Fetch all the results as an associative array

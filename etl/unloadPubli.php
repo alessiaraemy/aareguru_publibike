@@ -8,7 +8,7 @@ try {
     $pdo = new PDO($dsn, $username, $password, $options);
 
     // Prepare and execute the SQL query
-    $stmt = $pdo->prepare("SELECT name, address, zip, city, state_name FROM locations");
+    $stmt = $pdo->prepare("SELECT name, address, zip, city, state_name, station_id FROM locations");
     $stmt->execute();
 
     // Fetch all the results as an associative array
