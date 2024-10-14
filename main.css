@@ -1,20 +1,16 @@
-body{
-display: grid;
-grid-template-columns: 40px repeat(12, 1fr) 40px;
-grid-auto-rows: 50px;
-background-color: #29b274;
+/* Full-screen background and responsive design */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: auto; /* Allow page scrolling */
+    background-color:#29b274 ;
 }
 
-#BildAare{
-    grid-column: span 14 ;
-    grid-row: 12;
-    width: 100%;
-    height: auto;
-}
 
 h1{
     font-family: "anton", sans-serif;
-    font-weight: 400;
+    font-weight: 200px;
     font-style: normal;
     font-size: 250px;
     color: #324d2d;
@@ -25,15 +21,91 @@ h1{
 }
 
 h2{
-        font-family: "Annie Use Your Telescope", cursive;
-        font-weight: 400;
-        font-style: normal;
-        font-size: 200px;
-        color: #43663d;
-        margin: 0;
-        grid-column-start: 15;
-        grid-column: span 8;
-        grid-row-start: 10;
+    font-family: "Annie Use Your Telescope", cursive;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 200px;
+    color: #43663d;
+    margin: 0;
+    grid-column-start: 15;
+    grid-column: span 8;
+    grid-row-start: 10;
         
-      }
-      
+}
+
+.container {
+    width: 100%;
+    display: block; /* Ensure the container is block level */
+}
+
+/* Adjust the map container to have some space above it */
+.map-container {
+    position: relative; /* This ensures that the bike stations will be positioned relative to the map */
+    width: 100%;
+    height: auto; /* Adjusts to the image size */
+    margin-top: 20px; /* Push the image down further if needed */
+}
+
+.map-image {
+    width: 100%; /* Ensures the image spans the full width of the container */
+    height: auto; /* Keeps the aspect ratio */
+    display: block;
+}
+
+/* Positioning of the bike stations */
+.station {
+    position: absolute; /* Absolute positioning inside the map container */
+    cursor: pointer;
+}
+
+/* Design for the bike station bubbles */
+.bubble {
+    width: 50px;
+    height: 50px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+}
+
+/* Hidden popup window */
+.info-box {
+    display: none;
+    position: absolute;
+    top: -100px;
+    left: -50px;
+    width: 200px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    padding: 10px;
+}
+
+.info-header {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.close-btn {
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.info-content p {
+    margin: 5px 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .bubble {
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+    }
+
+    .info-box {
+        width: 150px;
+    }
+}

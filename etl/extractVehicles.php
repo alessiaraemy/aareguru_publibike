@@ -1,7 +1,7 @@
 <?php
 
-function fetchAareData() {
-    $url = "https://aareguru.existenz.ch/v2018/current?city=bern";
+function fetchVehiclesData() {
+    $url = "https://api.publibike.ch/v1/public/partner/stations";
 
     // Initialisiert eine cURL-Sitzung
     $ch = curl_init($url);
@@ -22,5 +22,5 @@ function fetchAareData() {
 }
 
 // Gibt die Daten zurück, wenn dieses Skript eingebunden ist
-return fetchAareData();
+return fetchVehiclesData();
 ?>
