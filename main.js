@@ -1,4 +1,4 @@
-/*async function fetchStationData() {
+async function fetchStationData() {
     try {
         // Abrufen der Daten von unload.php
         const response = await fetch('unload.php');
@@ -18,8 +18,8 @@
         // Fehler in der Konsole anzeigen
         console.error('Fehler:', error);
     }
-}*/
-
+}
+/*
  // AJAX Anfrage mit Fetch API
  fetch('unload.php')
  .then(response => {
@@ -33,4 +33,4 @@
  })
  .catch(error => {
      console.error('Es gab ein Problem mit der Fetch-Operation:', error);
- });
+ });*/
