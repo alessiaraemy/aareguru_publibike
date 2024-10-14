@@ -1,4 +1,145 @@
- /*// Daten für mehrere Velostationen
+document.addEventListener('DOMContentLoaded', function () {
+    // Create the station elements first, using static position data
+    createStations();
+
+    // Fetch data from the backend to dynamically fill station details
+    fetchStationData();
+    fetchVehicleData();
+});
+
+// Hardcoded positions for the stations (IDs must match the database station IDs)
+const positionData = [
+    { id: 1, position: { top: "8%", left: "6%" } },
+    { id: 2, position: { top: "12%", left: "6%" } },
+    { id: 3, position: { top: "15%", left: "40%" } },
+    { id: 4, position: { top: "25%", left: "15%" } },
+    { id: 5, position: { top: "27%", left: "40%" } },
+    { id: 6, position: { top: "17%", left: "65%" } },
+    { id: 7, position: { top: "30%", left: "65%" } },
+    { id: 8, position: { top: "35%", left: "15%" } },
+    { id: 9, position: { top: "45%", left: "15%" } },
+    { id: 10, position: { top: "50%", left: "25%" } },
+    { id: 11, position: { top: "55%", left: "12%" } },
+    { id: 12, position: { top: "50%", left: "70%" } },
+    { id: 13, position: { top: "52%", left: "80%" } },
+    { id: 14, position: { top: "65%", left: "75%" } },
+    { id: 15, position: { top: "30%", left: "95%" } }
+];
+
+// Function to create the station elements with hardcoded positions
+function createStations() {
+    const mapContainer = document.querySelector('.map-container');
+
+    positionData.forEach(pos => {
+        // Create a station element for each position
+        const stationElement = document.createElement('div');
+        stationElement.classList.add('station');
+        stationElement.setAttribute('data-id', pos.id);  // Assign the unique station ID
+        stationElement.style.position = 'absolute';  // Ensure proper positioning
+        stationElement.style.top = pos.position.top;
+        stationElement.style.left = pos.position.left;
+
+        // Create a bubble with a bike symbol
+        const bubble = document.createElement('div');
+        bubble.classList.add('bubble');
+        bubble.textContent = '🚴';  // Bike icon
+        stationElement.appendChild(bubble);
+
+        // Create an empty info box for station details
+        const infoBox = document.createElement('div');
+        infoBox.classList.add('info-box');
+        infoBox.innerHTML = `
+            <div class="info-header">
+                <span class="close-btn">&times;</span>
+            </div>
+            <div class="info-content">
+                <p class="address">Adresse: </p>
+                <p class="ebikes">E-Bikes: </p>
+                <p class="bikes">Velos: </p>
+                <p class="quote"></p>
+            </div>
+        `;
+        stationElement.appendChild(infoBox);
+
+        mapContainer.appendChild(stationElement);
+
+        // Add event listener to open/close the info box
+        stationElement.addEventListener('click', function () {
+            closeAllInfoBoxes();  // Close other info boxes
+            infoBox.style.display = 'block';  // Show this info box
+        });
+
+        // Add close button event listener
+        infoBox.querySelector('.close-btn').addEventListener('click', function () {
+            infoBox.style.display = 'none';  // Hide this info box
+        });
+    });
+}
+
+// Function to close all open info boxes
+function closeAllInfoBoxes() {
+    document.querySelectorAll('.info-box').forEach(infoBox => {
+        infoBox.style.display = 'none';  // Hide all info boxes
+    });
+}
+
+// Function to fetch station addresses and locations
+function fetchStationData() {
+    fetch('unloadPubli.php')
+        .then(response => response.json())
+        .then(data => {
+            updateStationsWithLocationData(data);  // Update station addresses
+        })
+        .catch(error => console.error('Error fetching station data:', error));
+}
+
+// Function to fetch vehicle counts (ebikes and bikes)
+function fetchVehicleData() {
+    fetch('unloadVehicles.php')
+        .then(response => response.json())
+        .then(data => {
+            updateStationsWithVehicleData(data);  // Update ebikes and bikes count
+        })
+        .catch(error => console.error('Error fetching vehicle data:', error));
+}
+
+// Update stations with location data (addresses)
+function updateStationsWithLocationData(locations) {
+    locations.forEach(location => {
+        // Find the station element based on station_id
+        const stationElement = document.querySelector(`.station[data-id='${location.station_id}']`);
+        if (stationElement) {
+            // Update the address field in the info box
+            stationElement.querySelector('.address').textContent = `Adresse: ${location.address}`;
+        }
+    });
+}
+
+// Update stations with vehicle data (ebikes and bikes)
+function updateStationsWithVehicleData(vehicles) {
+    vehicles.forEach(vehicle => {
+        // Find the station element based on location_id
+        const stationElement = document.querySelector(`.station[data-id='${vehicle.location_id}']`);
+        if (stationElement) {
+            // Update the ebikes and bikes fields in the info box
+            stationElement.querySelector('.ebikes').textContent = `E-Bikes: ${vehicle.Gesamtzahl_EBikes}`;
+            stationElement.querySelector('.bikes').textContent = `Velos: ${vehicle.Gesamtzahl_Velos}`;
+        }
+    });
+}
+
+// Close info boxes when clicking outside a station
+document.addEventListener('click', function (event) {
+    if (!event.target.closest('.station')) {
+        closeAllInfoBoxes();  // Close all info boxes if clicked outside
+    }
+});
+
+ 
+ 
+ 
+ /* CODE WONI VORHÄR BRUCHT HA¨
+ // Daten für mehrere Velostationen
  const stationsData = [
     {
         id: 1,
@@ -122,133 +263,8 @@
     },
 
 
-];*/
+];
 
-document.addEventListener('DOMContentLoaded', function () {
-    // First, create station elements from the static data
-    createStations(stationsData);
-
-    // After creating stations, fetch dynamic data from the backend
-    fetchStationData();
-    fetchVehicleData();
-});
-
-// Function to dynamically create and insert the station elements on the map
-function createStations(stationsData) {
-    const mapContainer = document.querySelector('.map-container');
-
-    stationsData.forEach(station => {
-        // Create station element
-        const stationElement = document.createElement('div');
-        stationElement.classList.add('station');
-        stationElement.setAttribute('data-id', station.id);  // Assign unique ID to match dynamic data
-        stationElement.style.position = 'absolute';  // Ensure positioning is absolute
-        stationElement.style.top = station.position.top;
-        stationElement.style.left = station.position.left;
-
-        // Create a bubble with bike symbol
-        const bubble = document.createElement('div');
-        bubble.classList.add('bubble');
-        bubble.textContent = '🚴';  // Bike symbol
-        stationElement.appendChild(bubble);
-
-        // Create an info box for station details
-        const infoBox = document.createElement('div');
-        infoBox.classList.add('info-box');
-        infoBox.innerHTML = `
-            <div class="info-header">
-                <span class="close-btn">&times;</span>
-            </div>
-            <div class="info-content">
-                <p class="address">Adresse: </p>
-                <p class="ebikes">E-Bikes: </p>
-                <p class="bikes">Velos: </p>
-                <p class="quote">"${station.quote}"</p>
-            </div>
-        `;
-        stationElement.appendChild(infoBox);
-
-        mapContainer.appendChild(stationElement);
-
-        // Add event listeners to open and close the info box
-        stationElement.addEventListener('click', function () {
-            closeAllInfoBoxes();
-            infoBox.style.display = 'block';
-        });
-
-        infoBox.querySelector('.close-btn').addEventListener('click', function () {
-            infoBox.style.display = 'none';
-        });
-    });
-}
-
-// Function to close all info boxes
-function closeAllInfoBoxes() {
-    document.querySelectorAll('.info-box').forEach(infoBox => {
-        infoBox.style.display = 'none';
-    });
-}
-
-// Close info boxes when clicking outside
-document.addEventListener('click', function (event) {
-    if (!event.target.closest('.station')) {
-        closeAllInfoBoxes();
-    }
-});
-
-// Function to fetch station addresses and locations
-function fetchStationData() {
-    fetch('unloadPubli.php')
-        .then(response => response.json())
-        .then(data => {
-            // Update stations with location data from the database
-            updateStationsWithLocationData(data);
-        })
-        .catch(error => console.error('Error fetching station data:', error));
-}
-
-// Function to fetch vehicle counts (ebikes and bikes)
-function fetchVehicleData() {
-    fetch('unloadVehicles.php')
-        .then(response => response.json())
-        .then(data => {
-            // Update stations with vehicle data from the database
-            updateStationsWithVehicleData(data);
-        })
-        .catch(error => console.error('Error fetching vehicle data:', error));
-}
-
-// Update stations with location data (addresses)
-function updateStationsWithLocationData(locations) {
-    locations.forEach(location => {
-        // Find the station element based on station_id
-        const stationElement = document.querySelector(`.station[data-id='${location.station_id}']`);
-        if (stationElement) {
-            // Update the address field in the info box
-            stationElement.querySelector('.address').textContent = `Adresse: ${location.address}`;
-        }
-    });
-}
-
-// Update stations with vehicle data (ebikes and bikes)
-function updateStationsWithVehicleData(vehicles) {
-    vehicles.forEach(vehicle => {
-        // Find the station element based on location_id
-        const stationElement = document.querySelector(`.station[data-id='${vehicle.location_id}']`);
-        if (stationElement) {
-            // Update the ebikes and bikes fields in the info box
-            stationElement.querySelector('.ebikes').textContent = `E-Bikes: ${vehicle.Gesamtzahl_EBikes}`;
-            stationElement.querySelector('.bikes').textContent = `Velos: ${vehicle.Gesamtzahl_Velos}`;
-        }
-    });
-}
-
- 
- 
- 
-
-
-/*
 // Füge alle Velostationen dynamisch hinzu
 const mapContainer = document.querySelector('.map-container'); // Hole das Container-Element aus dem DOM, in dem alle Velostationen eingefügt werden sollen
 
@@ -312,6 +328,11 @@ document.addEventListener('click', function (event) {
         closeAllInfoBoxes(); // Schließe alle Info-Boxen
     }
 });*/
+
+
+
+
+
 
 
  /* DINGE IN KONSOLE ANZEIGEN LASSEN
