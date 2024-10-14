@@ -1,5 +1,4 @@
 <?php
-
 // Include the database configuration
 require 'config.php';
 
@@ -12,7 +11,7 @@ try {
     $stmt->execute();
 
     // Fetch all the results as an associative array
-    $results = $stmt->fetchAll();
+    $results = $stmt->fetchAll(PDO::FETCH_ASSOC);  // Ensure associative array
 
     // Set the header to inform that the output is JSON
     header('Content-Type: application/json');
@@ -24,5 +23,4 @@ try {
     // In case of an error, return a JSON error message
     echo json_encode(['error' => $e->getMessage()]);
 }
-
 ?>

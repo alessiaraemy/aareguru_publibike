@@ -88,6 +88,7 @@ function fetchStationData() {
     fetch('etl/unloadPubli.php')
         .then(response => response.json())
         .then(data => {
+            console.log("Station data fetched:", data);  // Debugging
             updateStationsWithLocationData(data);  // Update station addresses
         })
         .catch(error => console.error('Error fetching station data:', error));
@@ -98,6 +99,7 @@ function fetchVehicleData() {
     fetch('etl/unloadVehicles.php')
         .then(response => response.json())
         .then(data => {
+            console.log("Vehicle data fetched:", data);  // Debugging
             updateStationsWithVehicleData(data);  // Update ebikes and bikes count
         })
         .catch(error => console.error('Error fetching vehicle data:', error));
@@ -134,6 +136,7 @@ document.addEventListener('click', function (event) {
         closeAllInfoBoxes();  // Close all info boxes if clicked outside
     }
 });
+
 
 
 
