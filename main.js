@@ -74,7 +74,7 @@ const stationsData = [
     },
     {
         id: 10,
-        address: "Danpfzentrale",
+        address: "Dampfzentrale",
         ebikes: 5,
         bikes: 10,
         quote: "Frisch in die Pedale!",
@@ -102,7 +102,7 @@ const stationsData = [
         ebikes: 5,
         bikes: 10,
         quote: "Frisch in die Pedale!",
-        position: { top: "52%", left: "75%" }
+        position: { top: "52%", left: "80%" }
     },
     {
         id: 14,
@@ -111,6 +111,14 @@ const stationsData = [
         bikes: 10,
         quote: "Frisch in die Pedale!",
         position: { top: "65%", left: "75%" }
+    },
+    {
+        id: 15,
+        address: "Bäregrabe",
+        ebikes: 5,
+        bikes: 10,
+        quote: "Frisch in die Pedale!",
+        position: { top: "30%", left: "97%" }
     },
 
 
