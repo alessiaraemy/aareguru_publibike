@@ -85,7 +85,7 @@ function closeAllInfoBoxes() {
 
 // Function to fetch station addresses and locations
 function fetchStationData() {
-    fetch('unloadPubli.php')
+    fetch('etl/unloadPubli.php')
         .then(response => response.json())
         .then(data => {
             updateStationsWithLocationData(data);  // Update station addresses
@@ -95,7 +95,7 @@ function fetchStationData() {
 
 // Function to fetch vehicle counts (ebikes and bikes)
 function fetchVehicleData() {
-    fetch('unloadVehicles.php')
+    fetch('etl/unloadVehicles.php')
         .then(response => response.json())
         .then(data => {
             updateStationsWithVehicleData(data);  // Update ebikes and bikes count
@@ -134,6 +134,7 @@ document.addEventListener('click', function (event) {
         closeAllInfoBoxes();  // Close all info boxes if clicked outside
     }
 });
+
 
  
  
@@ -334,8 +335,8 @@ document.addEventListener('click', function (event) {
 
 
 
-
- /* DINGE IN KONSOLE ANZEIGEN LASSEN
+/*
+ // DINGE IN KONSOLE ANZEIGEN LASSEN
  // AJAX Anfrage mit Fetch API
  fetch('etl/unload.php')
  .then(response => {
@@ -382,4 +383,5 @@ document.addEventListener('click', function (event) {
  .catch(error => {
      console.error('Es gab ein Problem mit der Fetch-Operation:', error);
  });
+
 */
