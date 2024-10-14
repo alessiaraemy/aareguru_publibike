@@ -1,4 +1,4 @@
-async function fetchStationData() {
+/*async function fetchStationData() {
     try {
         // Abrufen der Daten von unload.php
         const response = await fetch('unload.php');
@@ -18,4 +18,19 @@ async function fetchStationData() {
         // Fehler in der Konsole anzeigen
         console.error('Fehler:', error);
     }
-}
+}*/
+
+ // AJAX Anfrage mit Fetch API
+ fetch('unload.php')
+ .then(response => {
+     if (!response.ok) {
+         throw new Error('Netzwerk-Antwort war nicht ok');
+     }
+     return response.json();  // Antwort in JSON umwandeln
+ })
+ .then(data => {
+     console.log(data);  // Daten in der Konsole anzeigen
+ })
+ .catch(error => {
+     console.error('Es gab ein Problem mit der Fetch-Operation:', error);
+ });
