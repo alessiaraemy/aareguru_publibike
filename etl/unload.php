@@ -8,7 +8,7 @@ try {
     $pdo = new PDO($dsn, $username, $password, $options);
 
     // Define the SQL query to retrieve the desired data
-    $sql = "SELECT temperature, flow, weather_temperature FROM location";
+    $sql = "SELECT temperature, flow, weather_temperature FROM Location";
 
     // Prepare and execute the query
     $stmt = $pdo->prepare($sql); // Hier hat die prepare-Anweisung gefehlt
