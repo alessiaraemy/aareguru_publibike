@@ -1,31 +1,28 @@
 <?php
 
-// Import the database configuration
+// Include the database configuration
 require 'config.php';
 
 try {
-    // Create a new PDO instance using the configuration parameters
+    // Create a new PDO instance using the configuration from config.php
     $pdo = new PDO($dsn, $username, $password, $options);
 
-    // Define the SQL query to retrieve the desired data
-    $sql = "SELECT temperature, flow, weather_temperature FROM Location";
-
-    // Prepare and execute the query
-    $stmt = $pdo->prepare($sql); // Hier hat die prepare-Anweisung gefehlt
+    // Prepare and execute the SQL query
+    $stmt = $pdo->prepare("SELECT temperature, flow, weather_temperature FROM location");
     $stmt->execute();
 
-    // Fetch all results as an associative array
-    $data = $stmt->fetchAll();
+    // Fetch all the results as an associative array
+    $results = $stmt->fetchAll();
 
-    // Set the appropriate header for JSON response
+    // Set the header to inform that the output is JSON
     header('Content-Type: application/json');
 
-    // Output the data as JSON
-    echo json_encode($data);
+    // Output the results in JSON format
+    echo json_encode($results);
 
 } catch (PDOException $e) {
-    // Handle the error
-    http_response_code(500);
+    // In case of an error, return a JSON error message
     echo json_encode(['error' => $e->getMessage()]);
 }
+
 ?>
