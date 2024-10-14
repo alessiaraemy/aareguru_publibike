@@ -3,8 +3,8 @@ document.addEventListener('DOMContentLoaded', function () {
     createStations();
 
     // Fetch data from the backend to dynamically fill station details
-    fetchStationData();
-    fetchVehicleData();
+    fetchStationData();  // For station addresses
+    fetchVehicleData();  // For vehicle counts (E-Bikes and bikes)
 });
 
 // Hardcoded positions for the stations (IDs must match the database station IDs)
@@ -134,6 +134,7 @@ document.addEventListener('click', function (event) {
         closeAllInfoBoxes();  // Close all info boxes if clicked outside
     }
 });
+
 
 
 
