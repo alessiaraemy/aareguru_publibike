@@ -8,7 +8,7 @@ try {
     $pdo = new PDO($dsn, $username, $password, $options);
 
     // Prepare and execute the SQL query
-    $stmt = $pdo->prepare("SELECT temperature, flow, weather_temperature FROM location");
+    $stmt = $pdo->prepare("SELECT temperature, flow, weather_temperature FROM aare_data");
     $stmt->execute();
 
     // Fetch all the results as an associative array
