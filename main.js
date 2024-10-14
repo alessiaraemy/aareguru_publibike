@@ -118,7 +118,7 @@ const stationsData = [
         ebikes: 5,
         bikes: 10,
         quote: "Frisch in die Pedale!",
-        position: { top: "30%", left: "97%" }
+        position: { top: "30%", left: "95%" }
     },
 
 
