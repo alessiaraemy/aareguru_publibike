@@ -136,7 +136,7 @@ function updateStationsWithVehicleData(vehicles) {
 
 // Funktion, um die Temperaturdaten von der API zu laden
 function fetchTemperatureData() {
-    fetch('unload.php') // Anfrage an deine API
+    fetch('etl/unload.php') // Anfrage an deine API
         .then(response => response.json())
         .then(data => {
             if (data && data.length > 0) {
