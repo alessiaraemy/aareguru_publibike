@@ -51,7 +51,7 @@ function createStations() {
         infoBox.classList.add('info-box');
         infoBox.innerHTML = `
             <div class="info-header">
-                <span class="name"></span> <!-- Placeholder for station name -->
+                <h3 class="name"></h3> <!-- Placeholder for station name -->
                 <span class="close-btn">&times;</span>
             </div>
             <div class="info-content">
