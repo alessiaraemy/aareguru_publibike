@@ -5,7 +5,7 @@ $dataArray = include('transformVehicles.php');
 
 //print_r($dataArray); // For debugging purposes, ensure the structure is correct
 
-require_once 'config.php'; // Bindet die Datenbankkonfiguration ein
+require_once 'config.php'; // Bindet die Datenbankkonfiguration e
 
 try {
     // Erstellt eine neue PDO-Instanz mit der Konfiguration aus config.php

@@ -3,8 +3,9 @@ document.addEventListener('DOMContentLoaded', function () {
     createStations();
 
     // Step 2: Fetch station data for addresses and then fetch vehicle data (e-bikes and bikes)
-    fetchStationData();  // For station addresses
-    fetchVehicleData();  // For vehicle counts (E-Bikes and bikes)
+    Promise.all([fetchStationData(), fetchVehicleData()]).then(() => {
+        console.log("All data fetched and stations updated.");
+    });
 });
 
 // Hardcoded positions for the stations (IDs must match the database station IDs)
@@ -85,7 +86,7 @@ function closeAllInfoBoxes() {
 
 // Function to fetch station addresses and locations
 function fetchStationData() {
-    fetch('etl/unloadPubli.php')  // Request station data from the server
+    return fetch('etl/unloadPubli.php')  // Request station data from the server
         .then(response => response.json())  // Convert the response to JSON
         .then(data => {
             console.log("Station data fetched:", data);  // Log for debugging
@@ -96,7 +97,7 @@ function fetchStationData() {
 
 // Function to fetch vehicle counts (ebikes and bikes)
 function fetchVehicleData() {
-    fetch('etl/unloadVehicles.php')  // Request vehicle data from the server
+    return fetch('etl/unloadVehicles.php')  // Request vehicle data from the server
         .then(response => response.json())  // Convert the response to JSON
         .then(data => {
             console.log("Vehicle data fetched:", data);  // Log for debugging
@@ -113,7 +114,6 @@ function updateStationsWithLocationData(locations) {
         if (stationElement) {
             // Update the address field in the info box
             stationElement.querySelector('.address').textContent = `Adresse: ${location.address}`;
-            // Optionally, you could add city or other details from the location data
         }
     });
 }
@@ -137,6 +137,7 @@ document.addEventListener('click', function (event) {
         closeAllInfoBoxes();  // Close all info boxes if clicked outside
     }
 });
+
 
 
 
