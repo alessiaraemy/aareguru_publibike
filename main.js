@@ -14,7 +14,7 @@ const positionData = [
     { id: 114, position: { top: "12%", left: "6%" } },
     { id: 195, position: { top: "15%", left: "40%" } },
     { id: 663, position: { top: "25%", left: "15%" } },
-    { id: 251, position: { top: "27%", left: "40%" } },
+    { id: 254, position: { top: "27%", left: "40%" } },
     { id: 898, position: { top: "17%", left: "65%" } },
     { id: 154, position: { top: "30%", left: "65%" } },
     { id: 316, position: { top: "35%", left: "15%" } },
@@ -54,6 +54,7 @@ function createStations() {
                 <span class="close-btn">&times;</span>
             </div>
             <div class="info-content">
+                <h3 class="name"></h3> <!-- Placeholder for station name -->
                 <p class="address">Adresse: </p> <!-- Placeholder for address -->
                 <p class="ebikes">E-Bikes: </p> <!-- Placeholder for e-bike count -->
                 <p class="bikes">Velos: </p> <!-- Placeholder for regular bike count -->
