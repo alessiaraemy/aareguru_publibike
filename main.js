@@ -51,10 +51,10 @@ function createStations() {
         infoBox.classList.add('info-box');
         infoBox.innerHTML = `
             <div class="info-header">
+                <span class="name"></span> <!-- Placeholder for station name -->
                 <span class="close-btn">&times;</span>
             </div>
             <div class="info-content">
-                <h3 class="name"></h3> <!-- Placeholder for station name -->
                 <p class="address">Adresse: </p> <!-- Placeholder for address -->
                 <p class="ebikes">E-Bikes: </p> <!-- Placeholder for e-bike count -->
                 <p class="bikes">Velos: </p> <!-- Placeholder for regular bike count -->
@@ -85,7 +85,7 @@ function closeAllInfoBoxes() {
     });
 }
 
-// Function to fetch station addresses and locations
+// fetch station addresses and locations
 function fetchStationData() {
     return fetch('etl/unloadPubli.php')  // Request station data from the server
         .then(response => response.json())  // Convert the response to JSON
@@ -96,7 +96,7 @@ function fetchStationData() {
         .catch(error => console.error('Error fetching station data:', error));
 }
 
-// Function to fetch vehicle counts (ebikes and bikes)
+// Funktion um die Anzahl E-Bikes und Velos zu fetchen
 function fetchVehicleData() {
     return fetch('etl/unloadVehicles.php')  // Request vehicle data from the server
         .then(response => response.json())  // Convert the response to JSON
@@ -119,18 +119,21 @@ function updateStationsWithLocationData(locations) {
     });
 }
 
-// Function to update the stations with vehicle data (ebikes and bikes)
 function updateStationsWithVehicleData(vehicles) {
     vehicles.forEach(vehicle => {
         // Find the station element by its location ID
         const stationElement = document.querySelector(`.station[data-id='${vehicle.station_id}']`);
         if (stationElement) {
+            // Update the name field in the info box
+            stationElement.querySelector('.name').textContent = vehicle.name;  // Setzt den Namen
+
             // Update the ebikes and bikes fields in the info box
             stationElement.querySelector('.ebikes').textContent = `E-Bikes: ${vehicle.Gesamtzahl_EBikes}`;
             stationElement.querySelector('.bikes').textContent = `Velos: ${vehicle.Gesamtzahl_Velos}`;
         }
     });
 }
+
 
 // Close info boxes when clicking outside a station
 document.addEventListener('click', function (event) {
