@@ -1,29 +1,29 @@
 document.addEventListener('DOMContentLoaded', function () {
-    // Create the station elements first, using static position data
+    // Step 1: Create the station elements first, using static position data
     createStations();
 
-    // Fetch data from the backend to dynamically fill station details
+    // Step 2: Fetch station data for addresses and then fetch vehicle data (e-bikes and bikes)
     fetchStationData();  // For station addresses
     fetchVehicleData();  // For vehicle counts (E-Bikes and bikes)
 });
 
 // Hardcoded positions for the stations (IDs must match the database station IDs)
 const positionData = [
-    { id: 1, position: { top: "8%", left: "6%" } },
-    { id: 2, position: { top: "12%", left: "6%" } },
-    { id: 3, position: { top: "15%", left: "40%" } },
-    { id: 4, position: { top: "25%", left: "15%" } },
-    { id: 5, position: { top: "27%", left: "40%" } },
-    { id: 6, position: { top: "17%", left: "65%" } },
-    { id: 7, position: { top: "30%", left: "65%" } },
-    { id: 8, position: { top: "35%", left: "15%" } },
-    { id: 9, position: { top: "45%", left: "15%" } },
-    { id: 10, position: { top: "50%", left: "25%" } },
-    { id: 11, position: { top: "55%", left: "12%" } },
-    { id: 12, position: { top: "50%", left: "70%" } },
-    { id: 13, position: { top: "52%", left: "80%" } },
-    { id: 14, position: { top: "65%", left: "75%" } },
-    { id: 15, position: { top: "30%", left: "95%" } }
+    { id: 119, position: { top: "8%", left: "6%" } },
+    { id: 114, position: { top: "12%", left: "6%" } },
+    { id: 195, position: { top: "15%", left: "40%" } },
+    { id: 663, position: { top: "25%", left: "15%" } },
+    { id: 251, position: { top: "27%", left: "40%" } },
+    { id: 898, position: { top: "17%", left: "65%" } },
+    { id: 154, position: { top: "30%", left: "65%" } },
+    { id: 316, position: { top: "35%", left: "15%" } },
+    { id: 315, position: { top: "45%", left: "15%" } },
+    { id: 478, position: { top: "50%", left: "25%" } },
+    { id: 321, position: { top: "55%", left: "12%" } },
+    { id: 312, position: { top: "50%", left: "70%" } },
+    { id: 323, position: { top: "52%", left: "80%" } },
+    { id: 423, position: { top: "65%", left: "75%" } },
+    { id: 326, position: { top: "30%", left: "95%" } }
 ];
 
 // Function to create the station elements with hardcoded positions
@@ -53,10 +53,10 @@ function createStations() {
                 <span class="close-btn">&times;</span>
             </div>
             <div class="info-content">
-                <p class="address">Adresse: </p>
-                <p class="ebikes">E-Bikes: </p>
-                <p class="bikes">Velos: </p>
-                <p class="quote"></p>
+                <p class="address">Adresse: </p> <!-- Placeholder for address -->
+                <p class="ebikes">E-Bikes: </p> <!-- Placeholder for e-bike count -->
+                <p class="bikes">Velos: </p> <!-- Placeholder for regular bike count -->
+                <p class="quote"></p> <!-- Placeholder for the small saying -->
             </div>
         `;
         stationElement.appendChild(infoBox);
@@ -85,43 +85,44 @@ function closeAllInfoBoxes() {
 
 // Function to fetch station addresses and locations
 function fetchStationData() {
-    fetch('etl/unloadPubli.php')
-        .then(response => response.json())
+    fetch('etl/unloadPubli.php')  // Request station data from the server
+        .then(response => response.json())  // Convert the response to JSON
         .then(data => {
-            console.log("Station data fetched:", data);  // Debugging
-            updateStationsWithLocationData(data);  // Update station addresses
+            console.log("Station data fetched:", data);  // Log for debugging
+            updateStationsWithLocationData(data);  // Pass the data to the update function
         })
         .catch(error => console.error('Error fetching station data:', error));
 }
 
 // Function to fetch vehicle counts (ebikes and bikes)
 function fetchVehicleData() {
-    fetch('etl/unloadVehicles.php')
-        .then(response => response.json())
+    fetch('etl/unloadVehicles.php')  // Request vehicle data from the server
+        .then(response => response.json())  // Convert the response to JSON
         .then(data => {
-            console.log("Vehicle data fetched:", data);  // Debugging
-            updateStationsWithVehicleData(data);  // Update ebikes and bikes count
+            console.log("Vehicle data fetched:", data);  // Log for debugging
+            updateStationsWithVehicleData(data);  // Pass the data to the update function
         })
         .catch(error => console.error('Error fetching vehicle data:', error));
 }
 
-// Update stations with location data (addresses)
+// Function to update the stations with location data (addresses)
 function updateStationsWithLocationData(locations) {
     locations.forEach(location => {
-        // Find the station element based on station_id
+        // Find the station element by its station ID
         const stationElement = document.querySelector(`.station[data-id='${location.station_id}']`);
         if (stationElement) {
             // Update the address field in the info box
             stationElement.querySelector('.address').textContent = `Adresse: ${location.address}`;
+            // Optionally, you could add city or other details from the location data
         }
     });
 }
 
-// Update stations with vehicle data (ebikes and bikes)
+// Function to update the stations with vehicle data (ebikes and bikes)
 function updateStationsWithVehicleData(vehicles) {
     vehicles.forEach(vehicle => {
-        // Find the station element based on location_id
-        const stationElement = document.querySelector(`.station[data-id='${vehicle.location_id}']`);
+        // Find the station element by its location ID
+        const stationElement = document.querySelector(`.station[data-id='${vehicle.station_id}']`);
         if (stationElement) {
             // Update the ebikes and bikes fields in the info box
             stationElement.querySelector('.ebikes').textContent = `E-Bikes: ${vehicle.Gesamtzahl_EBikes}`;
@@ -136,6 +137,7 @@ document.addEventListener('click', function (event) {
         closeAllInfoBoxes();  // Close all info boxes if clicked outside
     }
 });
+
 
 
 

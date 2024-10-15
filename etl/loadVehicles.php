@@ -12,7 +12,7 @@ try {
     $pdo = new PDO($dsn, $username, $password, $options);
 
     // SQL-Query mit Platzhaltern für das Einfügen von Daten
-    $sql = "INSERT INTO vehicles (name, Gesamtzahl_EBikes, Gesamtzahl_Velos, location_id) VALUES (?, ?, ?, ?)";
+    $sql = "INSERT INTO vehicles (name, Gesamtzahl_EBikes, Gesamtzahl_Velos, station_id) VALUES (?, ?, ?, ?)";
 
     // Bereitet die SQL-Anweisung vor
     $stmt = $pdo->prepare($sql);
@@ -23,25 +23,25 @@ try {
 
     // Fügt jedes Element im Array in die Datenbank ein
     foreach ($dataArray as $item) {
-        // Ensure the 'location_id' field exists and is not null
-        if (isset($item['location_id']) && !empty($item['location_id'])) {
+        // Ensure the 'station_id' field exists and is not null
+        if (isset($item['station_id']) && !empty($item['station_id'])) {
             // Execute the prepared statement with the correct keys from your data array
             $result = $stmt->execute([
                 $item['Station'], // Assuming 'Station' corresponds to 'name'
                 $item['Gesamtzahl E-Bikes'], // Matches the key 'Gesamtzahl E-Bikes'
                 $item['Gesamtzahl Velos'], // Matches the key 'Gesamtzahl Velos'
-                $item['location_id'] // Matches 'location_id' in your array
+                $item['station_id'] // Matches 'station_id' in your array
             ]);
 
             // Check if the insertion failed
             if (!$result) {
                 $allInserted = false;
                 // Log error with specific details
-                $errors[] = "Fehler beim Einfügen der Daten für location_id: " . $item['location_id'] . " - " . implode(", ", $stmt->errorInfo());
+                $errors[] = "Fehler beim Einfügen der Daten für station_id: " . $item['station_id'] . " - " . implode(", ", $stmt->errorInfo());
             }
         } else {
-            // Skip records where 'location_id' is missing or null
-            $errors[] = "Fehler: location_id fehlt oder ist null für diesen Eintrag: " . print_r($item, true);
+            // Skip records where 'station_id' is missing or null
+            $errors[] = "Fehler: station_id fehlt oder ist null für diesen Eintrag: " . print_r($item, true);
             $allInserted = false;
         }
     }
