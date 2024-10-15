@@ -43,9 +43,25 @@ h3{
     margin: 0;
 }
 
+h4{
+    font-family: "anton", sans-serif;
+    font-size: 40px;
+    font-style: normal;
+    text-align: left;
+    color: white;
+    margin: 0;
+    /*letter-spacing: 10px;*/
+}
+
 p{
     font-family: "Annie Use Your Telescope", cursive;
     font-size: 30px;
+    color: white
+}
+
+p2{
+    font-family: "Annie Use Your Telescope", cursive;
+    font-size: 40px;
     color: white
 }
 

@@ -52,7 +52,7 @@ function createStations() {
         infoBox.innerHTML = `
             <div class="info-header">
                 <h3 class="name"></h3> <!-- Placeholder for station name -->
-                <span class="close-btn">&times;</span>
+                <span class="close-btn">&times;</span> <!-- Close button (X) -->
             </div>
             <div class="info-content">
                 <p class="address">Adresse: </p> <!-- Placeholder for address -->
@@ -63,6 +63,7 @@ function createStations() {
         `;
         stationElement.appendChild(infoBox);
 
+
         mapContainer.appendChild(stationElement);
 
         // Add event listener to open/close the info box
@@ -71,10 +72,22 @@ function createStations() {
             infoBox.style.display = 'block';  // Show this info box
         });
 
+        // Add event listener to close all info boxes when clicking outside
+        document.addEventListener('click', function (event) {
+        const isClickInsideStation = event.target.closest('.station');
+
+    if (!isClickInsideStation) {
+        closeAllInfoBoxes();  // Close all info boxes when clicking outside any station
+    }
+});
+
+
         // Add close button event listener
-        infoBox.querySelector('.close-btn').addEventListener('click', function () {
+        infoBox.querySelector('.close-btn').addEventListener('click', function (event) {
+            event.stopPropagation();  // Verhindert, dass der Klick auf den Container auch ausgelöst wird
             infoBox.style.display = 'none';  // Hide this info box
-        });
+});
+
     });
 }
 
