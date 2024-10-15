@@ -135,52 +135,7 @@ function updateStationsWithVehicleData(vehicles) {
     });
 }
 
-// Temperaturen Box erstellen
 
-function createTemperatureBox() {
-    const tempElement = document.querySelector('.temperature-box');
-    const infoBox = tempElement.querySelector('.info-box');
-
-    // Add event listener to open/close the info box
-    tempElement.addEventListener('click', function () {
-        closeAllInfoBoxes();  // Close other info boxes
-        infoBox.style.display = 'block';  // Show this info box
-    });
-
-    // Add close button event listener
-    infoBox.querySelector('.close-btn').addEventListener('click', function () {
-        infoBox.style.display = 'none';  // Hide this info box
-    });
-}
-
-// Function to fetch Aare and weather temperature data
-function fetchTemperatureData() {
-    return fetch('etl/unload.php')  // Request temperature data from the server
-        .then(response => response.json())  // Convert the response to JSON
-        .then(data => {
-            console.log("Temperature data fetched:", data);  // Log for debugging
-            updateTemperatureInfo(data);  // Update temperature data in the UI
-        })
-        .catch(error => console.error('Error fetching temperature data:', error));
-}
-
-
-// Temperaturdaten auffüllen
-function updateTemperatureInfo(data) {
-    const temperatureData = data[0];
-    const tempElement = document.querySelector('.temperature-box');
-    if (tempElement) {
-        tempElement.querySelector('.aare-temperature').textContent = `Aare-Temperatur: ${temperatureData.temperature}°C`;
-        tempElement.querySelector('.weather-temperature').textContent = `Luft-Temperatur: ${temperatureData.weather_temperature}°C`;
-    }
-}
-
-// Close info boxes when clicking outside a station
-document.addEventListener('click', function (event) {
-    if (!event.target.closest('.station')) {
-        closeAllInfoBoxes();  // Close all info boxes if clicked outside
-    }
-});
 
 
 
