@@ -5,7 +5,6 @@ document.addEventListener('DOMContentLoaded', function () {
       // Step 2: Fetch station data for addresses and then fetch vehicle data (e-bikes and bikes)
       Promise.all([fetchStationData(), fetchVehicleData(), fetchTemperatureData()]).then(() => {
         console.log("All data fetched and stations updated.");
-        createTemperatureBox();  // Hier Temperaturbox erstellen
     });
 });
 
@@ -135,6 +134,27 @@ function updateStationsWithVehicleData(vehicles) {
     });
 }
 
+// Funktion, um die Temperaturdaten von der API zu laden
+function fetchTemperatureData() {
+    fetch('unload.php') // Anfrage an deine API
+        .then(response => response.json())
+        .then(data => {
+            if (data && data.length > 0) {
+                // Verwende die ersten Werte aus den Daten
+                const aareTemp = data[0].temperature || '--';
+                const weatherTemp = data[0].weather_temperature || '--';
+
+                // Setze die Werte in die Infobox
+                document.getElementById('aare-temp').textContent = aareTemp;
+                document.getElementById('weather-temp').textContent = weatherTemp;
+            } else {
+                console.error('Keine Temperaturdaten vorhanden');
+            }
+        })
+        .catch(error => {
+            console.error('Fehler beim Abrufen der Temperaturdaten:', error);
+        });
+}
 
 
 

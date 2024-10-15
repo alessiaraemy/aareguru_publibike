@@ -116,6 +116,25 @@ p{
     margin: 5px 0;
 }
 
+/* Styling für die fixierte Infobox */
+.temperature-box {
+    position: absolute; /* Änderung von 'fixed' zu 'absolute' */
+    top: 10%; /* Du kannst die Positionierung anpassen, je nach Bildgröße */
+    left: 80%; /* Setzt die Box weiter nach rechts innerhalb des Containers */
+    background-color: #AD1380;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 200px;
+    z-index: 10; /* Z-index sollte hoch genug sein, um sicherzustellen, dass die Box über den anderen Elementen erscheint */
+    font-family: "Annie Use Your Telescope", cursive;
+}
+
+.temperature-box p {
+    margin: 5px 0;
+    font-size: 18px;
+}
 
 
 
