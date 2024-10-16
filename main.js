@@ -13,21 +13,21 @@ document.addEventListener('DOMContentLoaded', function () {
 
 // Positionen für die einzelnen Stationen fixieren (IDs must match the database station IDs)
 const positionData = [
-    { id: 119, position: { top: "8%", left: "6%" } }, //Postauto Engehalde
-    { id: 114, position: { top: "12%", left: "6%" } }, //Engehalde
-    { id: 195, position: { top: "15%", left: "40%" } }, //Lorrainebrücke
-    { id: 663, position: { top: "25%", left: "15%" } }, //Kleeplatz/ Bollwerk
-    { id: 251, position: { top: "27%", left: "40%" } }, //Kornhausplatz
-    { id: 898, position: { top: "17%", left: "65%" } }, //Altenbergstrasse
-    { id: 254, position: { top: "30%", left: "65%" } }, //Nydegg
-    { id: 316, position: { top: "35%", left: "15%" } }, //Marzilibahn
-    { id: 315, position: { top: "45%", left: "15%" } }, //Barzilibad
-    { id: 478, position: { top: "50%", left: "25%" } }, //Dampfzentrale
-    { id: 321, position: { top: "55%", left: "12%" } }, //Monbijoubrücke
-    { id: 312, position: { top: "50%", left: "70%" } }, //Ka-We-De
-    { id: 323, position: { top: "52%", left: "80%" } }, //Restaurant Dählhölzli
-    { id: 423, position: { top: "65%", left: "75%" } }, //Camping Eichholz
-    { id: 326, position: { top: "30%", left: "92%" } } //Bärenpark
+    { id: 119, position: { top: "8%", left: "6%" } }, {infoBoxPosition: { top: "-20px", left: "60px" }}, //Postauto Engehalde
+    { id: 114, position: { top: "12%", left: "6%" } }, {infoBoxPosition: { top: "-20px", left: "60px" }}, //Engehalde
+    { id: 195, position: { top: "15%", left: "40%" } }, {infoBoxPosition: { top: "-20px", left: "60px" }}, //Lorrainebrücke
+    { id: 663, position: { top: "25%", left: "15%" } }, {infoBoxPosition: { top: "-20px", left: "60px" }}, //Kleeplatz/ Bollwerk
+    { id: 251, position: { top: "27%", left: "40%" } }, {infoBoxPosition: { top: "-20px", left: "60px" }}, //Kornhausplatz
+    { id: 898, position: { top: "17%", left: "65%" } }, {infoBoxPosition: { top: "-20px", left: "60px" }}, //Altenbergstrasse
+    { id: 254, position: { top: "30%", left: "65%" } }, {infoBoxPosition: { top: "-20px", left: "60px" }}, //Nydegg
+    { id: 316, position: { top: "35%", left: "15%" } }, {infoBoxPosition: { top: "-20px", left: "60px" }}, //Marzilibahn
+    { id: 315, position: { top: "45%", left: "15%" } }, {infoBoxPosition: { top: "-20px", left: "60px" }}, //Barzilibad
+    { id: 478, position: { top: "50%", left: "25%" } }, {infoBoxPosition: { top: "-20px", left: "60px" }}, //Dampfzentrale
+    { id: 321, position: { top: "55%", left: "12%" } }, {infoBoxPosition: { top: "-20px", left: "60px" }}, //Monbijoubrücke
+    { id: 312, position: { top: "50%", left: "70%" } }, {infoBoxPosition: { top: "-20px", left: "60px" }}, //Ka-We-De
+    { id: 323, position: { top: "52%", left: "80%" } }, {infoBoxPosition: { top: "-20px", left: "60px" }}, //Restaurant Dählhölzli
+    { id: 423, position: { top: "65%", left: "75%" } }, {infoBoxPosition: { top: "-20px", left: "60px" }}, //Camping Eichholz
+    { id: 326, position: { top: "30%", left: "92%" } }, {infoBoxPosition: { top: "-20px", left: "60px" }} //Bärenpark
 ];
 
 // Stationen erstellen
@@ -63,6 +63,12 @@ function createStations() {
                 <p class="quote"></p> <!-- Placeholder for the small saying -->
             </div>
         `;
+
+        // Setze die individuelle Position der Infobox
+        infoBox.style.position = 'absolute';
+        infoBox.style.top = pos.infoBoxPosition.top;
+        infoBox.style.left = pos.infoBoxPosition.left;
+        
         stationElement.appendChild(infoBox);
 
         mapContainer.appendChild(stationElement);
