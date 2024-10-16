@@ -10,21 +10,21 @@ document.addEventListener('DOMContentLoaded', function () {
 
 // Hardcoded positions for the stations (IDs must match the database station IDs)
 const positionData = [
-    { id: 119, position: { top: "8%", left: "6%" } },
-    { id: 114, position: { top: "12%", left: "6%" } },
-    { id: 195, position: { top: "15%", left: "40%" } },
-    { id: 663, position: { top: "25%", left: "15%" } },
-    { id: 254, position: { top: "27%", left: "40%" } },
-    { id: 898, position: { top: "17%", left: "65%" } },
-    { id: 154, position: { top: "30%", left: "65%" } },
-    { id: 316, position: { top: "35%", left: "15%" } },
-    { id: 315, position: { top: "45%", left: "15%" } },
-    { id: 478, position: { top: "50%", left: "25%" } },
-    { id: 321, position: { top: "55%", left: "12%" } },
-    { id: 312, position: { top: "50%", left: "70%" } },
-    { id: 323, position: { top: "52%", left: "80%" } },
-    { id: 423, position: { top: "65%", left: "75%" } },
-    { id: 326, position: { top: "30%", left: "95%" } }
+    { id: 119, position: { top: "8%", left: "6%" } }, //Postauto Engehalde
+    { id: 114, position: { top: "12%", left: "6%" } }, //Engehalde
+    { id: 195, position: { top: "15%", left: "40%" } }, //Lorrainebrücke
+    { id: 663, position: { top: "25%", left: "15%" } }, //Kleeplatz/ Bollwerk
+    { id: 251, position: { top: "27%", left: "40%" } }, //Kornhausplatz
+    { id: 898, position: { top: "17%", left: "65%" } }, //Altenbergstrasse
+    { id: 254, position: { top: "30%", left: "65%" } }, //Nydegg
+    { id: 316, position: { top: "35%", left: "15%" } }, //Marzilibahn
+    { id: 315, position: { top: "45%", left: "15%" } }, //Barzilibad
+    { id: 478, position: { top: "50%", left: "25%" } }, //Dampfzentrale
+    { id: 321, position: { top: "55%", left: "12%" } }, //Monbijoubrücke
+    { id: 312, position: { top: "50%", left: "70%" } }, //Ka-We-De
+    { id: 323, position: { top: "52%", left: "80%" } }, //Restaurant Dählhölzli
+    { id: 423, position: { top: "65%", left: "75%" } }, //Camping Eichholz
+    { id: 326, position: { top: "30%", left: "95%" } } //Bärenpark
 ];
 
 // Function to create the station elements with hardcoded positions
