@@ -4,9 +4,10 @@ body, html {
     padding: 0;
     height: 100%;
     width: 100%;
-    overflow-x: hidden; /* Verhindert horizontales Scrollen */
-    background-color:#29b274 ;
+    overflow-x: hidden;
+    background-color: #29b274;
 }
+
 
 .header-text {
     display: grid;
@@ -20,32 +21,22 @@ body, html {
 .header-text h1 {
     font-family: "anton", sans-serif;
     font-weight: 200;
-    font-size: 8vw; /* Responsiv mit vw (Viewport Width) */
+    font-size: 8vw; /* Verwende Viewport Width für Responsivität */
     color: #324d2d;
     margin: 0;
     grid-column: 1 / -1;
-    line-height: 15vw;
+    line-height: 10vw;
 }
 
 /* h2 im Grid positionieren, beginnt bei Spalte 5 */
 .header-text h2 {
     font-family: "Annie Use Your Telescope", cursive;
     font-weight: 400;
-    font-size: 6vw;
+    font-size: 6vw; /* Verwende Viewport Width für Responsivität */
     color: #43663d;
     margin: 0;
     grid-column: 14 / span 15;
     line-height: 5vw;
-}
-
-h1, h2, h3, h4, p, p2 {
-    margin: 0;
-    padding: 0;
-}
-
-h4 {
-    font-size: 2vw;
-    color: white;
 }
 
 h1{
@@ -132,29 +123,24 @@ p2{
 
 /* Design for the bike station bubbles */
 .bubble {
-    width: 50px;
-    height: 50px;
+    width: 8vw;  /* 8% der Viewport-Breite */
+    height: 8vw; 
+    font-size: 4vw; /* Fontgröße relativ zur Breite des Viewports */
     background-color: #AD1380;
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 24px;
-        transition: width 0.3s ease, height 0.3s ease;    
+    transition: width 0.3s ease, height 0.3s ease;
 }
 
 /* Hidden popup window */
 .info-box {
-    display: none;
-    position: absolute;
-    top: -100px;
-    left: -50px;
-    width: 300px;
+    width: 20vw; /* Mache die Box ebenfalls responsiv */
+    padding: 1vw;
     background-color: #AD1380;
     border-radius: 10px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
-    padding: 10px;
-    z-index: 1000; /* Erhöhe den z-index der Info-Box */
+    z-index: 1000;
 }
 
 .info-header {
@@ -180,10 +166,10 @@ p2{
     left: 60%;
     background-color: #324d2d;
     color: white;
-    padding: 20px;
+    padding: 1.5vw; /* Dynamische Anpassung an die Bildschirmgröße */
     border-radius: 10px;
+    width: 30vw; /* Setzt die Breite der Box auf 30% des Viewports */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    width: 350px;
 }
 
 /* Haupt-Layout für den Footer */
@@ -205,16 +191,17 @@ p2{
 .footer-text h1 {
     font-family: "anton", sans-serif;
     font-weight: 200;
-    font-size: 4vw;
+    font-size: 6vw;
     color: #324d2d;
 }
 
 .footer-text h2 {
-    font-family: "Annie Use Your Telescope";
+    font-family: "Annie Use Your Telescope", cursive;
     font-weight: 400;
-    font-size: 6vw;
+    font-size: 10vw;
     color: #43663d;
 }
+
 
 
 /* Responsives Design */
@@ -244,26 +231,34 @@ p2{
 }
 
 @media (max-width: 768px) {
+    .bubble {
+        width: 12vw; /* Kleinere Bubbles auf mobilen Geräten */
+        height: 12vw;
+        font-size: 5vw;
+    }
+
+    .info-box {
+        width: 30vw;
+    }
+
+    .temperature-box {
+        width: 60vw;
+    }
+
     .header-text h1 {
         font-size: 12vw;
         line-height: 10vw;
     }
 
     .header-text h2 {
-        font-size: 10vw;
-    }
-
-    .temperature-box {
-        top: 10%;
-        left: 30%;
-        width: 250px;
+        font-size: 8vw;
     }
 
     .footer-text h1 {
-        font-size: 7vw;
+        font-size: 8vw;
     }
 
     .footer-text h2 {
-        font-size: 9vw;
+        font-size: 12vw;
     }
 }
