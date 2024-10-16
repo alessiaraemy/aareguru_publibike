@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 // Positionen für die einzelnen Stationen fixieren (IDs must match the database station IDs)
 const positionData = [
-    { id: 119, position: { top: "8%", left: "6%" } }, {infoBoxPosition: { top: "10%", left: "60%" } },   //Postauto Engehalde
+    { id: 119, position: { top: "8%", left: "6%" } }, //Postauto Engehalde
     { id: 114, position: { top: "12%", left: "6%" } }, //Engehalde
     { id: 195, position: { top: "15%", left: "40%" } }, //Lorrainebrücke
     { id: 663, position: { top: "25%", left: "15%" } }, //Kleeplatz/ Bollwerk
@@ -34,74 +34,62 @@ const positionData = [
 function createStations() {
     const mapContainer = document.querySelector('.map-container');
     positionData.forEach(pos => {
+        // Create a station element for each position
         const stationElement = document.createElement('div');
         stationElement.classList.add('station');
-        stationElement.setAttribute('data-id', pos.id);
-        stationElement.style.position = 'absolute';
+        stationElement.setAttribute('data-id', pos.id);  // Assign the unique station ID
+        stationElement.style.position = 'absolute';  // Ensure proper positioning
         stationElement.style.top = pos.position.top;
         stationElement.style.left = pos.position.left;
 
+        // Create a bubble with a bike symbol
         const bubble = document.createElement('div');
         bubble.classList.add('bubble');
-        bubble.textContent = '🚲';
+        bubble.textContent = '🚲';  // Bike icon🚴
         stationElement.appendChild(bubble);
 
+        // Create an empty info box for station details
         const infoBox = document.createElement('div');
         infoBox.classList.add('info-box');
-        infoBox.setAttribute('data-position', 'right'); // Standardmäßig rechts der Station
         infoBox.innerHTML = `
             <div class="info-header">
-                <h3 class="name"></h3>
-                <span class="close-btn">&times;</span>
+                <h3 class="name"></h3> <!-- Placeholder for station name -->
+                <span class="close-btn">&times;</span> <!-- Close button (X) -->
             </div>
             <div class="info-content">
-                <p class="address">Adresse: </p>
-                <p class="ebikes">E-Bikes: </p>
-                <p class="bikes">Velos: </p>
-                <p class="quote"></p>
+                <p class="address">Adresse: </p> <!-- Placeholder for address -->
+                <p class="ebikes">E-Bikes: </p> <!-- Placeholder for e-bike count -->
+                <p class="bikes">Velos: </p> <!-- Placeholder for regular bike count -->
+                <p class="quote"></p> <!-- Placeholder for the small saying -->
             </div>
         `;
-        // Setze die individuelle Position für die Infobox
-        infoBox.style.position = 'absolute';
-        infoBox.style.top = pos.infoBoxPosition.top;
-        infoBox.style.left = pos.infoBoxPosition.left;
-
         stationElement.appendChild(infoBox);
 
         mapContainer.appendChild(stationElement);
 
-        // Klick-Event, um die Infobox anzuzeigen
+        // INFOBOX ÖFFNEN/SCHLIESSEN
+        // Event listener um Infobox zu öffnen und schliessen
         stationElement.addEventListener('click', function () {
-            closeAllInfoBoxes();
-            infoBox.style.display = 'block';
-
-            // Überprüfen, ob die Infobox am Bildschirmrand überläuft, und Position anpassen
-            adjustInfoBoxPosition(infoBox, stationElement);
+            closeAllInfoBoxes();  // Close other info boxes
+            infoBox.style.display = 'block';  // Show this info box
         });
 
-        // Schließen der Infobox durch das X
+        // Event listener der die Infobox schliesst sobald man ausserhalb der box klickt
+        document.addEventListener('click', function (event) {
+            const isClickInsideStation = event.target.closest('.station');
+
+            if (!isClickInsideStation) {
+                closeAllInfoBoxes();  
+            }
+        });
+
+        // Kreuz zum schliessen ergänzen
         infoBox.querySelector('.close-btn').addEventListener('click', function (event) {
-            event.stopPropagation();
-            infoBox.style.display = 'none';
+            event.stopPropagation();  // Verhindert, dass der Klick auf den Container auch ausgelöst wird
+            infoBox.style.display = 'none';  // Hide this info box
         });
     });
 }
-
-// Funktion zur Anpassung der Infobox-Position je nach Bildschirm
-function adjustInfoBoxPosition(infoBox, stationElement) {
-    const mapContainer = document.querySelector('.map-container');
-    const mapRect = mapContainer.getBoundingClientRect();
-    const boxRect = infoBox.getBoundingClientRect();
-    const stationRect = stationElement.getBoundingClientRect();
-
-    // Wenn die Infobox über den rechten Rand hinausgeht, positioniere sie links von der Station
-    if (boxRect.right > mapRect.right) {
-        infoBox.setAttribute('data-position', 'left');
-    } else {
-        infoBox.setAttribute('data-position', 'right');
-    }
-}
-
 
 // Function to close all open info boxes
 function closeAllInfoBoxes() {
