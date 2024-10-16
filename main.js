@@ -132,22 +132,21 @@ function updateStationsWithLocationData(locations) {
     });
 }
 
-// Globale Variablen für Temperatur
-let globalAareTemp = 0;
-let globalWeatherTemp = 0;
-
 // Funktion, um die Temperaturdaten von der API zu laden
 function fetchTemperatureData() {
     return fetch('etl/unload.php') // Anfrage an deine API
         .then(response => response.json())
         .then(data => {
+            console.log('Rohe Daten von der API:', data); // Zeigt die rohen Daten an
             if (data && data.length > 0) {
-                globalAareTemp = data[0].temperature || 0;
-                globalWeatherTemp = data[0].weather_temperature || 0;
+                // Verwandle die Werte in Zahlen, falls sie als Strings vorliegen
+                globalAareTemp = parseFloat(data[0].temperature) || 0;
+                globalWeatherTemp = parseFloat(data[0].weather_temperature) || 0;
 
                 // Setze die Werte in die Infobox
-                document.getElementById('aare-temp').textContent = globalAareTemp + '°C';
-                document.getElementById('weather-temp').textContent = globalWeatherTemp + '°C';
+                document.getElementById('aare-temp').textContent = globalAareTemp.toFixed(1) + '°C'; // Rundet auf eine Dezimalstelle
+                document.getElementById('weather-temp').textContent = globalWeatherTemp.toFixed(1) + '°C'; // Rundet auf eine Dezimalstelle
+
                 console.log('Temperaturdaten erfolgreich geladen:', { globalAareTemp, globalWeatherTemp });
             } else {
                 console.error('Keine Temperaturdaten vorhanden');
@@ -157,6 +156,7 @@ function fetchTemperatureData() {
             console.error('Fehler beim Abrufen der Temperaturdaten:', error);
         });
 }
+
 
 // Funktion zum Erstellen der dynamischen Sätze
 function generateQuote(stationId, numBikes, numEBikes) {
