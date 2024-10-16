@@ -160,6 +160,7 @@ function fetchTemperatureData() {
                 // Setze die Werte in die Infobox
                 document.getElementById('aare-temp').textContent = aareTemp;
                 document.getElementById('weather-temp').textContent = weatherTemp;
+                console.log('Temperaturdaten erfolgreich geladen:', { aareTemp, weatherTemp });
             } else {
                 console.error('Keine Temperaturdaten vorhanden');
             }
