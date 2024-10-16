@@ -21,7 +21,7 @@ body, html {
 .header-text h1 {
     font-family: "anton", sans-serif;
     font-weight: 200px;
-    font-size: 250px;
+    font-size: 200px;
     color: #324d2d;
     margin: 0;
     grid-column: 1 / -1; /* Nimmt die gesamte Breite ein (alle 24 Spalten) */
@@ -33,7 +33,7 @@ body, html {
 .header-text h2 {
     font-family: "Annie Use Your Telescope", cursive;
     font-weight: 400;
-    font-size: 200px;
+    font-size: 180px;
     color: #43663d;
     margin: 0;
     grid-column: 14 / span 15; /* Startet bei Spalte 5 und geht über 8 Spalten */
