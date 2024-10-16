@@ -139,9 +139,11 @@ function fetchTemperatureData() {
         .then(data => {
             console.log('Rohe Daten von der API:', data); // Zeigt die rohen Daten an
             if (data && data.length > 0) {
-                // Verwandle die Werte in Zahlen, falls sie als Strings vorliegen
-                globalAareTemp = parseFloat(data[0].temperature) || 0;
-                globalWeatherTemp = parseFloat(data[0].weather_temperature) || 0;
+                // Hole die aktuellsten Daten (letzter Eintrag im Array)
+                const latestData = data[data.length - 1];
+                
+                globalAareTemp = parseFloat(latestData.temperature) || 0;
+                globalWeatherTemp = parseFloat(latestData.weather_temperature) || 0;
 
                 // Setze die Werte in die Infobox
                 document.getElementById('aare-temp').textContent = globalAareTemp.toFixed(1) + '°C'; // Rundet auf eine Dezimalstelle
@@ -156,6 +158,7 @@ function fetchTemperatureData() {
             console.error('Fehler beim Abrufen der Temperaturdaten:', error);
         });
 }
+
 
 
 // Funktion zum Erstellen der dynamischen Sätze
