@@ -30,6 +30,7 @@ h2{
     grid-column-start: 15;
     grid-column: span 8;
     grid-row-start: 10;
+    text-align: right;
     
 }
 
@@ -138,7 +139,7 @@ p2{
     position: absolute; /* Änderung von 'fixed' zu 'absolute' */
     top: 7%; /* Du kannst die Positionierung anpassen, je nach Bildgröße */
     left: 60%; /* Setzt die Box weiter nach rechts innerhalb des Containers */
-    background-color: #AD1380;
+    background-color: #324d2d;
     color: white;
     padding: 20px;
     border-radius: 10px;
