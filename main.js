@@ -146,8 +146,8 @@ function fetchTemperatureData() {
                 globalWeatherTemp = parseFloat(latestData.weather_temperature) || 0;
 
                 // Setze die Werte in die Infobox
-                document.getElementById('aare-temp').textContent = globalAareTemp.toFixed(1) + '°C'; // Rundet auf eine Dezimalstelle
-                document.getElementById('weather-temp').textContent = globalWeatherTemp.toFixed(1) + '°C'; // Rundet auf eine Dezimalstelle
+                document.getElementById('aare-temp').textContent = globalAareTemp.toFixed(1) + ' °C'; // Rundet auf eine Dezimalstelle
+                document.getElementById('weather-temp').textContent = globalWeatherTemp.toFixed(1) + ' °C'; // Rundet auf eine Dezimalstelle
 
                 console.log('Temperaturdaten erfolgreich geladen:', { globalAareTemp, globalWeatherTemp });
             } else {
