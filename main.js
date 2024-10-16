@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', function () {
-    // Step 1: Create the station elements first, using static position data
+    // Step 1: Station Elemente erstellen, dazu werden die positionData verwendet
     createStations();
 
-    // Step 2: Fetch temperature data first, then fetch station data and vehicle data
+    // Step 2: Zuerst die temperature Daten fetchen, danach die Stationen und Vehicles Daten fetchen
     fetchTemperatureData().then(() => {
         // After temperature data is loaded, fetch station and vehicle data
         Promise.all([fetchStationData(), fetchVehicleData()]).then(() => {
@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
-// Hardcoded positions for the stations (IDs must match the database station IDs)
+// Positionen für die einzelnen Stationen fixieren (IDs must match the database station IDs)
 const positionData = [
     { id: 119, position: { top: "8%", left: "6%" } }, //Postauto Engehalde
     { id: 114, position: { top: "12%", left: "6%" } }, //Engehalde
@@ -30,10 +30,9 @@ const positionData = [
     { id: 326, position: { top: "30%", left: "95%" } } //Bärenpark
 ];
 
-// Function to create the station elements with hardcoded positions
+// Stationen erstellen
 function createStations() {
     const mapContainer = document.querySelector('.map-container');
-
     positionData.forEach(pos => {
         // Create a station element for each position
         const stationElement = document.createElement('div');
@@ -68,22 +67,23 @@ function createStations() {
 
         mapContainer.appendChild(stationElement);
 
-        // Add event listener to open/close the info box
+        // INFOBOX ÖFFNEN/SCHLIESSEN
+        // Event listener um Infobox zu öffnen und schliessen
         stationElement.addEventListener('click', function () {
             closeAllInfoBoxes();  // Close other info boxes
             infoBox.style.display = 'block';  // Show this info box
         });
 
-        // Add event listener to close all info boxes when clicking outside
+        // Event listener der die Infobox schliesst sobald man ausserhalb der box klickt
         document.addEventListener('click', function (event) {
             const isClickInsideStation = event.target.closest('.station');
 
             if (!isClickInsideStation) {
-                closeAllInfoBoxes();  // Close all info boxes when clicking outside any station
+                closeAllInfoBoxes();  
             }
         });
 
-        // Add close button event listener
+        // Kreuz zum schliessen ergänzen
         infoBox.querySelector('.close-btn').addEventListener('click', function (event) {
             event.stopPropagation();  // Verhindert, dass der Klick auf den Container auch ausgelöst wird
             infoBox.style.display = 'none';  // Hide this info box
@@ -98,7 +98,7 @@ function closeAllInfoBoxes() {
     });
 }
 
-// fetch station addresses and locations
+// Funktion um die Adressen zu fetchen
 function fetchStationData() {
     return fetch('etl/unloadPubli.php')  // Request station data from the server
         .then(response => response.json())  // Convert the response to JSON
@@ -132,31 +132,43 @@ function updateStationsWithLocationData(locations) {
     });
 }
 
-// Globale Variablen für Temperatur
-let globalAareTemp = 0;
-let globalWeatherTemp = 0;
-
-// Funktion, um die Temperaturdaten von der API zu laden
-function fetchTemperatureData() {
-    return fetch('etl/unload.php') // Anfrage an deine API
-        .then(response => response.json())
+// Funktion zum Abrufen der Temperaturdaten von der unload.php
+function loadTemperatureData() {
+    // Abruf der Daten mit fetch API
+    fetch('etl/unload.php')
+        .then(response => {
+            // Überprüfen, ob die Antwort erfolgreich war
+            if (!response.ok) {
+                throw new Error('Netzwerkantwort war nicht ok');
+            }
+            // Antwort in JSON umwandeln
+            return response.json();
+        })
         .then(data => {
-            if (data && data.length > 0) {
-                globalAareTemp = data[0].temperature || 0;
-                globalWeatherTemp = data[0].weather_temperature || 0;
-
-                // Setze die Werte in die Infobox
-                document.getElementById('aare-temp').textContent = globalAareTemp + '°C';
-                document.getElementById('weather-temp').textContent = globalWeatherTemp + '°C';
-                console.log('Temperaturdaten erfolgreich geladen:', { globalAareTemp, globalWeatherTemp });
-            } else {
-                console.error('Keine Temperaturdaten vorhanden');
+            // Hier wird davon ausgegangen, dass die erste Zeile die relevanten Daten enthält
+            if (data.length > 0) {
+                const temperature = data[0].temperature; // Aare-Temperatur
+                const weatherTemperature = data[0].weather_temperature; // Luft-Temperatur
+                
+                // Füge die Daten in das HTML-Element mit der Klasse 'temperature-box' ein
+                const temperatureBox = document.querySelector('.temperature-box');
+                temperatureBox.innerHTML = `
+                    <h3>Aktuelle Werte</h3>
+                    <p>Aare Temperatur: ${temperature} °C</p>
+                    <p>Luft Temperatur: ${weatherTemperature} °C</p>
+                `;
             }
         })
         .catch(error => {
-            console.error('Fehler beim Abrufen der Temperaturdaten:', error);
+            console.error('Es gab ein Problem mit der Fetch-Operation:', error);
         });
 }
+
+// Beim Laden der Seite die Funktion aufrufen
+window.onload = function() {
+    loadTemperatureData();
+};
+
 
 // Funktion zum Erstellen der dynamischen Sätze
 function generateQuote(stationId, numBikes, numEBikes) {
