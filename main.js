@@ -2,9 +2,12 @@ document.addEventListener('DOMContentLoaded', function () {
     // Step 1: Create the station elements first, using static position data
     createStations();
 
-      // Step 2: Fetch station data for addresses and then fetch vehicle data (e-bikes and bikes)
-      Promise.all([fetchStationData(), fetchVehicleData(), fetchTemperatureData()]).then(() => {
-        console.log("All data fetched and stations updated.");
+    // Step 2: Fetch temperature data first, then fetch station data and vehicle data
+    fetchTemperatureData().then(() => {
+        // After temperature data is loaded, fetch station and vehicle data
+        Promise.all([fetchStationData(), fetchVehicleData()]).then(() => {
+            console.log("All data fetched and stations updated.");
+        });
     });
 });
 
@@ -63,7 +66,6 @@ function createStations() {
         `;
         stationElement.appendChild(infoBox);
 
-
         mapContainer.appendChild(stationElement);
 
         // Add event listener to open/close the info box
@@ -74,20 +76,18 @@ function createStations() {
 
         // Add event listener to close all info boxes when clicking outside
         document.addEventListener('click', function (event) {
-        const isClickInsideStation = event.target.closest('.station');
+            const isClickInsideStation = event.target.closest('.station');
 
-    if (!isClickInsideStation) {
-        closeAllInfoBoxes();  // Close all info boxes when clicking outside any station
-    }
-});
-
+            if (!isClickInsideStation) {
+                closeAllInfoBoxes();  // Close all info boxes when clicking outside any station
+            }
+        });
 
         // Add close button event listener
         infoBox.querySelector('.close-btn').addEventListener('click', function (event) {
             event.stopPropagation();  // Verhindert, dass der Klick auf den Container auch ausgelöst wird
             infoBox.style.display = 'none';  // Hide this info box
-});
-
+        });
     });
 }
 
@@ -132,35 +132,23 @@ function updateStationsWithLocationData(locations) {
     });
 }
 
-function updateStationsWithVehicleData(vehicles) {
-    vehicles.forEach(vehicle => {
-        // Find the station element by its location ID
-        const stationElement = document.querySelector(`.station[data-id='${vehicle.station_id}']`);
-        if (stationElement) {
-            // Update the name field in the info box
-            stationElement.querySelector('.name').textContent = vehicle.name;  // Setzt den Namen
-
-            // Update the ebikes and bikes fields in the info box
-            stationElement.querySelector('.ebikes').textContent = `E-Bikes: ${vehicle.Gesamtzahl_EBikes}`;
-            stationElement.querySelector('.bikes').textContent = `Velos: ${vehicle.Gesamtzahl_Velos}`;
-        }
-    });
-}
+// Globale Variablen für Temperatur
+let globalAareTemp = 0;
+let globalWeatherTemp = 0;
 
 // Funktion, um die Temperaturdaten von der API zu laden
 function fetchTemperatureData() {
-    fetch('etl/unload.php') // Anfrage an deine API
+    return fetch('etl/unload.php') // Anfrage an deine API
         .then(response => response.json())
         .then(data => {
             if (data && data.length > 0) {
-                // Verwende die ersten Werte aus den Daten
-                const aareTemp = data[0].temperature || '--';
-                const weatherTemp = data[0].weather_temperature || '--';
+                globalAareTemp = data[0].temperature || 0;
+                globalWeatherTemp = data[0].weather_temperature || 0;
 
                 // Setze die Werte in die Infobox
-                document.getElementById('aare-temp').textContent = aareTemp;
-                document.getElementById('weather-temp').textContent = weatherTemp;
-                console.log('Temperaturdaten erfolgreich geladen:', { aareTemp, weatherTemp });
+                document.getElementById('aare-temp').textContent = globalAareTemp + '°C';
+                document.getElementById('weather-temp').textContent = globalWeatherTemp + '°C';
+                console.log('Temperaturdaten erfolgreich geladen:', { globalAareTemp, globalWeatherTemp });
             } else {
                 console.error('Keine Temperaturdaten vorhanden');
             }
@@ -170,6 +158,89 @@ function fetchTemperatureData() {
         });
 }
 
+// Funktion zum Erstellen der dynamischen Sätze
+function generateQuote(stationId, numBikes, numEBikes) {
+    let sentence = '';
+    const isUpperStation = [423, 323, 312, 326, 254].includes(stationId);
+    const isLowerStation = [321, 478, 315, 316, 898, 251, 663, 195, 114, 119].includes(stationId);
+
+    // Logik für die Badetemperaturen
+    if (globalWeatherTemp < 23 || globalAareTemp < 16) {
+        // Zu kalt zum Baden
+        if (numBikes > 0) {
+            sentence = 'Bade wottsch gloub eher nid, aber hie fingsch es Velo für dini Velotour.';
+        } else {
+            sentence = 'Bade wottsch gloub eher nid, aber hie fingsch ou kes Velo für neh Velotour.';
+        }
+    } else {
+        // Warm genug zum Baden
+        if (isUpperStation) {
+            if (numBikes > getUpperStationThreshold(stationId)) {
+                sentence = 'Hie hets mega viu velos, wöu viu ad Aare si.';
+            } else {
+                sentence = 'Hie hets kes Velo, gump eifach id Aare und schwümm zu dim Ziu.';
+            }
+        } else if (isLowerStation) {
+            if (numBikes > getLowerStationThreshold(stationId)) {
+                sentence = 'Hie chasch dis Velo hole für ad Aare.';
+            } else {
+                sentence = 'Es isch mega warm, drum hei hie scho viu es velo gno.';
+            }
+        }
+    }
+
+    return sentence;
+}
+
+// Hilfsfunktionen, um den Schwellenwert für "viel/wenig" Velos für obere und untere Stationen zu bekommen
+function getUpperStationThreshold(stationId) {
+    const thresholds = {
+        423: 8,
+        323: 3,
+        312: 2,
+        326: 3,
+        254: 2
+    };
+    return thresholds[stationId] || 0;
+}
+
+function getLowerStationThreshold(stationId) {
+    const thresholds = {
+        321: 2,
+        478: 5,
+        315: 8,
+        316: 3,
+        898: 8,
+        251: 3,
+        663: 5,
+        195: 3,
+        114: 8,
+        119: 8
+    };
+    return thresholds[stationId] || 0;
+}
+
+// Funktion zum Aktualisieren der Stationen mit Velodaten und dynamischen Sätzen
+function updateStationsWithVehicleData(vehicles) {
+    vehicles.forEach(vehicle => {
+        // Find the station element by its location ID
+        const stationElement = document.querySelector(`.station[data-id='${vehicle.station_id}']`);
+        if (stationElement) {
+            // Update the name field in the info box
+            stationElement.querySelector('.name').textContent = vehicle.name;
+
+            // Update the ebikes and bikes fields in the info box
+            const numBikes = vehicle.Gesamtzahl_Velos;
+            const numEBikes = vehicle.Gesamtzahl_EBikes;
+            stationElement.querySelector('.ebikes').textContent = `E-Bikes: ${numEBikes}`;
+            stationElement.querySelector('.bikes').textContent = `Velos: ${numBikes}`;
+
+            // Dynamischen Satz generieren
+            const quote = generateQuote(vehicle.station_id, numBikes, numEBikes);
+            stationElement.querySelector('.quote').textContent = quote;
+        }
+    });
+}
 
 
 
