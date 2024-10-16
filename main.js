@@ -250,7 +250,7 @@ function updateStationsWithVehicleData(vehicles) {
 
             // Anpassung der Größe der Bubble basierend auf der Gesamtanzahl der Velos und E-Bikes
             const bubble = stationElement.querySelector('.bubble');
-            bubble.innerHTML = `🚴<span class="total-count">${totalVehicles}</span>`; // Icon und Gesamtzahl
+            bubble.innerHTML = `🚴`; // Icon
 
             // Berechnung der Bubble-Größe basierend auf der Gesamtanzahl
             const bubbleSize = getBubbleSize(totalVehicles);
