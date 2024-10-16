@@ -34,62 +34,69 @@ const positionData = [
 function createStations() {
     const mapContainer = document.querySelector('.map-container');
     positionData.forEach(pos => {
-        // Create a station element for each position
         const stationElement = document.createElement('div');
         stationElement.classList.add('station');
-        stationElement.setAttribute('data-id', pos.id);  // Assign the unique station ID
-        stationElement.style.position = 'absolute';  // Ensure proper positioning
+        stationElement.setAttribute('data-id', pos.id);
+        stationElement.style.position = 'absolute';
         stationElement.style.top = pos.position.top;
         stationElement.style.left = pos.position.left;
 
-        // Create a bubble with a bike symbol
         const bubble = document.createElement('div');
         bubble.classList.add('bubble');
-        bubble.textContent = '🚲';  // Bike icon🚴
+        bubble.textContent = '🚲';
         stationElement.appendChild(bubble);
 
-        // Create an empty info box for station details
         const infoBox = document.createElement('div');
         infoBox.classList.add('info-box');
+        infoBox.setAttribute('data-position', 'right'); // Standardmäßig rechts der Station
         infoBox.innerHTML = `
             <div class="info-header">
-                <h3 class="name"></h3> <!-- Placeholder for station name -->
-                <span class="close-btn">&times;</span> <!-- Close button (X) -->
+                <h3 class="name"></h3>
+                <span class="close-btn">&times;</span>
             </div>
             <div class="info-content">
-                <p class="address">Adresse: </p> <!-- Placeholder for address -->
-                <p class="ebikes">E-Bikes: </p> <!-- Placeholder for e-bike count -->
-                <p class="bikes">Velos: </p> <!-- Placeholder for regular bike count -->
-                <p class="quote"></p> <!-- Placeholder for the small saying -->
+                <p class="address">Adresse: </p>
+                <p class="ebikes">E-Bikes: </p>
+                <p class="bikes">Velos: </p>
+                <p class="quote"></p>
             </div>
         `;
         stationElement.appendChild(infoBox);
 
         mapContainer.appendChild(stationElement);
 
-        // INFOBOX ÖFFNEN/SCHLIESSEN
-        // Event listener um Infobox zu öffnen und schliessen
+        // Klick-Event, um die Infobox anzuzeigen
         stationElement.addEventListener('click', function () {
-            closeAllInfoBoxes();  // Close other info boxes
-            infoBox.style.display = 'block';  // Show this info box
+            closeAllInfoBoxes();
+            infoBox.style.display = 'block';
+
+            // Überprüfen, ob die Infobox am Bildschirmrand überläuft, und Position anpassen
+            adjustInfoBoxPosition(infoBox, stationElement);
         });
 
-        // Event listener der die Infobox schliesst sobald man ausserhalb der box klickt
-        document.addEventListener('click', function (event) {
-            const isClickInsideStation = event.target.closest('.station');
-
-            if (!isClickInsideStation) {
-                closeAllInfoBoxes();  
-            }
-        });
-
-        // Kreuz zum schliessen ergänzen
+        // Schließen der Infobox durch das X
         infoBox.querySelector('.close-btn').addEventListener('click', function (event) {
-            event.stopPropagation();  // Verhindert, dass der Klick auf den Container auch ausgelöst wird
-            infoBox.style.display = 'none';  // Hide this info box
+            event.stopPropagation();
+            infoBox.style.display = 'none';
         });
     });
 }
+
+// Funktion zur Anpassung der Infobox-Position je nach Bildschirm
+function adjustInfoBoxPosition(infoBox, stationElement) {
+    const mapContainer = document.querySelector('.map-container');
+    const mapRect = mapContainer.getBoundingClientRect();
+    const boxRect = infoBox.getBoundingClientRect();
+    const stationRect = stationElement.getBoundingClientRect();
+
+    // Wenn die Infobox über den rechten Rand hinausgeht, positioniere sie links von der Station
+    if (boxRect.right > mapRect.right) {
+        infoBox.setAttribute('data-position', 'left');
+    } else {
+        infoBox.setAttribute('data-position', 'right');
+    }
+}
+
 
 // Function to close all open info boxes
 function closeAllInfoBoxes() {
