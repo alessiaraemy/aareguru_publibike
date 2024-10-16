@@ -3,17 +3,42 @@ body, html {
     margin: 0;
     padding: 0;
     height: 100%;
-    overflow: auto; /* Allow page scrolling */
+    width: 100%;
+    overflow-x: hidden; /* Verhindert horizontales Scrollen */
     background-color:#29b274 ;
 }
 
-header{
+.header-text {
     display: grid;
-    grid-template-columns: repeat(10, 1fr);
-    grid-template-rows: repeat(12, 1fr);
-    height: 100vh;
-    width: 100vw;
-    background-color: #29b274;
+    grid-template-columns: repeat(24, 1fr); /* 24 gleichgroße Spalten */
+    grid-template-rows: auto 1fr; /* Erste Zeile passt sich automatisch an, zweite Zeile ist kleiner */
+    gap: 10px; /* Optional: Abstände zwischen den Grid-Elementen */
+    width: 100%;
+    margin: 20px 0; /* Abstand oberhalb und unterhalb */
+}
+
+/* h1 im Grid positionieren, über zwei Zeilen */
+.header-text h1 {
+    font-family: "anton", sans-serif;
+    font-weight: 200px;
+    font-size: 250px;
+    color: #324d2d;
+    margin: 0;
+    grid-column: 1 / -1; /* Nimmt die gesamte Breite ein (alle 24 Spalten) */
+    grid-row: 1 / span 2; /* Erstreckt sich über zwei Zeilen */
+    line-height: 15vw; /* Hier den Zeilenabstand anpassen */
+}
+
+/* h2 im Grid positionieren, beginnt bei Spalte 5 */
+.header-text h2 {
+    font-family: "Annie Use Your Telescope", cursive;
+    font-weight: 400;
+    font-size: 200px;
+    color: #43663d;
+    margin: 0;
+    grid-column: 14 / span 15; /* Startet bei Spalte 5 und geht über 8 Spalten */
+    grid-row: 3; /* Befindet sich in der dritten Zeile, unter h1 */
+    line-height: 5vw; /* Hier den Zeilenabstand anpassen */
 }
 
 
@@ -154,59 +179,63 @@ p2{
     width: 350px;
 }
 
-.end-text-one {
-    position: absolute; /* Absolut positioniert innerhalb des Bildes */
-    top: 85%; /* Positioniert den Text 20px vom unteren Rand des Bildes */
-    left: 15%; /* Zentriert den Text horizontal */
-    transform: translateX(-50%); /* Korrigiert die Zentrierung */
-    text-align: left;
-    color: white; /* Farbe des Textes */
+/* Haupt-Layout für den Footer */
+.footer-text {
+    position: absolute;
+    bottom: 200px; /* Schiebt den Footer um 50px nach oben */
+    left: 0;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(10, 1fr); /* Grid bleibt wie es ist */
+    grid-template-rows: repeat(3, auto); /* Automatische Zeilenhöhen */
+    gap: 10px;
+    z-index: 2; 
+    color: white;
+    padding: 20px;
+}
+
+
+
+.footer-text h1 {
+    font-family: "anton", sans-serif;
+    font-weight: 200px;
     font-size: 100px;
-    padding: 50px;
-    border-radius: 50px;
-}
-
-.end-text-one h1, .end-text h2 {
+    color: #324d2d;
     margin: 0;
-    padding: 5px 0;
+    grid-column: 5 / span 5;
+    grid-row: 2;
 }
 
-.end-text-one h1 {
-    font-size: 40px;
-}
-
-.end-text-one h2 {
-    font-size: 30px;
-    color: #43663d; /* Du kannst die Farbe des zweiten Textes anpassen */
-}
-
-.end-text-two {
-    position: absolute; /* Absolut positioniert innerhalb des Bildes */
-    top: 80%; /* Positioniert den Text 20px vom unteren Rand des Bildes */
-    left: 80%; /* Zentriert den Text horizontal */
-    transform: translateX(-50%); /* Korrigiert die Zentrierung */
-    text-align: right;
-    color: white; /* Farbe des Textes */
-    background-color: rgba(0, 0, 0, 0.5); /* Optional: halbtransparentes Hintergrundfeld, um den Text lesbarer zu machen */
-    padding: 10px;
-    border-radius: 10px;
-}
-
-.end-text-two h1, .end-text h2 {
+.footer-text h2 {
+    font-family: "Annie Use Your Telescope";
+    font-weight: 400px;
+    font-size: 150px;
+    color: #43663d;
     margin: 0;
-    padding: 5px 0;
-}
-
-.end-text-two h1 {
-    font-size: 40px;
-}
-
-.end-text-two h2 {
-    font-size: 30px;
-    color: #43663d; /* Du kannst die Farbe des zweiten Textes anpassen */
+    grid-column: 1 / span 15; /* Startet bei Spalte 5 und geht über 8 Spalten */
+    grid-row: 1; /* Befindet sich in der dritten Zeile, unter h1 */
+    line-height: 1; /* Hier den Zeilenabstand anpassen */
 }
 
 
+
+
+
+
+
+/* Für sehr große Bildschirme */
+@media (min-width: 1200px) {
+    .header-text h1 {
+        font-size: 200px; /* Fixe große Schrift für sehr große Bildschirme */
+        line-height: 180px;
+    }
+
+    .header-text h2 {
+        font-size: 150px;
+        line-height: 130px;
+    }
+
+}
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
@@ -219,4 +248,23 @@ p2{
     .info-box {
         width: 150px;
     }
+
+    .header-text {
+        grid-template-columns: 1fr; /* Eine Spalte für mobile Geräte */
+        grid-template-rows: auto auto; /* Zeilenhöhe anpassen */
+    }
+
+    .header-text h1 {
+        grid-column: 1 / -1; /* Nimmt die gesamte Breite ein */
+        font-size: 15vw; /* Größere Schriftgröße für kleinere Bildschirme */
+        line-height: 12vw; /* Kleineren Zeilenabstand */
+    }
+
+    .header-text h2 {
+        grid-column: 1 / -1; /* Nimmt die gesamte Breite ein */
+        font-size: 10vw; /* Schriftgröße anpassen */
+        line-height: 9vw; /* Zeilenabstand anpassen */
+        text-align: center; /* Zentriere den Text auf mobilen Geräten */
+    }
+   
 }
