@@ -234,6 +234,11 @@ function updateStationsWithVehicleData(vehicles) {
             // Update the ebikes and bikes fields in the info box
             const numBikes = vehicle.Gesamtzahl_Velos;
             const numEBikes = vehicle.Gesamtzahl_EBikes;
+
+            // Berechnung der Gesamtanzahl
+            const totalVehicles = numBikes + numEBikes;
+
+            // Update the display for E-Bikes and Velos in the info box
             stationElement.querySelector('.ebikes').textContent = `E-Bikes: ${numEBikes}`;
             stationElement.querySelector('.bikes').textContent = `Velos: ${numBikes}`;
 
@@ -241,27 +246,30 @@ function updateStationsWithVehicleData(vehicles) {
             const quote = generateQuote(vehicle.station_id, numBikes, numEBikes);
             stationElement.querySelector('.quote').textContent = quote;
 
-            // Anpassung der Größe der Bubble basierend auf der Anzahl der Velos
+            // Anpassung der Größe der Bubble basierend auf der Gesamtanzahl der Velos und E-Bikes
             const bubble = stationElement.querySelector('.bubble');
-            const bubbleSize = getBubbleSize(numBikes);
+            bubble.textContent = totalVehicles; // Zeigt die Gesamtanzahl in der Bubble an
+
+            // Berechnung der Bubble-Größe basierend auf der Gesamtanzahl
+            const bubbleSize = getBubbleSize(totalVehicles);
             bubble.style.width = `${bubbleSize}px`;
             bubble.style.height = `${bubbleSize}px`;
         }
     });
 }
 
-// Funktion zur Bestimmung der Bubble-Größe basierend auf der Anzahl der Velos
-function getBubbleSize(numBikes) {
-    if (numBikes > 30) {
-        return 150; // Viele Velos -> Größere Bubble
-    } else if (numBikes > 20) {
-        return 140; // Viele Velos -> Größere Bubble
-    } else if (numBikes > 10) {
-        return 120; // Viele Velos -> Größere Bubble
-    } else if (numBikes > 0) {
-        return 90; // Einige Velos -> Mittlere Bubble
+// Funktion zur Bestimmung der Bubble-Größe basierend auf der Gesamtanzahl von Velos und E-Bikes
+function getBubbleSize(totalVehicles) {
+    if (totalVehicles > 30) {
+        return 150; // Viele Fahrzeuge -> Größere Bubble
+    } else if (totalVehicles > 20) {
+        return 140; // Viele Fahrzeuge -> Größere Bubble
+    } else if (totalVehicles > 10) {
+        return 120; // Einige Fahrzeuge -> Mittlere Bubble
+    } else if (totalVehicles > 0) {
+        return 90; // Wenige Fahrzeuge -> Kleinere Bubble
     } else {
-        return 50; // Keine oder wenige Velos -> Kleinere Bubble
+        return 50; // Keine Fahrzeuge -> Kleinste Bubble
     }
 }
 
