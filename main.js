@@ -223,6 +223,8 @@ function getLowerStationThreshold(stationId) {
     return thresholds[stationId] || 0;
 }
 
+
+
 function updateStationsWithVehicleData(vehicles) {
     vehicles.forEach(vehicle => {
         // Find the station element by its location ID
@@ -235,10 +237,10 @@ function updateStationsWithVehicleData(vehicles) {
             const numBikes = vehicle.Gesamtzahl_Velos;
             const numEBikes = vehicle.Gesamtzahl_EBikes;
 
-            // Berechnung der Gesamtanzahl
+            // Berechnung der Gesamtanzahl (Velos + E-Bikes)
             const totalVehicles = numBikes + numEBikes;
 
-            // Update the display for E-Bikes and Velos in the info box
+            // Update the E-Bikes and Velos fields in the info box
             stationElement.querySelector('.ebikes').textContent = `E-Bikes: ${numEBikes}`;
             stationElement.querySelector('.bikes').textContent = `Velos: ${numBikes}`;
 
@@ -248,7 +250,7 @@ function updateStationsWithVehicleData(vehicles) {
 
             // Anpassung der Größe der Bubble basierend auf der Gesamtanzahl der Velos und E-Bikes
             const bubble = stationElement.querySelector('.bubble');
-            bubble.textContent = totalVehicles; // Zeigt die Gesamtanzahl in der Bubble an
+            bubble.innerHTML = `🚴<span class="total-count">${totalVehicles}</span>`; // Icon und Gesamtzahl
 
             // Berechnung der Bubble-Größe basierend auf der Gesamtanzahl
             const bubbleSize = getBubbleSize(totalVehicles);
@@ -272,6 +274,7 @@ function getBubbleSize(totalVehicles) {
         return 50; // Keine Fahrzeuge -> Kleinste Bubble
     }
 }
+
 
 
 
