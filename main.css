@@ -4,14 +4,14 @@ body, html {
     padding: 0;
     height: 100%;
     width: 100%;
-    overflow-x: hidden;
-    background-color: #29b274;
+    overflow-x: hidden; /* Verhindert horizontales Scrollen */
+    background-color:#29b274 ;
 }
-
 
 .header-text {
     display: grid;
     grid-template-columns: repeat(24, 1fr); /* 24 gleichgroße Spalten */
+    grid-template-rows: auto 1fr; /* Erste Zeile passt sich automatisch an, zweite Zeile ist kleiner */
     gap: 10px; /* Optional: Abstände zwischen den Grid-Elementen */
     width: 100%;
     margin: 20px 0; /* Abstand oberhalb und unterhalb */
@@ -20,24 +20,27 @@ body, html {
 /* h1 im Grid positionieren, über zwei Zeilen */
 .header-text h1 {
     font-family: "anton", sans-serif;
-    font-weight: 200;
-    font-size: 8vw; /* Verwende Viewport Width für Responsivität */
+    font-weight: 200px;
+    font-size: 200px;
     color: #324d2d;
     margin: 0;
-    grid-column: 1 / -1;
-    line-height: 10vw;
+    grid-column: 1 / -1; /* Nimmt die gesamte Breite ein (alle 24 Spalten) */
+    grid-row: 1 / span 2; /* Erstreckt sich über zwei Zeilen */
+    line-height: 15vw; /* Hier den Zeilenabstand anpassen */
 }
 
 /* h2 im Grid positionieren, beginnt bei Spalte 5 */
 .header-text h2 {
     font-family: "Annie Use Your Telescope", cursive;
     font-weight: 400;
-    font-size: 6vw; /* Verwende Viewport Width für Responsivität */
+    font-size: 180px;
     color: #43663d;
     margin: 0;
-    grid-column: 14 / span 15;
-    line-height: 5vw;
+    grid-column: 14 / span 15; /* Startet bei Spalte 5 und geht über 8 Spalten */
+    grid-row: 3; /* Befindet sich in der dritten Zeile, unter h1 */
+    line-height: 5vw; /* Hier den Zeilenabstand anpassen */
 }
+
 
 h1{
     font-family: "anton", sans-serif;
@@ -97,7 +100,7 @@ p2{
 
 .container {
     width: 100%;
-    display: block;
+    display: block; /* Ensure the container is block level */
 }
 
 /* Adjust the map container to have some space above it */
@@ -123,24 +126,29 @@ p2{
 
 /* Design for the bike station bubbles */
 .bubble {
-    width: 8vw;  /* 8% der Viewport-Breite */
-    height: 8vw; 
-    font-size: 4vw; /* Fontgröße relativ zur Breite des Viewports */
+    width: 50px;
+    height: 50px;
     background-color: #AD1380;
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: width 0.3s ease, height 0.3s ease;
+    font-size: 24px;
+        transition: width 0.3s ease, height 0.3s ease;    
 }
 
 /* Hidden popup window */
 .info-box {
-    width: 20vw; /* Mache die Box ebenfalls responsiv */
-    padding: 1vw;
+    display: none;
+    position: absolute;
+    top: -100px;
+    left: -50px;
+    width: 300px;
     background-color: #AD1380;
     border-radius: 10px;
-    z-index: 1000;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    z-index: 1000; /* Erhöhe den z-index der Info-Box */
 }
 
 .info-header {
@@ -161,27 +169,28 @@ p2{
 
 /* Styling für die fixierte Infobox */
 .temperature-box {
-    position: absolute;
-    top: 7%;
-    left: 60%;
+    position: absolute; /* Änderung von 'fixed' zu 'absolute' */
+    top: 7%; /* Du kannst die Positionierung anpassen, je nach Bildgröße */
+    left: 60%; /* Setzt die Box weiter nach rechts innerhalb des Containers */
     background-color: #324d2d;
     color: white;
-    padding: 1.5vw; /* Dynamische Anpassung an die Bildschirmgröße */
+    padding: 20px;
     border-radius: 10px;
-    width: 30vw; /* Setzt die Breite der Box auf 30% des Viewports */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 350px;
 }
 
 /* Haupt-Layout für den Footer */
 .footer-text {
     position: absolute;
-    bottom: 200px;
+    bottom: 200px; /* Schiebt den Footer um 50px nach oben */
     left: 0;
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(10, 1fr);
-    grid-template-rows: repeat(3, auto);
+    grid-template-columns: repeat(10, 1fr); /* Grid bleibt wie es ist */
+    grid-template-rows: repeat(3, auto); /* Automatische Zeilenhöhen */
     gap: 10px;
+    z-index: 2; 
     color: white;
     padding: 20px;
 }
@@ -190,75 +199,47 @@ p2{
 
 .footer-text h1 {
     font-family: "anton", sans-serif;
-    font-weight: 200;
-    font-size: 6vw;
+    font-weight: 200px;
+    font-size: 100px;
     color: #324d2d;
+    margin: 0;
+    grid-column: 5 / span 5;
+    grid-row: 2;
 }
 
 .footer-text h2 {
-    font-family: "Annie Use Your Telescope", cursive;
-    font-weight: 400;
-    font-size: 10vw;
+    font-family: "Annie Use Your Telescope";
+    font-weight: 400px;
+    font-size: 150px;
     color: #43663d;
+    margin: 0;
+    grid-column: 1 / span 15; /* Startet bei Spalte 5 und geht über 8 Spalten */
+    grid-row: 1; /* Befindet sich in der dritten Zeile, unter h1 */
+    line-height: 1; /* Hier den Zeilenabstand anpassen */
 }
 
 
 
-/* Responsives Design */
-@media (max-width: 1200px) {
-    .header-text h1 {
-        font-size: 10vw;
-        line-height: 12vw;
-    }
 
-    .header-text h2 {
-        font-size: 8vw;
-        line-height: 6vw;
-    }
 
-    .temperature-box {
-        left: 50%;
-        width: 300px;
-    }
 
-    .footer-text h1 {
-        font-size: 5vw;
-    }
 
-    .footer-text h2 {
-        font-size: 7vw;
-    }
+/* Für sehr große Bildschirme */
+@media (min-width: 1200px) {
+
+
 }
 
+/* Responsive adjustments */
 @media (max-width: 768px) {
     .bubble {
-        width: 12vw; /* Kleinere Bubbles auf mobilen Geräten */
-        height: 12vw;
-        font-size: 5vw;
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
     }
 
     .info-box {
-        width: 30vw;
+        width: 150px; /* Verkleinerte Box auf mobilen Geräten */
     }
-
-    .temperature-box {
-        width: 60vw;
-    }
-
-    .header-text h1 {
-        font-size: 12vw;
-        line-height: 10vw;
-    }
-
-    .header-text h2 {
-        font-size: 8vw;
-    }
-
-    .footer-text h1 {
-        font-size: 8vw;
-    }
-
-    .footer-text h2 {
-        font-size: 12vw;
-    }
+   
 }

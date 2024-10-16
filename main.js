@@ -258,28 +258,26 @@ function updateStationsWithVehicleData(vehicles) {
             const bubble = stationElement.querySelector('.bubble');
             bubble.innerHTML = `🚲`; // Icon
 
-            // Update der Bubble-Größe
-            const bubbles = stationElement.querySelector('.bubble');
+            // Berechnung der Bubble-Größe basierend auf der Gesamtanzahl
             const bubbleSize = getBubbleSize(totalVehicles);
-            bubble.style.width = bubbleSize;
-            bubble.style.height = bubbleSize;
+            bubble.style.width = `${bubbleSize}px`;
+            bubble.style.height = `${bubbleSize}px`;
         }
     });
 }
 
 // Funktion zur Bestimmung der Bubble-Größe basierend auf der Gesamtanzahl von Velos und E-Bikes
 function getBubbleSize(totalVehicles) {
-    const baseSize = 5; // Grundgröße der Bubbles in vw
     if (totalVehicles > 30) {
-        return baseSize * 3 + 'vw'; // Größere Bubble für viele Fahrzeuge
+        return 150; // Viele Fahrzeuge -> Größere Bubble
     } else if (totalVehicles > 20) {
-        return baseSize * 2.5 + 'vw'; 
+        return 140; // Viele Fahrzeuge -> Größere Bubble
     } else if (totalVehicles > 10) {
-        return baseSize * 2 + 'vw';
+        return 120; // Einige Fahrzeuge -> Mittlere Bubble
     } else if (totalVehicles > 0) {
-        return baseSize * 1.5 + 'vw'; 
+        return 90; // Wenige Fahrzeuge -> Kleinere Bubble
     } else {
-        return baseSize + 'vw'; // Kleinste Bubble
+        return 50; // Keine Fahrzeuge -> Kleinste Bubble
     }
 }
 
