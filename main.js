@@ -27,7 +27,7 @@ const positionData = [
     { id: 312, position: { top: "50%", left: "70%" } }, //Ka-We-De
     { id: 323, position: { top: "52%", left: "80%" } }, //Restaurant Dählhölzli
     { id: 423, position: { top: "65%", left: "75%" } }, //Camping Eichholz
-    { id: 326, position: { top: "30%", left: "90%" } } //Bärenpark
+    { id: 326, position: { top: "30%", left: "92%" } } //Bärenpark
 ];
 
 // Stationen erstellen
@@ -45,7 +45,7 @@ function createStations() {
         // Create a bubble with a bike symbol
         const bubble = document.createElement('div');
         bubble.classList.add('bubble');
-        bubble.textContent = '🚴';  // Bike icon
+        //bubble.textContent = '🚴';  // Bike icon
         stationElement.appendChild(bubble);
 
         // Create an empty info box for station details
@@ -250,7 +250,7 @@ function updateStationsWithVehicleData(vehicles) {
 
             // Anpassung der Größe der Bubble basierend auf der Gesamtanzahl der Velos und E-Bikes
             const bubble = stationElement.querySelector('.bubble');
-            bubble.innerHTML = `🚴`; // Icon
+            //bubble.innerHTML = `🚴`; // Icon
 
             // Berechnung der Bubble-Größe basierend auf der Gesamtanzahl
             const bubbleSize = getBubbleSize(totalVehicles);
