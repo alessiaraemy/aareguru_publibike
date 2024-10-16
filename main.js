@@ -132,43 +132,31 @@ function updateStationsWithLocationData(locations) {
     });
 }
 
-// Funktion zum Abrufen der Temperaturdaten von der unload.php
-function loadTemperatureData() {
-    // Abruf der Daten mit fetch API
-    fetch('etl/unload.php')
-        .then(response => {
-            // Überprüfen, ob die Antwort erfolgreich war
-            if (!response.ok) {
-                throw new Error('Netzwerkantwort war nicht ok');
-            }
-            // Antwort in JSON umwandeln
-            return response.json();
-        })
+// Globale Variablen für Temperatur
+let globalAareTemp = 0;
+let globalWeatherTemp = 0;
+
+// Funktion, um die Temperaturdaten von der API zu laden
+function fetchTemperatureData() {
+    return fetch('etl/unload.php') // Anfrage an deine API
+        .then(response => response.json())
         .then(data => {
-            // Hier wird davon ausgegangen, dass die erste Zeile die relevanten Daten enthält
-            if (data.length > 0) {
-                const temperature = data[0].temperature; // Aare-Temperatur
-                const weatherTemperature = data[0].weather_temperature; // Luft-Temperatur
-                
-                // Füge die Daten in das HTML-Element mit der Klasse 'temperature-box' ein
-                const temperatureBox = document.querySelector('.temperature-box');
-                temperatureBox.innerHTML = `
-                    <h3>Aktuelle Werte</h3>
-                    <p>Aare Temperatur: ${temperature} °C</p>
-                    <p>Luft Temperatur: ${weatherTemperature} °C</p>
-                `;
+            if (data && data.length > 0) {
+                globalAareTemp = data[0].temperature || 0;
+                globalWeatherTemp = data[0].weather_temperature || 0;
+
+                // Setze die Werte in die Infobox
+                document.getElementById('aare-temp').textContent = globalAareTemp + '°C';
+                document.getElementById('weather-temp').textContent = globalWeatherTemp + '°C';
+                console.log('Temperaturdaten erfolgreich geladen:', { globalAareTemp, globalWeatherTemp });
+            } else {
+                console.error('Keine Temperaturdaten vorhanden');
             }
         })
         .catch(error => {
-            console.error('Es gab ein Problem mit der Fetch-Operation:', error);
+            console.error('Fehler beim Abrufen der Temperaturdaten:', error);
         });
 }
-
-// Beim Laden der Seite die Funktion aufrufen
-window.onload = function() {
-    loadTemperatureData();
-};
-
 
 // Funktion zum Erstellen der dynamischen Sätze
 function generateQuote(stationId, numBikes, numEBikes) {
