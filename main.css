@@ -7,6 +7,15 @@ body, html {
     background-color:#29b274 ;
 }
 
+header{
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(12, 1fr);
+    height: 100vh;
+    width: 100vw;
+    background-color: #29b274;
+}
+
 
 h1{
     font-family: "anton", sans-serif;
@@ -17,7 +26,6 @@ h1{
     margin: 0;
     grid-column: span 14;
     grid-row-start: 1;
-    line-height: 1.2;
 }
 
 h2{
