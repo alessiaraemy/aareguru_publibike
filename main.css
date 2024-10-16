@@ -30,8 +30,7 @@ h2{
     grid-column-start: 15;
     grid-column: span 8;
     grid-row-start: 10;
-    text-align: right;
-    
+ 
 }
 
 h3{
@@ -147,7 +146,57 @@ p2{
     width: 350px;
 }
 
+.end-text-one {
+    position: absolute; /* Absolut positioniert innerhalb des Bildes */
+    top: 85%; /* Positioniert den Text 20px vom unteren Rand des Bildes */
+    left: 15%; /* Zentriert den Text horizontal */
+    transform: translateX(-50%); /* Korrigiert die Zentrierung */
+    text-align: left;
+    color: white; /* Farbe des Textes */
+    font-size: 100px;
+    padding: 50px;
+    border-radius: 50px;
+}
 
+.end-text-one h1, .end-text h2 {
+    margin: 0;
+    padding: 5px 0;
+}
+
+.end-text-one h1 {
+    font-size: 40px;
+}
+
+.end-text-one h2 {
+    font-size: 30px;
+    color: #43663d; /* Du kannst die Farbe des zweiten Textes anpassen */
+}
+
+.end-text-two {
+    position: absolute; /* Absolut positioniert innerhalb des Bildes */
+    top: 80%; /* Positioniert den Text 20px vom unteren Rand des Bildes */
+    left: 80%; /* Zentriert den Text horizontal */
+    transform: translateX(-50%); /* Korrigiert die Zentrierung */
+    text-align: right;
+    color: white; /* Farbe des Textes */
+    background-color: rgba(0, 0, 0, 0.5); /* Optional: halbtransparentes Hintergrundfeld, um den Text lesbarer zu machen */
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.end-text-two h1, .end-text h2 {
+    margin: 0;
+    padding: 5px 0;
+}
+
+.end-text-two h1 {
+    font-size: 40px;
+}
+
+.end-text-two h2 {
+    font-size: 30px;
+    color: #43663d; /* Du kannst die Farbe des zweiten Textes anpassen */
+}
 
 
 
