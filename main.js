@@ -98,7 +98,7 @@ function closeAllInfoBoxes() {
     });
 }
 
-// Fetch station addresses and locations
+// fetch station addresses and locations
 function fetchStationData() {
     return fetch('etl/unloadPubli.php')  // Request station data from the server
         .then(response => response.json())  // Convert the response to JSON
@@ -109,7 +109,7 @@ function fetchStationData() {
         .catch(error => console.error('Error fetching station data:', error));
 }
 
-// Fetch vehicle data (bikes and e-bikes)
+// Funktion um die Anzahl E-Bikes und Velos zu fetchen
 function fetchVehicleData() {
     return fetch('etl/unloadVehicles.php')  // Request vehicle data from the server
         .then(response => response.json())  // Convert the response to JSON
@@ -118,6 +118,18 @@ function fetchVehicleData() {
             updateStationsWithVehicleData(data);  // Pass the data to the update function
         })
         .catch(error => console.error('Error fetching vehicle data:', error));
+}
+
+// Function to update the stations with location data (addresses)
+function updateStationsWithLocationData(locations) {
+    locations.forEach(location => {
+        // Find the station element by its station ID
+        const stationElement = document.querySelector(`.station[data-id='${location.station_id}']`);
+        if (stationElement) {
+            // Update the address field in the info box
+            stationElement.querySelector('.address').textContent = `Adresse: ${location.address}`;
+        }
+    });
 }
 
 // Globale Variablen für Temperatur
@@ -245,7 +257,6 @@ function getBubbleSize(numBikes) {
         return 20; // Keine oder wenige Velos -> Kleinere Bubble
     }
 }
-
 
 
 
