@@ -253,15 +253,15 @@ function updateStationsWithVehicleData(vehicles) {
 // Funktion zur Bestimmung der Bubble-Größe basierend auf der Anzahl der Velos
 function getBubbleSize(numBikes) {
     if (numBikes > 30) {
-        return 100; // Viele Velos -> Größere Bubble
+        return 170; // Viele Velos -> Größere Bubble
     } else if (numBikes > 20) {
-        return 70; // Viele Velos -> Größere Bubble
+        return 140; // Viele Velos -> Größere Bubble
     } else if (numBikes > 10) {
-        return 50; // Viele Velos -> Größere Bubble
+        return 110; // Viele Velos -> Größere Bubble
     } else if (numBikes > 0) {
-        return 30; // Einige Velos -> Mittlere Bubble
+        return 80; // Einige Velos -> Mittlere Bubble
     } else {
-        return 20; // Keine oder wenige Velos -> Kleinere Bubble
+        return 50; // Keine oder wenige Velos -> Kleinere Bubble
     }
 }
 
