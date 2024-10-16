@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 // Positionen für die einzelnen Stationen fixieren (IDs must match the database station IDs)
 const positionData = [
-    { id: 119, position: { top: "8%", left: "6%" } }, //Postauto Engehalde
+    { id: 119, position: { top: "8%", left: "6%" } }, {infoBoxPosition: { top: "10%", left: "6%" } },   //Postauto Engehalde
     { id: 114, position: { top: "12%", left: "6%" } }, //Engehalde
     { id: 195, position: { top: "15%", left: "40%" } }, //Lorrainebrücke
     { id: 663, position: { top: "25%", left: "15%" } }, //Kleeplatz/ Bollwerk
@@ -61,6 +61,11 @@ function createStations() {
                 <p class="quote"></p>
             </div>
         `;
+        // Setze die individuelle Position für die Infobox
+        infoBox.style.position = 'absolute';
+        infoBox.style.top = pos.infoBoxPosition.top;
+        infoBox.style.left = pos.infoBoxPosition.left;
+
         stationElement.appendChild(infoBox);
 
         mapContainer.appendChild(stationElement);
