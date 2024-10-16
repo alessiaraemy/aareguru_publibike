@@ -220,7 +220,6 @@ function getLowerStationThreshold(stationId) {
     return thresholds[stationId] || 0;
 }
 
-// Funktion zum Aktualisieren der Stationen mit Velodaten und dynamischen Sätzen
 function updateStationsWithVehicleData(vehicles) {
     vehicles.forEach(vehicle => {
         // Find the station element by its location ID
@@ -238,9 +237,27 @@ function updateStationsWithVehicleData(vehicles) {
             // Dynamischen Satz generieren
             const quote = generateQuote(vehicle.station_id, numBikes, numEBikes);
             stationElement.querySelector('.quote').textContent = quote;
+
+            // Anpassung der Größe der Bubble basierend auf der Anzahl der Velos
+            const bubble = stationElement.querySelector('.bubble');
+            const bubbleSize = getBubbleSize(numBikes);
+            bubble.style.width = `${bubbleSize}px`;
+            bubble.style.height = `${bubbleSize}px`;
         }
     });
 }
+
+// Funktion zur Bestimmung der Bubble-Größe basierend auf der Anzahl der Velos
+function getBubbleSize(numBikes) {
+    if (numBikes > 10) {
+        return 40; // Viele Velos -> Größere Bubble
+    } else if (numBikes > 0) {
+        return 30; // Einige Velos -> Mittlere Bubble
+    } else {
+        return 20; // Keine oder wenige Velos -> Kleinere Bubble
+    }
+}
+
 
 
 
