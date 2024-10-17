@@ -240,7 +240,7 @@ p{
         font-size: 30px; /* Verkleinere die Überschrift */
     }
 
-    .temperature-box p2 {
+    .temperature-box h5 {
         font-size: 35px; /* Verkleinere den Temperaturwert */
     }
 
@@ -300,7 +300,7 @@ p{
         font-size: 25px; /* Noch kleinere Überschrift */
     }
 
-    .temperature-box p2 {
+    .temperature-box h5 {
         font-size: 30px; /* Kleinere Temperaturwerte */
     }
 
@@ -360,7 +360,7 @@ p{
         font-size: 20px; /* Kleinere Überschrift */
     }
 
-    .temperature-box p2 {
+    .temperature-box h5 {
         font-size: 25px; /* Kleinere Temperaturwerte */
     }
 
