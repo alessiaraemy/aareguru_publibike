@@ -418,7 +418,7 @@ p{
         font-size: 14px; /* Kleinere Überschrift */
     }
 
-    .temperature-box p2 {
+    .temperature-box h5 {
         font-size: 22px; /* Kleinere Temperaturwerte */
     }
 
