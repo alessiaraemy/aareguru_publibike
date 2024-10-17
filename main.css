@@ -77,11 +77,6 @@ p{
     color: white
 }
 
-.container {
-    width: 100%;
-    display: block; /* Ensure the container is block level */
-}
-
 /* Adjust the map container to have some space above it */
 .map-container {
     position: relative; /* This ensures that the bike stations will be positioned relative to the map */
@@ -183,7 +178,9 @@ p{
 .container {
     min-height: 100vh; /* Container nimmt mindestens die volle Höhe des Viewports ein */
     position: relative; /* Setze den Container in den relativen Kontext für den absolut positionierten Footer */
-    padding-bottom: 200px; /* Genug Platz für den Footer am Ende des Containers lassen */
+    padding-bottom: 0; /* Genug Platz für den Footer am Ende des Containers lassen */
+    width: 100%;
+    display: block; /* Ensure the container is block level */
 }
 
 
@@ -446,6 +443,5 @@ p{
 
     .footer-text h2 {
         font-size: 30px;
-        text-align: center;
     }
 }
