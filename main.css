@@ -399,7 +399,7 @@ p2{
 
     .info-content p {
         font-size: 16px; /* Noch kleinere Schriftgröße */
-        line-height: normal;
+        line-height: 0;
     }
 
     .close-btn {
@@ -457,7 +457,7 @@ p2{
 
     .info-content p {
         font-size: 14px; /* Kleinste Schriftgröße für den Inhalt */
-        line-height: normal;
+        line-height: 0;
     }
 
     .close-btn {
