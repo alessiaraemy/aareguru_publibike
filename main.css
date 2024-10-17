@@ -268,7 +268,7 @@ p2{
 /* Media Query für kleinere Smartphones (Portrait Modus) */
 @media (max-width: 768px) {
     .header-text h1 {
-        font-size: 80px;  /* Noch kleinere Schriftgröße für Smartphones */
+        font-size: 100px;  /* Noch kleinere Schriftgröße für Smartphones */
         line-height: 1.3;  /* Erhöhter Zeilenabstand für Smartphones */
     }
 
