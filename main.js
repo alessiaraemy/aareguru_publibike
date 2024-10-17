@@ -278,10 +278,10 @@ function getBubbleSize(totalVehicles) {
         baseSize = 150; // Maximale Größe für Desktops
     } else if (screenWidth > 768) {
         // Tablets
-        baseSize = 120; // Mittelgroße Bubbles für Tablets
+        baseSize = 100; // Reduzierte Größe für Tablets
     } else {
         // Smartphones
-        baseSize = 90; // Kleinere Bubbles für Smartphones
+        baseSize = 70; // Noch kleinere Bubbles für Smartphones
     }
 
     // Passe die Größe basierend auf der Anzahl der Fahrzeuge an
