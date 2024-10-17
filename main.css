@@ -340,13 +340,13 @@ p2{
 /* Media Query für sehr sehr kleine Smartphones */
 @media (max-width: 444px) {
     .header-text h1 {
-        font-size: 60px;  /* Sehr kleine Schriftgröße für sehr kleine Smartphones */
-        line-height: 1.4;  /* Noch mehr Zeilenabstand für sehr kleine Smartphones */
+        font-size: 50px;  /* Sehr kleine Schriftgröße für sehr kleine Smartphones */
+        line-height: 0.8;  /* Noch mehr Zeilenabstand für sehr kleine Smartphones */
     }
 
     .header-text h2 {
         font-size: 40px;
-        line-height: 1.6;
+        line-height: 1;
     }
 
 }
