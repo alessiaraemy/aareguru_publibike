@@ -269,7 +269,20 @@ p2{
     }
 
     .info-box {
-        width: 250px;  /* Verkleinerte Info-Box */
+        width: 250px; /* Verkleinere die Box für Tablets */
+        padding: 8px;
+    }
+
+    .info-header h3 {
+        font-size: 20px; /* Kleinere Schriftgröße in der Info-Box */
+    }
+
+    .info-content p {
+        font-size: 16px; /* Kleinere Schriftgröße für den Inhalt */
+    }
+
+    .close-btn {
+        font-size: 18px; /* Kleinere Schließen-Schaltfläche */
     }
 
     .footer-text h1 {
@@ -315,7 +328,20 @@ p2{
     }
 
     .info-box {
-        width: 200px;  /* Weitere Verkleinerung der Info-Box */
+        width: 220px; /* Noch kleinere Box für Smartphones */
+        padding: 7px;
+    }
+
+    .info-header h3 {
+        font-size: 18px; /* Noch kleinere Schriftgröße */
+    }
+
+    .info-content p {
+        font-size: 14px; /* Kleinere Schriftgröße für den Inhalt */
+    }
+
+    .close-btn {
+        font-size: 16px; /* Kleinere Schließen-Schaltfläche */
     }
 
     .footer-text h1 {
@@ -361,7 +387,20 @@ p2{
     }
 
     .info-box {
-        width: 150px;  /* Maximale Verkleinerung der Info-Box */
+        width: 180px; /* Kleinere Box für kleine Smartphones */
+        padding: 5px;
+    }
+
+    .info-header h3 {
+        font-size: 16px; /* Kleinere Schriftgröße */
+    }
+
+    .info-content p {
+        font-size: 12px; /* Noch kleinere Schriftgröße */
+    }
+
+    .close-btn {
+        font-size: 14px; /* Kleinere Schließen-Schaltfläche */
     }
 
     .footer-text h1 {
@@ -402,6 +441,23 @@ p2{
 
     .temperature-box p2 {
         font-size: 22px; /* Kleinere Temperaturwerte */
+    }
+
+    .info-box {
+        width: 160px; /* Kleinste Boxgröße */
+        padding: 4px;
+    }
+
+    .info-header h3 {
+        font-size: 14px; /* Noch kleinere Schriftgröße */
+    }
+
+    .info-content p {
+        font-size: 10px; /* Kleinste Schriftgröße für den Inhalt */
+    }
+
+    .close-btn {
+        font-size: 12px; /* Kleinere Schließen-Schaltfläche */
     }
 
     .footer-text h1 {
