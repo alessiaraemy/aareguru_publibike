@@ -274,11 +274,12 @@ p2{
     }
 
     .info-header h3 {
-        font-size: 20px; /* Kleinere Schriftgröße in der Info-Box */
+        font-size: 25px; /* Kleinere Schriftgröße in der Info-Box */
     }
 
     .info-content p {
-        font-size: 16px; /* Kleinere Schriftgröße für den Inhalt */
+        font-size: 20px; /* Kleinere Schriftgröße für den Inhalt */
+        line-height: normal;
     }
 
     .close-btn {
@@ -328,16 +329,17 @@ p2{
     }
 
     .info-box {
-        width: 220px; /* Noch kleinere Box für Smartphones */
+        width: 240px; /* Noch kleinere Box für Smartphones */
         padding: 7px;
     }
 
     .info-header h3 {
-        font-size: 18px; /* Noch kleinere Schriftgröße */
+        font-size: 20px; /* Noch kleinere Schriftgröße */
     }
 
     .info-content p {
-        font-size: 14px; /* Kleinere Schriftgröße für den Inhalt */
+        font-size: 16px; /* Kleinere Schriftgröße für den Inhalt */
+        line-height: normal;
     }
 
     .close-btn {
@@ -387,16 +389,17 @@ p2{
     }
 
     .info-box {
-        width: 180px; /* Kleinere Box für kleine Smartphones */
+        width: 200px; /* Kleinere Box für kleine Smartphones */
         padding: 5px;
     }
 
     .info-header h3 {
-        font-size: 16px; /* Kleinere Schriftgröße */
+        font-size: 20px; /* Kleinere Schriftgröße */
     }
 
     .info-content p {
-        font-size: 12px; /* Noch kleinere Schriftgröße */
+        font-size: 16px; /* Noch kleinere Schriftgröße */
+        line-height: normal;
     }
 
     .close-btn {
@@ -444,16 +447,17 @@ p2{
     }
 
     .info-box {
-        width: 160px; /* Kleinste Boxgröße */
+        width: 180px; /* Kleinste Boxgröße */
         padding: 4px;
     }
 
     .info-header h3 {
-        font-size: 14px; /* Noch kleinere Schriftgröße */
+        font-size: 18px; /* Noch kleinere Schriftgröße */
     }
 
     .info-content p {
-        font-size: 10px; /* Kleinste Schriftgröße für den Inhalt */
+        font-size: 14px; /* Kleinste Schriftgröße für den Inhalt */
+        line-height: normal;
     }
 
     .close-btn {
