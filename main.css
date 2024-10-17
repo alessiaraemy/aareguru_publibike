@@ -178,14 +178,14 @@ p2{
 /* Styling für die fixierte Infobox */
 .temperature-box {
     position: absolute; /* Änderung von 'fixed' zu 'absolute' */
-    top: 7%; /* Du kannst die Positionierung anpassen, je nach Bildgröße */
+    top: 5%; /* Du kannst die Positionierung anpassen, je nach Bildgröße */
     left: 60%; /* Setzt die Box weiter nach rechts innerhalb des Containers */
     background-color: #324d2d;
     color: white;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    width: 350px;
+    width: 320px;
 }
 
 /* Haupt-Layout für den Footer */
