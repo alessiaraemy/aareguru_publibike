@@ -392,6 +392,10 @@ p2{
         /*left: 48%; /* Box zentrierter anzeigen */
     }
 
+    .map-container {
+        margin-top: 0; /* Push the image down further if needed */
+    }
+
     .temperature-box h4 {
         font-size: 14px; /* Kleinere Überschrift */
     }
