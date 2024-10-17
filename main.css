@@ -11,7 +11,7 @@ body, html {
 .header-text {
     display: grid;
     grid-template-columns: repeat(24, 1fr); /* 24 gleichgroße Spalten */
-    grid-template-rows: auto auto; /* Erste Zeile passt sich automatisch an, zweite Zeile ist kleiner */
+    grid-template-rows: auto 1fr; /* Erste Zeile passt sich automatisch an, zweite Zeile ist kleiner */
     gap: 10px; /* Optional: Abstände zwischen den Grid-Elementen */
     width: 100%;
     margin: 20px 0; /* Abstand oberhalb und unterhalb */
@@ -20,7 +20,7 @@ body, html {
 /* h1 im Grid positionieren, über zwei Zeilen */
 .header-text h1 {
     font-family: "anton", sans-serif;
-    font-weight: 200;
+    font-weight: 200px;
     font-size: 240px;
     color: #324d2d;
     margin: 0;
@@ -28,15 +28,7 @@ body, html {
     grid-column: 1 / -1; /* Nimmt die gesamte Breite ein (alle 24 Spalten) */
     grid-row: 1; /* Erstreckt sich über zwei Zeilen */
     line-height: 15vw; /* Hier den Zeilenabstand anpassen */
-}
 
-/* Spezifische Behandlung für den ersten Teil des Textes, der linksbündig sein soll */
-.header-text h1::before {
-    content: "u weles Velo "; /* Der erste Teil des Textes */
-    display: inline-block;
-    text-align: left;
-    width: 100%;
-    grid-column: 2 / span 12; /* Nimmt 12 Spalten ein */
 }
 
 /* h2 im Grid positionieren, beginnt bei Spalte 5 */
@@ -50,6 +42,7 @@ body, html {
     grid-row: 3; /* Befindet sich in der dritten Zeile, unter h1 */
     line-height: 5vw; /* Hier den Zeilenabstand anpassen */
 }
+
 
 
 /*h1{
