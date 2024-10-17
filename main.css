@@ -24,7 +24,7 @@ body, html {
     font-size: 240px;
     color: #324d2d;
     margin: 0;
-    text-align: center;
+    text-align: left;
     grid-column: 1 / -1; /* Nimmt die gesamte Breite ein (alle 24 Spalten) */
     grid-row: 1; /* Erstreckt sich über zwei Zeilen */
     line-height: 15vw; /* Hier den Zeilenabstand anpassen */
