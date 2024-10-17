@@ -25,9 +25,9 @@ const positionData = [
     { id: 478, position: { top: "50%", left: "25%" }, infoBoxPosition: { top: "-40%", left: "80%" }}, //Dampfzentrale
     { id: 321, position: { top: "55%", left: "12%" }, infoBoxPosition: { top: "-40%", left: "80%" }}, //Monbijoubrücke
     { id: 312, position: { top: "50%", left: "70%" }, infoBoxPosition: { top: "-40%", left: "80%" }}, //Ka-We-De
-    { id: 323, position: { top: "52%", left: "80%" }, infoBoxPosition: { top: "-40%", left: "-320%" }}, //Restaurant Dählhölzli
+    { id: 323, position: { top: "52%", left: "80%" }, infoBoxPosition: { top: "-40%", left: "-280%" }}, //Restaurant Dählhölzli
     { id: 423, position: { top: "65%", left: "75%" }, infoBoxPosition: { top: "-40%", left: "-250%" }}, //Camping Eichholz
-    { id: 326, position: { top: "30%", left: "92%" }, infoBoxPosition: { top: "-40%", left: "-250%" }} //Bärenpark
+    { id: 326, position: { top: "30%", left: "92%" }, infoBoxPosition: { top: "-40%", left: "-230%" }} //Bärenpark
 ];
 
 // Stationen erstellen
