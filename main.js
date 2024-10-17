@@ -91,8 +91,8 @@ function createStations() {
 
         // Kreuz zum schliessen ergänzen
         infoBox.querySelector('.close-btn').addEventListener('click', function (event) {
-            event.stopPropagation();  // Verhindert, dass der Klick auf den Container auch ausgelöst wird
-            infoBox.style.display = 'none';  // Hide this info box
+            event.stopPropagation();  
+            infoBox.style.display = 'none'; 
         });
     });
 }
@@ -100,28 +100,28 @@ function createStations() {
 // Function to close all open info boxes
 function closeAllInfoBoxes() {
     document.querySelectorAll('.info-box').forEach(infoBox => {
-        infoBox.style.display = 'none';  // Hide all info boxes
+        infoBox.style.display = 'none'; 
     });
 }
 
 // Funktion um die Adressen zu fetchen
 function fetchStationData() {
-    return fetch('etl/unloadPubli.php')  // Request station data from the server
-        .then(response => response.json())  // Convert the response to JSON
+    return fetch('etl/unloadPubli.php')
+        .then(response => response.json())  
         .then(data => {
-            console.log("Station data fetched:", data);  // Log for debugging
-            updateStationsWithLocationData(data);  // Pass the data to the update function
+            console.log("Station data fetched:", data); 
+            updateStationsWithLocationData(data); 
         })
         .catch(error => console.error('Error fetching station data:', error));
 }
 
 // Funktion um die Anzahl E-Bikes und Velos zu fetchen
 function fetchVehicleData() {
-    return fetch('etl/unloadVehicles.php')  // Request vehicle data from the server
-        .then(response => response.json())  // Convert the response to JSON
+    return fetch('etl/unloadVehicles.php')  
+        .then(response => response.json())  
         .then(data => {
-            console.log("Vehicle data fetched:", data);  // Log for debugging
-            updateStationsWithVehicleData(data);  // Pass the data to the update function
+            console.log("Vehicle data fetched:", data); 
+            updateStationsWithVehicleData(data); 
         })
         .catch(error => console.error('Error fetching vehicle data:', error));
 }
@@ -140,10 +140,10 @@ function updateStationsWithLocationData(locations) {
 
 // Funktion, um die Temperaturdaten von der API zu laden
 function fetchTemperatureData() {
-    return fetch('etl/unload.php') // Anfrage an deine API
+    return fetch('etl/unload.php') 
         .then(response => response.json())
         .then(data => {
-            console.log('Rohe Daten von der API:', data); // Zeigt die rohen Daten an
+            console.log('Rohe Daten von der API:', data);
             if (data && data.length > 0) {
                 // Hole die aktuellsten Daten (letzter Eintrag im Array)
                 const latestData = data[data.length - 1];
@@ -275,24 +275,24 @@ function getBubbleSize(totalVehicles) {
 
     if (screenWidth > 1024) {
         // Desktop
-        baseSize = 150; // Maximale Größe für Desktops
+        baseSize = 150; 
     } else if (screenWidth > 768) {
         // Tablets
-        baseSize = 100; // Reduzierte Größe für Tablets
+        baseSize = 100;
     } else {
         // Smartphones
-        baseSize = 70; // Noch kleinere Bubbles für Smartphones
+        baseSize = 70; 
     }
 
     // Passe die Größe basierend auf der Anzahl der Fahrzeuge an
     if (totalVehicles > 30) {
-        return baseSize; // Viele Fahrzeuge -> Größere Bubble
+        return baseSize; 
     } else if (totalVehicles > 20) {
-        return baseSize * 0.9; // Leicht kleinere Bubble
+        return baseSize * 0.9; 
     } else if (totalVehicles > 10) {
-        return baseSize * 0.8; // Mittlere Bubble
+        return baseSize * 0.8; 
     } else if (totalVehicles > 0) {
-        return baseSize * 0.6; // Kleine Bubble
+        return baseSize * 0.6; 
     } else {
         return baseSize * 0.3; // Keine Fahrzeuge -> Kleinste Bubble
     }

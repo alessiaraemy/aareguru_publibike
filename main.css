@@ -4,17 +4,18 @@ body, html {
     padding: 0;
     height: 100%;
     width: 100%;
-    overflow-x: hidden; /* Verhindert horizontales Scrollen */
+    overflow-x: hidden;
     background-color:#29b274 ;
 }
 
+/* H E A D E R */
 .header-text {
     display: grid;
     grid-template-columns: repeat(24, 1fr); /* 24 gleichgroße Spalten */
     grid-template-rows: auto 1fr; /* Erste Zeile passt sich automatisch an, zweite Zeile ist kleiner */
     gap: 10px; /* Optional: Abstände zwischen den Grid-Elementen */
     width: 100%;
-    margin-top: 20px; /* Abstand oberhalb */
+    margin-top: 20px;
 }
 
 /* h1 im Grid positionieren, über zwei Zeilen */
@@ -27,7 +28,7 @@ body, html {
     text-align: left;
     grid-column: 2 / -1; /* Nimmt die gesamte Breite ein (alle 24 Spalten) */
     grid-row: 1; /* Erstreckt sich über zwei Zeilen */
-    line-height: 15vw; /* Hier den Zeilenabstand anpassen */
+    line-height: 15vw;
 
 }
 
@@ -40,10 +41,10 @@ body, html {
     margin: 0;
     grid-column: 13 / span 15; /* Startet bei Spalte 5 und geht über 8 Spalten */
     grid-row: 2; /* Befindet sich in der dritten Zeile, unter h1 */
-    line-height: 5vw; /* Hier den Zeilenabstand anpassen */
+    line-height: 5vw;
 }
 
-
+/* S C H R I F T E N */
 h3{
     font-family: "anton", sans-serif;
     font-weight: 200;
@@ -61,7 +62,6 @@ h4{
     text-align: left;
     color: white;
     margin: 0;
-    /*letter-spacing: 10px;*/
 }
 
 h5{
@@ -77,27 +77,37 @@ p{
     color: white
 }
 
+/* M A P - C O N T A I N E R */
 /* Adjust the map container to have some space above it */
 .map-container {
-    position: relative; /* This ensures that the bike stations will be positioned relative to the map */
+    position: relative; 
     width: 100%;
-    height: auto; /* Adjusts to the image size */
-    margin-top: 20px; /* Push the image down further if needed */
+    height: auto;
+    margin-top: 20px; 
 }
 
 .map-image {
-    width: 100%; /* Ensures the image spans the full width of the container */
-    height: auto; /* Keeps the aspect ratio */
+    width: 100%; 
+    height: auto;
     display: block;
 }
 
+.container {
+    min-height: 100vh; /* Container nimmt mindestens die volle Höhe des Viewports ein */
+    position: relative; 
+    padding-bottom: 0; 
+    width: 100%;
+    display: block;
+}
 
+/* S T A T I O N */
 /* Positioning of the bike stations */
 .station {
-    position: absolute; /* Absolute positioning inside the map container */
+    position: absolute;
     cursor: pointer;
 }
 
+/* B U B B L E */
 /* Design for the bike station bubbles */
 .bubble {
     width: 50px;
@@ -113,9 +123,10 @@ p{
 
 /* Hover-Effekt: Bubble wird dunkler */
 .bubble:hover {
-    background-color: #700C53; /* Dunklere Version der ursprünglichen Farbe */
+    background-color: #700C53; 
 }
 
+/* I N F O - B O X */
 /* Hidden popup window */
 .info-box {
     display: none;
@@ -127,7 +138,7 @@ p{
     border-radius: 10px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
     padding: 10px;
-    z-index: 1000; /* Erhöhe den z-index der Info-Box */
+    z-index: 1000;
 }
 
 .info-header {
@@ -146,11 +157,12 @@ p{
     margin: 5px 0;
 }
 
+/* T E M P E R A T U R - B O X */
 /* Styling für die fixierte Infobox */
 .temperature-box {
-    position: absolute; /* Änderung von 'fixed' zu 'absolute' */
-    top: 3%; /* Du kannst die Positionierung anpassen, je nach Bildgröße */
-    left: 60%; /* Setzt die Box weiter nach rechts innerhalb des Containers */
+    position: absolute; 
+    top: 3%;
+    left: 60%;
     background-color: #324d2d;
     color: white;
     padding: 20px;
@@ -159,10 +171,11 @@ p{
     width: 350px;
 }
 
+/* F O O T E R */
 /* Haupt-Layout für den Footer */
 .footer-text {
     position: absolute;
-    bottom: 5%; /* Footer bleibt am unteren Ende */
+    bottom: 5%;
     left: 0;
     width: 100%;
     display: grid;
@@ -173,16 +186,6 @@ p{
     color: white;
     padding: 20px;
 }
-
-/* Der Container sollte den Inhalt nach oben schieben, wenn der Bildschirm größer ist */
-.container {
-    min-height: 100vh; /* Container nimmt mindestens die volle Höhe des Viewports ein */
-    position: relative; /* Setze den Container in den relativen Kontext für den absolut positionierten Footer */
-    padding-bottom: 0; /* Genug Platz für den Footer am Ende des Containers lassen */
-    width: 100%;
-    display: block; /* Ensure the container is block level */
-}
-
 
 .footer-text h1 {
     font-family: "anton", sans-serif;
@@ -208,13 +211,12 @@ p{
 
 
 
-
-
+/* R E S P O N S I V E */
 /* Media Query für Tablets und größere Smartphones (Portrait Modus) */
 @media (max-width: 1024px) {
     .header-text h1 {
-        font-size: 130px;  /* Kleinere Schriftgröße für Tablets */
-        line-height: 1.2;  /* Mehr Zeilenabstand für Tablets */
+        font-size: 130px; 
+        line-height: 1.2;  
     }
 
     .header-text h2 {
@@ -225,38 +227,38 @@ p{
     .bubble {
         width: 40px;
         height: 40px;
-        font-size: 18px;  /* Kleinere Schriftgröße für Bubbles */
+        font-size: 18px;  
     }
 
     .temperature-box {
-        width: 250px; /* Verkleinere die Box für Tablets */
+        width: 250px; 
         padding: 15px;
     }
 
     .temperature-box h4 {
-        font-size: 30px; /* Verkleinere die Überschrift */
+        font-size: 30px;
     }
 
     .temperature-box h5 {
-        font-size: 35px; /* Verkleinere den Temperaturwert */
+        font-size: 35px; 
     }
 
     .info-box {
-        width: 250px; /* Verkleinere die Box für Tablets */
+        width: 250px; 
         padding: 8px;
     }
 
     .info-header h3 {
-        font-size: 25px; /* Kleinere Schriftgröße in der Info-Box */
+        font-size: 25px; 
     }
 
     .info-content p {
-        font-size: 20px; /* Kleinere Schriftgröße für den Inhalt */
+        font-size: 20px; 
         line-height: normal;
     }
 
     .close-btn {
-        font-size: 18px; /* Kleinere Schließen-Schaltfläche */
+        font-size: 18px; 
     }
 
     .footer-text h1 {
@@ -271,8 +273,8 @@ p{
 /* Media Query für kleinere Smartphones (Portrait Modus) */
 @media (max-width: 768px) {
     .header-text h1 {
-        font-size: 100px;  /* Noch kleinere Schriftgröße für Smartphones */
-        line-height: 1.3;  /* Erhöhter Zeilenabstand für Smartphones */
+        font-size: 100px;  
+        line-height: 1.3; 
     }
 
     .header-text h2 {
@@ -283,40 +285,38 @@ p{
     .bubble {
         width: 30px;
         height: 30px;
-        font-size: 14px;  /* Noch kleinere Schriftgröße für Bubbles */
+        font-size: 14px; 
     }
 
     .temperature-box {
-        width: 200px; /* Noch kleinere Box für Smartphones */
+        width: 200px;
         padding: 12px;
-        /*top: 10%; /* Positionierung leicht anpassen */
-        /*left: 55%; /* Box mehr zur Mitte schieben */
     }
 
     .temperature-box h4 {
-        font-size: 25px; /* Noch kleinere Überschrift */
+        font-size: 25px;
     }
 
     .temperature-box h5 {
-        font-size: 30px; /* Kleinere Temperaturwerte */
+        font-size: 30px; 
     }
 
     .info-box {
-        width: 240px; /* Noch kleinere Box für Smartphones */
+        width: 240px;
         padding: 7px;
     }
 
     .info-header h3 {
-        font-size: 20px; /* Noch kleinere Schriftgröße */
+        font-size: 20px; 
     }
 
     .info-content p {
-        font-size: 16px; /* Kleinere Schriftgröße für den Inhalt */
+        font-size: 16px; 
         line-height: normal;
     }
 
     .close-btn {
-        font-size: 16px; /* Kleinere Schließen-Schaltfläche */
+        font-size: 16px; 
     }
 
     .footer-text h1 {
@@ -331,8 +331,8 @@ p{
 /* Media Query für sehr kleine Smartphones */
 @media (max-width: 480px) {
     .header-text h1 {
-        font-size: 60px;  /* Sehr kleine Schriftgröße für sehr kleine Smartphones */
-        line-height: 1.4;  /* Noch mehr Zeilenabstand für sehr kleine Smartphones */
+        font-size: 60px;  
+        line-height: 1.4; 
     }
 
     .header-text h2 {
@@ -343,40 +343,38 @@ p{
     .bubble {
         width: 25px;
         height: 25px;
-        font-size: 12px;  /* Anpassung der Bubbles für sehr kleine Geräte */
+        font-size: 12px; 
     }
 
     .temperature-box {
-        width: 150px; /* Kleinere Box für kleine Smartphones */
+        width: 150px;
         padding: 10px;
-        /*top: 15%; /* Box weiter nach unten verschieben */
-        /*left: 50%; /* Mehr zur Mitte schieben */
     }
 
     .temperature-box h4 {
-        font-size: 20px; /* Kleinere Überschrift */
+        font-size: 20px; 
     }
 
     .temperature-box h5 {
-        font-size: 25px; /* Kleinere Temperaturwerte */
+        font-size: 25px; 
     }
 
     .info-box {
-        width: 200px; /* Kleinere Box für kleine Smartphones */
+        width: 200px; 
         padding: 5px;
     }
 
     .info-header h3 {
-        font-size: 20px; /* Kleinere Schriftgröße */
+        font-size: 20px; 
     }
 
     .info-content p {
-        font-size: 16px; /* Noch kleinere Schriftgröße */
+        font-size: 16px; 
         line-height: normal;
     }
 
     .close-btn {
-        font-size: 14px; /* Kleinere Schließen-Schaltfläche */
+        font-size: 14px;
     }
 
     .footer-text h1 {
@@ -391,8 +389,8 @@ p{
 /* Media Query für sehr sehr kleine Smartphones */
 @media (max-width: 444px) {
     .header-text h1 {
-        font-size: 50px;  /* Sehr kleine Schriftgröße für sehr kleine Smartphones */
-        line-height: 1;  /* Noch mehr Zeilenabstand für sehr kleine Smartphones */
+        font-size: 50px; 
+        line-height: 1;  
     }
 
     .header-text h2 {
@@ -401,40 +399,38 @@ p{
     }
 
     .temperature-box {
-        width: 120px; /* Kleinste Boxgröße */
+        width: 120px; 
         padding: 8px;
-        /*top: 18%; /* Position noch weiter anpassen */
-        /*left: 48%; /* Box zentrierter anzeigen */
     }
 
     .map-container {
-        margin-top: 0; /* Push the image down further if needed */
+        margin-top: 0;
     }
 
     .temperature-box h4 {
-        font-size: 14px; /* Kleinere Überschrift */
+        font-size: 14px;
     }
 
     .temperature-box h5 {
-        font-size: 22px; /* Kleinere Temperaturwerte */
+        font-size: 22px;
     }
 
     .info-box {
-        width: 180px; /* Kleinste Boxgröße */
+        width: 180px; 
         padding: 4px;
     }
 
     .info-header h3 {
-        font-size: 18px; /* Noch kleinere Schriftgröße */
+        font-size: 18px;
     }
 
     .info-content p {
-        font-size: 14px; /* Kleinste Schriftgröße für den Inhalt */
+        font-size: 14px;
         line-height: 1;
     }
 
     .close-btn {
-        font-size: 12px; /* Kleinere Schließen-Schaltfläche */
+        font-size: 12px;
     }
 
     .footer-text h1 {
