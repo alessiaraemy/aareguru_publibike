@@ -229,28 +229,33 @@ p2{
 
 
 
-
-/* Für Tablets (Bildschirme mit maximal 768px Breite) */
-@media (max-width: 768px) {
-    /* Verkleinerung der Schriftgröße im Header */
+/* Media Query für Tablets und größere Smartphones (Portrait Modus) */
+@media (max-width: 1024px) {
     .header-text h1 {
-        font-size: 120px;
-        line-height: 10vw;
+        font-size: 120px;  /* Kleinere Schriftgröße für Tablets */
+        line-height: 12vw;
     }
 
     .header-text h2 {
         font-size: 80px;
-        line-height: 4vw;
+        line-height: 8vw;
     }
 
-    /* Anpassung der Größe der Temperaturbox */
+    .bubble {
+        width: 40px;
+        height: 40px;
+        font-size: 18px;  /* Kleinere Schriftgröße für Bubbles */
+    }
+
     .temperature-box {
-        width: 250px;
-        font-size: 16px;
+        width: 250px;  /* Verkleinerte Temperaturbox */
         padding: 15px;
     }
 
-    /* Verkleinerung des Footers */
+    .info-box {
+        width: 250px;  /* Verkleinerte Info-Box */
+    }
+
     .footer-text h1 {
         font-size: 40px;
     }
@@ -260,54 +265,74 @@ p2{
     }
 }
 
-/* Für Smartphones (Bildschirme mit maximal 480px Breite) */
-@media (max-width: 480px) {
-    /* Weitere Verkleinerung der Schriftgrößen im Header */
+/* Media Query für kleinere Smartphones (Portrait Modus) */
+@media (max-width: 768px) {
     .header-text h1 {
-        font-size: 80px;
-        line-height: 8vw;
+        font-size: 80px;  /* Noch kleinere Schriftgröße für Smartphones */
+        line-height: 10vw;
     }
 
     .header-text h2 {
-        font-size: 50px;
-        line-height: 3vw;
+        font-size: 60px;
+        line-height: 6vw;
     }
 
-    /* Anpassung der Größe der Temperaturbox */
+    .bubble {
+        width: 30px;
+        height: 30px;
+        font-size: 14px;  /* Noch kleinere Schriftgröße für Bubbles */
+    }
+
     .temperature-box {
-        width: 200px;
-        font-size: 14px;
+        width: 200px;  /* Weitere Verkleinerung der Temperaturbox */
         padding: 10px;
     }
 
-    /* Verkleinerung des Footers */
+    .info-box {
+        width: 200px;  /* Weitere Verkleinerung der Info-Box */
+    }
+
     .footer-text h1 {
         font-size: 30px;
     }
 
     .footer-text h2 {
+        font-size: 50px;
+    }
+}
+
+/* Media Query für sehr kleine Smartphones */
+@media (max-width: 480px) {
+    .header-text h1 {
+        font-size: 50px;  /* Sehr kleine Schriftgröße für sehr kleine Smartphones */
+        line-height: 8vw;
+    }
+
+    .header-text h2 {
         font-size: 40px;
+        line-height: 5vw;
     }
 
-    /* Anpassung der Map-Image-Größe */
-    .map-container {
-        margin-top: 10px;
-    }
-
-    .map-image {
-        width: 100%;
-        height: auto;
-    }
-
-    /* Verkleinerung der Bubble für Stationen */
     .bubble {
-        width: 30px;
-        height: 30px;
-        font-size: 14px;
+        width: 25px;
+        height: 25px;
+        font-size: 12px;  /* Anpassung der Bubbles für sehr kleine Geräte */
     }
 
-    /* Verkleinerung der Info-Box */
+    .temperature-box {
+        width: 150px;  /* Maximale Verkleinerung der Temperaturbox */
+        padding: 8px;
+    }
+
     .info-box {
-        width: 100px;
+        width: 150px;  /* Maximale Verkleinerung der Info-Box */
+    }
+
+    .footer-text h1 {
+        font-size: 20px;
+    }
+
+    .footer-text h2 {
+        font-size: 40px;
     }
 }
