@@ -44,21 +44,6 @@ if (isset($data['stations']) && is_array($data['stations'])) {
     }
 }
 
-// hier in tabelle m
-// Bereite eine Tabelle vor, um die Daten anzuzeigen
-/*echo "<table border='1'>";
-echo "<tr><th>Location ID</th><th>Station</th><th>Gesamtzahl E-Bikes</th><th>Gesamtzahl Velos</th></tr>";
-
-// Füge die transformierten Daten in die Tabelle ein
-foreach ($transformedData as $row) {
-    echo "<tr>";
-    foreach ($row as $cell) {
-        echo "<td>{$cell}</td>";
-    }
-    echo "</tr>";
-}*/
-
-//print_r($transformedData);
 
 return $transformedData;
 ?>
