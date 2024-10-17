@@ -266,18 +266,35 @@ function updateStationsWithVehicleData(vehicles) {
     });
 }
 
-// Funktion zur Bestimmung der Bubble-Größe basierend auf der Gesamtanzahl von Velos und E-Bikes
+// Funktion zur Bestimmung der Bubble-Größe basierend auf der Gesamtanzahl von Velos und der Bildschirmbreite
 function getBubbleSize(totalVehicles) {
-    if (totalVehicles > 30) {
-        return 150; // Viele Fahrzeuge -> Größere Bubble
-    } else if (totalVehicles > 20) {
-        return 140; // Viele Fahrzeuge -> Größere Bubble
-    } else if (totalVehicles > 10) {
-        return 120; // Einige Fahrzeuge -> Mittlere Bubble
-    } else if (totalVehicles > 0) {
-        return 90; // Wenige Fahrzeuge -> Kleinere Bubble
+    // Bildschirmbreite abfragen
+    const screenWidth = window.innerWidth;
+
+    let baseSize;
+
+    if (screenWidth > 1024) {
+        // Desktop
+        baseSize = 150; // Maximale Größe für Desktops
+    } else if (screenWidth > 768) {
+        // Tablets
+        baseSize = 120; // Mittelgroße Bubbles für Tablets
     } else {
-        return 50; // Keine Fahrzeuge -> Kleinste Bubble
+        // Smartphones
+        baseSize = 90; // Kleinere Bubbles für Smartphones
+    }
+
+    // Passe die Größe basierend auf der Anzahl der Fahrzeuge an
+    if (totalVehicles > 30) {
+        return baseSize; // Viele Fahrzeuge -> Größere Bubble
+    } else if (totalVehicles > 20) {
+        return baseSize * 0.9; // Leicht kleinere Bubble
+    } else if (totalVehicles > 10) {
+        return baseSize * 0.8; // Mittlere Bubble
+    } else if (totalVehicles > 0) {
+        return baseSize * 0.7; // Kleine Bubble
+    } else {
+        return baseSize * 0.5; // Keine Fahrzeuge -> Kleinste Bubble
     }
 }
 
