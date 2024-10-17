@@ -340,8 +340,8 @@ p2{
 /* Media Query für sehr sehr kleine Smartphones */
 @media (max-width: 444px) {
     .header-text h1 {
-        font-size: 50px;  /* Sehr kleine Schriftgröße für sehr kleine Smartphones */
-        line-height: 0.8;  /* Noch mehr Zeilenabstand für sehr kleine Smartphones */
+        font-size: 30px;  /* Sehr kleine Schriftgröße für sehr kleine Smartphones */
+        line-height: 1.2;  /* Noch mehr Zeilenabstand für sehr kleine Smartphones */
     }
 
     .header-text h2 {
