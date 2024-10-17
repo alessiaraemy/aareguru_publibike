@@ -147,7 +147,7 @@ p2{
     transform: translate(-50%, -50%);
     width: 70px; /* Fixed size for the white circle */
     height: 70px; /* Fixed size for the white circle */
-    background-color: white;
+    background-color: red;
     border-radius: 50%;
     z-index: -1; /* Ensure the circle is behind the emoji */
 }
@@ -248,11 +248,11 @@ p2{
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
-    .bubble {
+    /*.bubble {
         width: 40px;
         height: 40px;
         font-size: 18px;
-    }
+    }*/
 
     .info-box {
         width: 150px; /* Verkleinerte Box auf mobilen Geräten */
