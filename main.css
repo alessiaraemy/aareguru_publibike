@@ -64,8 +64,14 @@ h4{
     /*letter-spacing: 10px;*/
 }
 
+h5{
+    font-family: "Annie Use Your Telescope";
+    font-size: 40px;
+    color: white
+}
+
 p{
-    font-family: "Annie Use Your Telescope", cursive;
+    font-family: "Annie Use Your Telescope";
     font-size: 30px;
     color: white
 }
