@@ -183,7 +183,7 @@ p2{
 /* Haupt-Layout für den Footer */
 .footer-text {
     position: absolute;
-    bottom: 400px; /* Schiebt den Footer um 50px nach oben */
+    bottom: 500px; /* Schiebt den Footer um 50px nach oben */
     left: 0;
     width: 100%;
     display: grid;
@@ -198,10 +198,10 @@ p2{
 .footer-text h1 {
     font-family: "anton", sans-serif;
     font-weight: 200px;
-    font-size: 80px;
+    font-size: 60px;
     color: #324d2d;
     margin: 0;
-    grid-column: 5 / span 5;
+    grid-column: 6 / span 5;
     grid-row: 2;
 }
 
