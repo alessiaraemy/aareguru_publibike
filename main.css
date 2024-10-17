@@ -256,8 +256,16 @@ p2{
     }
 
     .temperature-box {
-        width: 250px;  /* Verkleinerte Temperaturbox */
+        width: 300px; /* Verkleinere die Box für Tablets */
         padding: 15px;
+    }
+
+    .temperature-box h4 {
+        font-size: 30px; /* Verkleinere die Überschrift */
+    }
+
+    .temperature-box p2 {
+        font-size: 35px; /* Verkleinere den Temperaturwert */
     }
 
     .info-box {
@@ -292,8 +300,18 @@ p2{
     }
 
     .temperature-box {
-        width: 200px;  /* Weitere Verkleinerung der Temperaturbox */
-        padding: 10px;
+        width: 250px; /* Noch kleinere Box für Smartphones */
+        padding: 12px;
+        top: 10%; /* Positionierung leicht anpassen */
+        left: 55%; /* Box mehr zur Mitte schieben */
+    }
+
+    .temperature-box h4 {
+        font-size: 25px; /* Noch kleinere Überschrift */
+    }
+
+    .temperature-box p2 {
+        font-size: 30px; /* Kleinere Temperaturwerte */
     }
 
     .info-box {
@@ -328,8 +346,18 @@ p2{
     }
 
     .temperature-box {
-        width: 150px;  /* Maximale Verkleinerung der Temperaturbox */
-        padding: 8px;
+        width: 200px; /* Kleinere Box für kleine Smartphones */
+        padding: 10px;
+        top: 15%; /* Box weiter nach unten verschieben */
+        left: 50%; /* Mehr zur Mitte schieben */
+    }
+
+    .temperature-box h4 {
+        font-size: 20px; /* Kleinere Überschrift */
+    }
+
+    .temperature-box p2 {
+        font-size: 25px; /* Kleinere Temperaturwerte */
     }
 
     .info-box {
@@ -354,7 +382,21 @@ p2{
 
     .header-text h2 {
         font-size: 40px;
-        line-height: 1;
+    }
+
+    .temperature-box {
+        width: 180px; /* Kleinste Boxgröße */
+        padding: 8px;
+        top: 18%; /* Position noch weiter anpassen */
+        left: 48%; /* Box zentrierter anzeigen */
+    }
+
+    .temperature-box h4 {
+        font-size: 18px; /* Kleinere Überschrift */
+    }
+
+    .temperature-box p2 {
+        font-size: 22px; /* Kleinere Temperaturwerte */
     }
 
     .footer-text h1 {
