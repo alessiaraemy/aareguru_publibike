@@ -67,7 +67,8 @@ h4{
 h5{
     font-family: "Annie Use Your Telescope";
     font-size: 40px;
-    color: white
+    color: white;
+    margin: 0;
 }
 
 p{
