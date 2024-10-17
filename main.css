@@ -201,7 +201,7 @@ p2{
     font-size: 80px;
     color: #324d2d;
     margin: 0;
-    grid-column: 7 / span 5;
+    grid-column: 5 / span 5;
     grid-row: 2;
 }
 
@@ -211,9 +211,10 @@ p2{
     font-size: 100px;
     color: #43663d;
     margin: 0;
-    grid-column: 3 / span 15;
+    text-align: center;
+    /*grid-column: 3 / span 15;
     grid-row: 1; 
-    line-height: 1;
+    line-height: 1;*/
 }
 
 
