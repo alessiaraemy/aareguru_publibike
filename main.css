@@ -302,8 +302,8 @@ p2{
     .temperature-box {
         width: 250px; /* Noch kleinere Box für Smartphones */
         padding: 12px;
-        top: 10%; /* Positionierung leicht anpassen */
-        left: 55%; /* Box mehr zur Mitte schieben */
+        /*top: 10%; /* Positionierung leicht anpassen */
+        /*left: 55%; /* Box mehr zur Mitte schieben */
     }
 
     .temperature-box h4 {
@@ -348,8 +348,8 @@ p2{
     .temperature-box {
         width: 200px; /* Kleinere Box für kleine Smartphones */
         padding: 10px;
-        top: 15%; /* Box weiter nach unten verschieben */
-        left: 50%; /* Mehr zur Mitte schieben */
+        /*top: 15%; /* Box weiter nach unten verschieben */
+        /*left: 50%; /* Mehr zur Mitte schieben */
     }
 
     .temperature-box h4 {
@@ -387,8 +387,8 @@ p2{
     .temperature-box {
         width: 180px; /* Kleinste Boxgröße */
         padding: 8px;
-        top: 18%; /* Position noch weiter anpassen */
-        left: 48%; /* Box zentrierter anzeigen */
+        /*top: 18%; /* Position noch weiter anpassen */
+        /*left: 48%; /* Box zentrierter anzeigen */
     }
 
     .temperature-box h4 {
