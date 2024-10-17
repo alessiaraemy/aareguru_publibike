@@ -21,7 +21,7 @@ body, html {
 .header-text h1 {
     font-family: "anton", sans-serif;
     font-weight: 200px;
-    font-size: 250px;
+    font-size: 220px;
     color: #324d2d;
     margin: 0;
     grid-column: 1 / -1; /* Nimmt die gesamte Breite ein (alle 24 Spalten) */
@@ -183,7 +183,7 @@ p2{
 /* Haupt-Layout für den Footer */
 .footer-text {
     position: absolute;
-    bottom: 200px; /* Schiebt den Footer um 50px nach oben */
+    bottom: 400px; /* Schiebt den Footer um 50px nach oben */
     left: 0;
     width: 100%;
     display: grid;
@@ -201,7 +201,7 @@ p2{
     font-size: 80px;
     color: #324d2d;
     margin: 0;
-    grid-column: 5 / span 5;
+    grid-column: 7 / span 5;
     grid-row: 2;
 }
 
@@ -211,12 +211,10 @@ p2{
     font-size: 100px;
     color: #43663d;
     margin: 0;
-    grid-column: 1 / span 15; /* Startet bei Spalte 5 und geht über 8 Spalten */
-    grid-row: 1; /* Befindet sich in der dritten Zeile, unter h1 */
-    line-height: 1; /* Hier den Zeilenabstand anpassen */
+    grid-column: 3 / span 15;
+    grid-row: 1; 
+    line-height: 1;
 }
-
-
 
 
 
