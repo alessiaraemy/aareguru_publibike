@@ -191,7 +191,7 @@ p2{
 /* Haupt-Layout für den Footer */
 .footer-text {
     position: absolute;
-    bottom: 20%; /* Footer bleibt am unteren Ende */
+    bottom: 10%; /* Footer bleibt am unteren Ende */
     left: 0;
     width: 100%;
     display: grid;
