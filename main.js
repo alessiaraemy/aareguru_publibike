@@ -292,9 +292,9 @@ function getBubbleSize(totalVehicles) {
     } else if (totalVehicles > 10) {
         return baseSize * 0.8; // Mittlere Bubble
     } else if (totalVehicles > 0) {
-        return baseSize * 0.7; // Kleine Bubble
+        return baseSize * 0.6; // Kleine Bubble
     } else {
-        return baseSize * 0.5; // Keine Fahrzeuge -> Kleinste Bubble
+        return baseSize * 0.3; // Keine Fahrzeuge -> Kleinste Bubble
     }
 }
 
