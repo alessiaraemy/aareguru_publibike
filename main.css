@@ -230,22 +230,84 @@ p2{
 
 
 
-/* Für sehr große Bildschirme */
-@media (min-width: 1200px) {
+/* Für Tablets (Bildschirme mit maximal 768px Breite) */
+@media (max-width: 768px) {
+    /* Verkleinerung der Schriftgröße im Header */
+    .header-text h1 {
+        font-size: 120px;
+        line-height: 10vw;
+    }
 
+    .header-text h2 {
+        font-size: 80px;
+        line-height: 4vw;
+    }
 
+    /* Anpassung der Größe der Temperaturbox */
+    .temperature-box {
+        width: 250px;
+        font-size: 16px;
+        padding: 15px;
+    }
+
+    /* Verkleinerung des Footers */
+    .footer-text h1 {
+        font-size: 40px;
+    }
+
+    .footer-text h2 {
+        font-size: 60px;
+    }
 }
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
-    .bubble {
-        width: 40px;
-        height: 40px;
-        font-size: 18px;
+/* Für Smartphones (Bildschirme mit maximal 480px Breite) */
+@media (max-width: 480px) {
+    /* Weitere Verkleinerung der Schriftgrößen im Header */
+    .header-text h1 {
+        font-size: 80px;
+        line-height: 8vw;
     }
 
-    .info-box {
-        width: 150px; /* Verkleinerte Box auf mobilen Geräten */
+    .header-text h2 {
+        font-size: 50px;
+        line-height: 3vw;
     }
-   
+
+    /* Anpassung der Größe der Temperaturbox */
+    .temperature-box {
+        width: 200px;
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    /* Verkleinerung des Footers */
+    .footer-text h1 {
+        font-size: 30px;
+    }
+
+    .footer-text h2 {
+        font-size: 40px;
+    }
+
+    /* Anpassung der Map-Image-Größe */
+    .map-container {
+        margin-top: 10px;
+    }
+
+    .map-image {
+        width: 100%;
+        height: auto;
+    }
+
+    /* Verkleinerung der Bubble für Stationen */
+    .bubble {
+        width: 30px;
+        height: 30px;
+        font-size: 14px;
+    }
+
+    /* Verkleinerung der Info-Box */
+    .info-box {
+        width: 100px;
+    }
 }
