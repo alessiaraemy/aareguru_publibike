@@ -14,7 +14,7 @@ body, html {
     grid-template-rows: auto 1fr; /* Erste Zeile passt sich automatisch an, zweite Zeile ist kleiner */
     gap: 10px; /* Optional: Abstände zwischen den Grid-Elementen */
     width: 100%;
-    margin: 20px 0; /* Abstand oberhalb und unterhalb */
+    margin-top: 20px; /* Abstand oberhalb */
 }
 
 /* h1 im Grid positionieren, über zwei Zeilen */
