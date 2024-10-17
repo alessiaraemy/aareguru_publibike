@@ -256,7 +256,7 @@ p2{
     }
 
     .temperature-box {
-        width: 300px; /* Verkleinere die Box für Tablets */
+        width: 250px; /* Verkleinere die Box für Tablets */
         padding: 15px;
     }
 
@@ -392,7 +392,7 @@ p2{
     }
 
     .temperature-box h4 {
-        font-size: 18px; /* Kleinere Überschrift */
+        font-size: 14px; /* Kleinere Überschrift */
     }
 
     .temperature-box p2 {
