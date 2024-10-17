@@ -190,9 +190,9 @@ p2{
 
 /* Haupt-Layout für den Footer */
 .footer-text {
-    position: relative; /* Entferne absolute Positionierung */
+    position: absolute;
+    bottom: 0; /* Footer bleibt am unteren Ende */
     left: 0;
-    bottom: 0; /* Setzt den Footer an das untere Ende des Containers */
     width: 100%;
     display: grid;
     grid-template-columns: repeat(10, 1fr);
@@ -201,16 +201,15 @@ p2{
     z-index: 2;
     color: white;
     padding: 20px;
-    background-color: #324d2d; /* Optional: Hintergrundfarbe hinzufügen */
-    margin-top: 50px; /* Abstand zum Inhalt über dem Footer */
 }
 
-/* Anpassung des Containers */
+/* Der Container sollte den Inhalt nach oben schieben, wenn der Bildschirm größer ist */
 .container {
-    min-height: calc(100vh - 200px); /* Stellt sicher, dass der Container mindestens die Höhe des Bildschirms abdeckt, abzüglich der Footer-Höhe */
-    padding-bottom: 100px; /* Genug Platz für den Footer lassen */
-    display: block; /* Block-Layout sicherstellen */
+    min-height: 100vh; /* Container nimmt mindestens die volle Höhe des Viewports ein */
+    position: relative; /* Setze den Container in den relativen Kontext für den absolut positionierten Footer */
+    padding-bottom: 200px; /* Genug Platz für den Footer am Ende des Containers lassen */
 }
+
 
 .footer-text h1 {
     font-family: "anton", sans-serif;
