@@ -457,7 +457,7 @@ p2{
 
     .info-content p {
         font-size: 14px; /* Kleinste Schriftgröße für den Inhalt */
-        line-height: 20;
+        line-height: 10;
     }
 
     .close-btn {
