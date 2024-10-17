@@ -207,15 +207,16 @@ p2{
 
 .footer-text h2 {
     font-family: "Annie Use Your Telescope";
-    font-weight: 400px;
+    font-weight: 400;
     font-size: 100px;
     color: #43663d;
     margin: 0;
     text-align: center;
-    /*grid-column: 3 / span 15;*/
+    grid-column: 2 / span 8; /* Passt die Spalte so an, dass der Text zentriert wird */
     grid-row: 1; 
     line-height: 1;
 }
+
 
 
 
