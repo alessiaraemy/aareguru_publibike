@@ -137,7 +137,12 @@ p2{
     justify-content: center;
     align-items: center;
     font-size: 24px;
-        transition: width 0.3s ease, height 0.3s ease;    
+    transition: width 0.3s ease, height 0.3s ease;    
+}
+
+/* Hover-Effekt: Bubble wird dunkler */
+.bubble:hover {
+    background-color: #700C53; /* Dunklere Version der ursprünglichen Farbe */
 }
 
 /* Hidden popup window */
