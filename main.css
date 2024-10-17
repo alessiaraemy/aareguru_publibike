@@ -232,7 +232,7 @@ p2{
 /* Media Query für Tablets und größere Smartphones (Portrait Modus) */
 @media (max-width: 1024px) {
     .header-text h1 {
-        font-size: 120px;  /* Kleinere Schriftgröße für Tablets */
+        font-size: 130px;  /* Kleinere Schriftgröße für Tablets */
         line-height: 1.2;  /* Mehr Zeilenabstand für Tablets */
     }
 
@@ -268,7 +268,7 @@ p2{
 /* Media Query für kleinere Smartphones (Portrait Modus) */
 @media (max-width: 768px) {
     .header-text h1 {
-        font-size: 90px;  /* Noch kleinere Schriftgröße für Smartphones */
+        font-size: 80px;  /* Noch kleinere Schriftgröße für Smartphones */
         line-height: 1.3;  /* Erhöhter Zeilenabstand für Smartphones */
     }
 
@@ -304,7 +304,7 @@ p2{
 /* Media Query für sehr kleine Smartphones */
 @media (max-width: 480px) {
     .header-text h1 {
-        font-size: 70px;  /* Sehr kleine Schriftgröße für sehr kleine Smartphones */
+        font-size: 60px;  /* Sehr kleine Schriftgröße für sehr kleine Smartphones */
         line-height: 1.4;  /* Noch mehr Zeilenabstand für sehr kleine Smartphones */
     }
 
