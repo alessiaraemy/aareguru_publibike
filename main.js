@@ -19,14 +19,14 @@ const positionData = [
     { id: 663, position: { top: "25%", left: "15%" }, infoBoxPosition: { top: "-40%", left: "80%" }}, //Kleeplatz/ Bollwerk
     { id: 251, position: { top: "27%", left: "40%" }, infoBoxPosition: { top: "-40%", left: "80%" }}, //Kornhausplatz
     { id: 898, position: { top: "17%", left: "65%" }, infoBoxPosition: { top: "-40%", left: "-320%" }}, //Altenbergstrasse
-    { id: 254, position: { top: "30%", left: "65%" }, infoBoxPosition: { top: "-40%", left: "-350%" }}, //Nydegg
+    { id: 254, position: { top: "30%", left: "65%" }, infoBoxPosition: { top: "-40%", left: "-370%" }}, //Nydegg
     { id: 316, position: { top: "35%", left: "15%" }, infoBoxPosition: { top: "-40%", left: "80%" }}, //Marzilibahn
     { id: 315, position: { top: "45%", left: "15%" }, infoBoxPosition: { top: "-40%", left: "80%" }}, //Marzilibad
     { id: 478, position: { top: "50%", left: "25%" }, infoBoxPosition: { top: "-40%", left: "80%" }}, //Dampfzentrale
     { id: 321, position: { top: "55%", left: "12%" }, infoBoxPosition: { top: "-40%", left: "80%" }}, //Monbijoubrücke
-    { id: 312, position: { top: "50%", left: "70%" }, infoBoxPosition: { top: "-40%", left: "-300%" }}, //Ka-We-De
-    { id: 323, position: { top: "52%", left: "80%" }, infoBoxPosition: { top: "-40%", left: "-400%" }}, //Restaurant Dählhölzli
-    { id: 423, position: { top: "65%", left: "75%" }, infoBoxPosition: { top: "-40%", left: "-350%" }}, //Camping Eichholz
+    { id: 312, position: { top: "50%", left: "70%" }, infoBoxPosition: { top: "-40%", left: "-330%" }}, //Ka-We-De
+    { id: 323, position: { top: "52%", left: "80%" }, infoBoxPosition: { top: "-40%", left: "-380%" }}, //Restaurant Dählhölzli
+    { id: 423, position: { top: "65%", left: "75%" }, infoBoxPosition: { top: "-40%", left: "-330%" }}, //Camping Eichholz
     { id: 326, position: { top: "30%", left: "90%" }, infoBoxPosition: { top: "-40%", left: "-290%" }} //Bärenpark
 ];
 
