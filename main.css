@@ -212,9 +212,9 @@ p2{
     color: #43663d;
     margin: 0;
     text-align: center;
-    /*grid-column: 3 / span 15;
+    /*grid-column: 3 / span 15;*/
     grid-row: 1; 
-    line-height: 1;*/
+    line-height: 1;
 }
 
 
