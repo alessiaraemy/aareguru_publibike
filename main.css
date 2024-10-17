@@ -24,21 +24,9 @@ body, html {
     font-size: 240px;
     color: #324d2d;
     margin: 0;
-    grid-column: 1 / -1; /* Nimmt die gesamte Breite ein (alle 24 Spalten) */
-    grid-row: 1; /* Erstreckt sich über zwei Zeilen */
-    line-height: 15vw; /* Hier den Zeilenabstand anpassen */
-
-}
-
-.zweiteZeile{
-    font-family: "anton", sans-serif;
-    font-weight: 200px;
-    font-size: 240px;
-    color: #324d2d;
-    margin: 0;
     text-align: center;
     grid-column: 1 / -1; /* Nimmt die gesamte Breite ein (alle 24 Spalten) */
-    grid-row: 5; /* Erstreckt sich über zwei Zeilen */
+    grid-row: 1; /* Erstreckt sich über zwei Zeilen */
     line-height: 15vw; /* Hier den Zeilenabstand anpassen */
 
 }
