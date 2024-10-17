@@ -24,9 +24,11 @@ body, html {
     font-size: 240px;
     color: #324d2d;
     margin: 0;
+    text-align: center;
     grid-column: 2 / -1; /* Nimmt die gesamte Breite ein (alle 24 Spalten) */
     grid-row: 1 / span 2; /* Erstreckt sich über zwei Zeilen */
     line-height: 15vw; /* Hier den Zeilenabstand anpassen */
+
 }
 
 /* h2 im Grid positionieren, beginnt bei Spalte 5 */
@@ -36,7 +38,7 @@ body, html {
     font-size: 180px;
     color: #43663d;
     margin: 0;
-    grid-column: 12 / span 15; /* Startet bei Spalte 5 und geht über 8 Spalten */
+    grid-column: 13 / span 15; /* Startet bei Spalte 5 und geht über 8 Spalten */
     grid-row: 3; /* Befindet sich in der dritten Zeile, unter h1 */
     line-height: 5vw; /* Hier den Zeilenabstand anpassen */
 }
