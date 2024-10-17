@@ -190,17 +190,26 @@ p2{
 
 /* Haupt-Layout für den Footer */
 .footer-text {
-    position: absolute;
-    bottom: 500px; /* Schiebt den Footer um 50px nach oben */
+    position: relative; /* Entferne absolute Positionierung */
     left: 0;
+    bottom: 0; /* Setzt den Footer an das untere Ende des Containers */
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(10, 1fr); /* Grid bleibt wie es ist */
-    grid-template-rows: repeat(3, auto); /* Automatische Zeilenhöhen */
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(3, auto);
     gap: 10px;
-    z-index: 2; 
+    z-index: 2;
     color: white;
     padding: 20px;
+    background-color: #324d2d; /* Optional: Hintergrundfarbe hinzufügen */
+    margin-top: 50px; /* Abstand zum Inhalt über dem Footer */
+}
+
+/* Anpassung des Containers */
+.container {
+    min-height: calc(100vh - 200px); /* Stellt sicher, dass der Container mindestens die Höhe des Bildschirms abdeckt, abzüglich der Footer-Höhe */
+    padding-bottom: 100px; /* Genug Platz für den Footer lassen */
+    display: block; /* Block-Layout sicherstellen */
 }
 
 .footer-text h1 {
@@ -349,4 +358,11 @@ p2{
         line-height: 1;
     }
 
+    .footer-text h1 {
+        font-size: 18px;
+    }
+
+    .footer-text h2 {
+        font-size: 30px;
+    }
 }
