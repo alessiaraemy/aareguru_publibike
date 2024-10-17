@@ -232,13 +232,13 @@ p2{
 /* Media Query für Tablets und größere Smartphones (Portrait Modus) */
 @media (max-width: 1024px) {
     .header-text h1 {
-        font-size: 120px;  /* Kleinere Schriftgröße für Tablets */
-        line-height: 12vw;
+        font-size: 100px;  /* Kleinere Schriftgröße für Tablets */
+        line-height: 1.2;  /* Mehr Zeilenabstand für Tablets */
     }
 
     .header-text h2 {
         font-size: 80px;
-        line-height: 8vw;
+        line-height: 1.4;
     }
 
     .bubble {
@@ -268,13 +268,13 @@ p2{
 /* Media Query für kleinere Smartphones (Portrait Modus) */
 @media (max-width: 768px) {
     .header-text h1 {
-        font-size: 80px;  /* Noch kleinere Schriftgröße für Smartphones */
-        line-height: 10vw;
+        font-size: 70px;  /* Noch kleinere Schriftgröße für Smartphones */
+        line-height: 1.3;  /* Erhöhter Zeilenabstand für Smartphones */
     }
 
     .header-text h2 {
         font-size: 60px;
-        line-height: 6vw;
+        line-height: 1.5;
     }
 
     .bubble {
@@ -305,12 +305,12 @@ p2{
 @media (max-width: 480px) {
     .header-text h1 {
         font-size: 50px;  /* Sehr kleine Schriftgröße für sehr kleine Smartphones */
-        line-height: 8vw;
+        line-height: 1.4;  /* Noch mehr Zeilenabstand für sehr kleine Smartphones */
     }
 
     .header-text h2 {
         font-size: 40px;
-        line-height: 5vw;
+        line-height: 1.6;
     }
 
     .bubble {
